@@ -54,7 +54,8 @@ export function Footer() {
     <footer className="footer">
       <div className="footer-inner">
         <Link to="/" className="footer-logo" aria-label="FibroMental home"><img src={fibroLogo} alt="FibroMental" /></Link>
-        <p style={{ fontSize: ".75rem", color: "rgba(255,255,255,.2)" }}>© 2026 MetaCare S.r.l. · <a href="https://www.metacare.it" target="_blank" rel="noopener noreferrer">metacare.it</a></p>
+        <p>© 2026 MetaCare S.r.l. · <a href="https://www.metacare.it" target="_blank" rel="noopener noreferrer">metacare.it</a></p>
+        <a className="footer-credit" href="https://www.friulion.it" target="_blank" rel="noopener noreferrer">Sviluppato da Friuli On</a>
       </div>
     </footer>
   );
