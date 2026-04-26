@@ -4,6 +4,7 @@ import { supabaseAdmin } from "../integrations/supabase/client.server";
 import { articleFromBlogRow, mergeArticles } from "./articles";
 
 const tokenSchema = z.object({ accessToken: z.string().min(20) });
+const idTokenSchema = tokenSchema.extend({ id: z.string().uuid() });
 
 const articleSchema = z.object({
   slug: z.string().min(3).max(120).regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
@@ -19,6 +20,12 @@ const articleSchema = z.object({
 });
 
 const managedArticleSchema = articleSchema.extend({ accessToken: z.string().min(20) });
+const updateArticleSchema = managedArticleSchema.extend({ id: z.string().uuid() });
+const coverUploadSchema = tokenSchema.extend({
+  fileName: z.string().min(3).max(180),
+  contentType: z.enum(["image/jpeg", "image/png", "image/webp"]),
+  base64: z.string().min(100).max(7_000_000),
+});
 
 async function requireAdmin(accessToken: string) {
   const { data: userData, error } = await supabaseAdmin.auth.getUser(accessToken);
@@ -104,4 +111,61 @@ export const createManagedArticle = createServerFn({ method: "POST" })
 
     if (error) throw new Error(error.code === "23505" ? "Esiste già una notizia con questo URL." : "Non è stato possibile salvare la notizia.");
     return { success: true };
+  });
+
+export const updateManagedArticle = createServerFn({ method: "POST" })
+  .inputValidator((input: unknown) => updateArticleSchema.parse(input))
+  .handler(async ({ data }) => {
+    const userId = await requireAdmin(data.accessToken);
+
+    const { error } = await supabaseAdmin
+      .from("blog_articles")
+      .update({
+        slug: data.slug,
+        tag: data.tag,
+        title: data.title,
+        excerpt: data.excerpt,
+        source: data.source || null,
+        read_time: data.readTime,
+        cover_image_url: data.coverImageUrl || null,
+        cover_alt: data.coverAlt || data.title,
+        paragraphs: data.paragraphs,
+        is_published: data.isPublished,
+        published_at: data.isPublished ? new Date().toISOString() : null,
+        updated_by: userId,
+      })
+      .eq("id", data.id);
+
+    if (error) throw new Error(error.code === "23505" ? "Esiste già una notizia con questo URL." : "Non è stato possibile aggiornare la notizia.");
+    return { success: true };
+  });
+
+export const publishManagedArticle = createServerFn({ method: "POST" })
+  .inputValidator((input: unknown) => idTokenSchema.extend({ isPublished: z.boolean() }).parse(input))
+  .handler(async ({ data }) => {
+    const userId = await requireAdmin(data.accessToken);
+    const { error } = await supabaseAdmin
+      .from("blog_articles")
+      .update({ is_published: data.isPublished, published_at: data.isPublished ? new Date().toISOString() : null, updated_by: userId })
+      .eq("id", data.id);
+
+    if (error) throw new Error("Non è stato possibile aggiornare la pubblicazione.");
+    return { success: true };
+  });
+
+export const uploadBlogCover = createServerFn({ method: "POST" })
+  .inputValidator((input: unknown) => coverUploadSchema.parse(input))
+  .handler(async ({ data }) => {
+    await requireAdmin(data.accessToken);
+    const extension = data.contentType === "image/png" ? "png" : data.contentType === "image/webp" ? "webp" : "jpg";
+    const safeName = data.fileName.replace(/\.[^.]+$/, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "cover";
+    const path = `covers/${Date.now()}-${safeName}.${extension}`;
+    const bytes = Uint8Array.from(atob(data.base64), (char) => char.charCodeAt(0));
+
+    const { error } = await supabaseAdmin.storage.from("blog-covers").upload(path, bytes, { contentType: data.contentType, upsert: false });
+    if (error) throw new Error("Non è stato possibile caricare la copertina.");
+
+    const { data: signed } = await supabaseAdmin.storage.from("blog-covers").createSignedUrl(path, 60 * 60 * 24 * 365 * 10);
+    if (!signed?.signedUrl) throw new Error("Copertina caricata, ma URL non generato.");
+    return { url: signed.signedUrl };
   });
