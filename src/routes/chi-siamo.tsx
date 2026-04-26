@@ -1,5 +1,5 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
-import { MetaCareBanner, SiteLayout } from "../components/fibromental/Layout";
+import { SiteLayout } from "../components/fibromental/Layout";
 import { YarnHand, YarnResearch } from "../components/fibromental/YarnVisuals";
 
 export const Route = createFileRoute("/chi-siamo")({
@@ -17,7 +17,6 @@ export const Route = createFileRoute("/chi-siamo")({
 function AboutPage() {
   return (
     <SiteLayout>
-      <MetaCareBanner />
       <main>
         <section className="page-hero">
           <div className="page-hero-inner fade-in">
