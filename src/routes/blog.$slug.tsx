@@ -37,7 +37,7 @@ function ArticlePage() {
         <section className="page-hero">
           <article className="article-layout fade-in">
             <div className="article-meta">{article.tag} · {article.readTime}</div>
-            <h1 className="display" style={{ fontSize: "clamp(2.35rem, 5vw, 4.2rem)" }}>{article.title}</h1>
+            <h1 className="display text-slate-700" style={{ fontSize: "clamp(2.35rem, 5vw, 4.2rem)" }}>{article.title}</h1>
             <p className="hero-sub">{article.excerpt}</p>
             <figure className="article-cover">
               <img src={article.coverImage} alt={article.coverAlt} width={1024} height={640} />
@@ -62,7 +62,7 @@ function ArticleError() {
     <SiteLayout>
       <main className="page-hero">
         <div className="page-hero-inner">
-          <h1 className="display">Articolo temporaneamente non disponibile.</h1>
+          <h1 className="display text-slate-700">Articolo temporaneamente non disponibile.</h1>
           <p className="hero-sub" style={{ marginLeft: "auto", marginRight: "auto" }}>Riprova tra poco o torna al blog.</p>
           <Link to="/blog" className="hero-cta">Torna al blog</Link>
         </div>
@@ -76,7 +76,7 @@ function ArticleNotFound() {
     <SiteLayout>
       <main className="page-hero">
         <div className="page-hero-inner">
-          <h1 className="display">Articolo non trovato.</h1>
+          <h1 className="display text-slate-700">Articolo non trovato.</h1>
           <p className="hero-sub" style={{ marginLeft: "auto", marginRight: "auto" }}>Il contenuto che cerchi non è disponibile.</p>
           <Link to="/blog" className="hero-cta">Torna al blog</Link>
         </div>
