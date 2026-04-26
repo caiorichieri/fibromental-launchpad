@@ -60,10 +60,25 @@ function AdminBlogPage() {
   const selectedArticle = articles.find((article) => article.id === editingId);
 
   useEffect(() => {
-    supabase.auth.getSession().then(({ data }) => {
+    supabase.auth.getSession().then(async ({ data }) => {
+      if (data.session?.user.email?.toLowerCase() !== ADMIN_EMAIL) {
+        await supabase.auth.signOut();
+        setAccessToken("");
+        setArticles([]);
+        return;
+      }
       const token = data.session?.access_token || "";
       setAccessToken(token);
-      if (token) refreshArticles(token);
+      if (token) {
+        try {
+          await refreshArticles(token);
+        } catch (error) {
+          await supabase.auth.signOut();
+          setAccessToken("");
+          setArticles([]);
+          setStatus({ type: "error", message: error instanceof Error ? error.message : "Accesso non autorizzato." });
+        }
+      }
     });
   }, []);
 
@@ -171,7 +186,7 @@ function AdminBlogPage() {
             <form className="form-panel admin-panel" onSubmit={handleLogin}>
               <div className="form-field"><label>Email</label><input type="email" value={email} onChange={(event) => setEmail(event.target.value)} required /></div>
               <div className="form-field"><label>Password</label><input type="password" value={password} onChange={(event) => setPassword(event.target.value)} required /></div>
-              <button className="form-button" disabled={busy}>{busy ? "Accesso…" : "Entra o crea account"}</button>
+              <button className="form-button" disabled={busy}>{busy ? "Accesso…" : "Entra"}</button>
             </form>
           ) : (
             <div className="admin-grid">
