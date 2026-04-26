@@ -21,7 +21,7 @@ function AboutPage() {
         <section className="page-hero">
           <div className="page-hero-inner fade-in">
             <div className="pill-label">Chi siamo / MetaCare</div>
-            <h1 className="display">Una rete clinica per ciò che spesso resta <em>invisibile.</em></h1>
+            <h1 className="display text-slate-700">Una rete clinica per ciò che spesso resta <em>invisibile.</em></h1>
             <p className="hero-sub" style={{ marginLeft: "auto", marginRight: "auto" }}>FibroMental nasce dentro MetaCare S.r.l. per portare strumenti psicologici rigorosi, umani e integrati nel lavoro con fibromialgia e dolore cronico.</p>
           </div>
         </section>
