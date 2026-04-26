@@ -24,7 +24,7 @@ function HomePage() {
         <section className="hero">
           <div className="hero-text fade-in">
             <div className="hero-tag">Per la fibromialgia</div>
-            <h1 className="display">Il tuo corpo sa quello che<br /><em>gli altri non vedono.</em></h1>
+            <h1 className="display text-slate-700">Il tuo corpo sa quello che<br /><em>gli altri non vedono.</em></h1>
             <p className="hero-sub">FibroMental è un percorso psicologico che lavora dove il dolore ha le sue radici — nel sistema nervoso, tra mente e corpo.</p>
             <a href="#cta" className="hero-cta">Scopri come funziona <span className="arrow">→</span></a>
           </div>
@@ -158,7 +158,7 @@ function HomePage() {
         <section id="cta" className="cta-section">
           <div className="fade-in">
             <CtaThread />
-            <h2 className="display" style={{ maxWidth: 700, margin: "0 auto" }}>Chi arriva fin qui<br />sa già <em>qualcosa.</em></h2>
+            <h2 className="display text-slate-700" style={{ maxWidth: 700, margin: "0 auto" }}>Chi arriva fin qui<br />sa già <em>qualcosa.</em></h2>
             <p>C’è uno psicologo a tua disposizione. Scrivici per avere informazioni o per fissare un primo appuntamento — il contatto è gratuito.</p>
             <p style={{ marginTop: ".75rem" }}>Un professionista ti risponderà direttamente e potrà rispondere a tutte le tue domande su FibroMental, sul percorso e su come iniziare.</p>
             <Link to="/contatti" className="cta-button">Scrivici — ti risponderemo entro 24 ore <span className="arrow">→</span></Link>
