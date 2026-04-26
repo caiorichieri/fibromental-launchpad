@@ -226,7 +226,7 @@
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto; } .fade-in { opacity:1; transform:none; transition:none; } * { transition-duration:.01ms !important; animation-duration:.01ms !important; } }
 @media (max-width: 900px) { .blog-grid { grid-template-columns:repeat(2,1fr); } .nav-links { display:none; } }
 @media (max-width: 768px) {
-  .site-nav { padding:1rem 1.5rem; } .metacare-banner { margin-top:61px; }
+  .site-nav { padding:1rem 1.5rem; }
   .hero { grid-template-columns:1fr; padding:7rem 1.5rem 4rem; gap:2.5rem; min-height:auto; }
   .page-section, .article-content { padding:4rem 1.5rem; }
   .section-inner, .app-inner, .lavora-inner, .contact-grid { grid-template-columns:1fr; gap:2.5rem; }
@@ -234,4 +234,4 @@
   .ricerca-stats { gap:1.5rem; } .page-hero { padding:8rem 1.5rem 4rem; }
   .display { font-size: clamp(2.4rem, 12vw, 4rem); }
 }
-@media (max-width: 420px) { .nav-cta { padding:.55rem 1rem; } .nav-logo { font-size:1.15rem; } }
+@media (max-width: 420px) { .nav-cta { padding:.55rem 1rem; } .nav-logo { width:142px; } }
