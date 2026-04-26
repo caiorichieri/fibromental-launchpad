@@ -1,6 +1,6 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { ArticleCard } from "../components/fibromental/ArticleCard";
-import { CONTACT_EMAIL, MetaCareBanner, SiteLayout } from "../components/fibromental/Layout";
+import { CONTACT_EMAIL, SiteLayout } from "../components/fibromental/Layout";
 import { CtaThread, YarnFree, YarnHand, YarnHero, YarnOpen, YarnRecognition, YarnResearch } from "../components/fibromental/YarnVisuals";
 import { articles } from "../lib/articles";
 
@@ -20,7 +20,6 @@ export const Route = createFileRoute("/")({
 function HomePage() {
   return (
     <SiteLayout>
-      <MetaCareBanner />
       <main>
         <section className="hero">
           <div className="hero-text fade-in">
