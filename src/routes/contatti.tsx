@@ -36,23 +36,18 @@ function ContactPage() {
     }
 
     setIsSubmitting(true);
-    const endpoint = import.meta.env.VITE_FORMSPREE_ENDPOINT as string | undefined;
+    const endpoint = (import.meta.env.VITE_FORMSPREE_ENDPOINT as string | undefined) || `https://formsubmit.co/ajax/${CONTACT_EMAIL}`;
     try {
-      if (endpoint) {
-        const response = await fetch(endpoint, {
-          method: "POST",
-          headers: { Accept: "application/json" },
-          body: data,
-        });
-        if (!response.ok) throw new Error("Invio non riuscito");
-        form.reset();
-        setStatus({ type: "success", message: "Messaggio inviato. Ti risponderemo appena possibile." });
-      } else {
-        const subject = encodeURIComponent(topic || "Contatto FibroMental");
-        const body = encodeURIComponent(`Nome: ${name}\nEmail: ${email}\nTema: ${topic}\n\n${message}`);
-        window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
-        setStatus({ type: "success", message: "Si è aperto il tuo client email con il messaggio già compilato." });
-      }
+      data.set("_subject", topic || "Contatto FibroMental");
+      data.set("_template", "table");
+      const response = await fetch(endpoint, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: data,
+      });
+      if (!response.ok) throw new Error("Invio non riuscito");
+      form.reset();
+      setStatus({ type: "success", message: "Messaggio inviato. Ti risponderemo appena possibile." });
     } catch {
       setStatus({ type: "error", message: "Non siamo riusciti a inviare il messaggio. Puoi scrivere direttamente a info@metacare.it." });
     } finally {
@@ -100,7 +95,7 @@ function ContactPage() {
                 <label htmlFor="message">Messaggio</label>
                 <textarea id="message" name="message" maxLength={1500} required />
               </div>
-              <p className="form-note">Il form è pronto per Formspree tramite variabile VITE_FORMSPREE_ENDPOINT; finché non viene inserito l’endpoint reale usa il mailto precompilato.</p>
+              <p className="form-note">Il messaggio viene inviato all’indirizzo MetaCare configurato. Prima del lancio va confermata l’email reale di destinazione.</p>
               {status && <div className={`status-box ${status.type === "success" ? "status-success" : "status-error"}`}>{status.message}</div>}
               <button className="form-button" type="submit" disabled={isSubmitting}>{isSubmitting ? "Invio in corso…" : "Invia messaggio →"}</button>
             </form>
