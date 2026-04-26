@@ -62,6 +62,25 @@ export const listManagedArticles = createServerFn({ method: "POST" })
     return rows || [];
   });
 
+export const claimInitialAdmin = createServerFn({ method: "POST" })
+  .inputValidator((input: unknown) => tokenSchema.parse(input))
+  .handler(async ({ data }) => {
+    const { data: userData, error } = await supabaseAdmin.auth.getUser(data.accessToken);
+    if (error || !userData.user) throw new Error("Accedi per attivare l’area notizie.");
+
+    const { count, error: countError } = await supabaseAdmin
+      .from("user_roles")
+      .select("id", { count: "exact", head: true })
+      .eq("role", "admin");
+
+    if (countError) throw new Error("Non è stato possibile verificare gli amministratori.");
+    if ((count || 0) > 0) throw new Error("L’amministratore è già stato configurato.");
+
+    const { error: insertError } = await supabaseAdmin.from("user_roles").insert({ user_id: userData.user.id, role: "admin" });
+    if (insertError) throw new Error("Non è stato possibile attivare l’amministratore.");
+    return { success: true };
+  });
+
 export const createManagedArticle = createServerFn({ method: "POST" })
   .inputValidator((input: unknown) => managedArticleSchema.parse(input))
   .handler(async ({ data }) => {
