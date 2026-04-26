@@ -196,6 +196,18 @@
 .lavora-quote { background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.1); border-left:3px solid var(--orange); border-radius:.8rem; padding:1.8rem; }
 .lavora-quote p { font-family:Georgia,"Times New Roman",serif; font-size:1.05rem; line-height:1.6; color:rgba(255,255,255,.82); font-style:italic; margin:0; }
 .lavora-quote cite { display:block; margin-top:1rem; font-size:.78rem; color:var(--orange); font-style:normal; font-weight:500; text-transform:uppercase; letter-spacing:.05em; }
+.lavora-page-hero { background:var(--navy); }
+.lavora-page-hero .display { color:var(--white); }
+.lavora-page-hero .hero-sub { color:rgba(255,255,255,.68); }
+.work-grid { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr .95fr; gap:4rem; align-items:start; }
+.work-panel { background:var(--cream); border:1px solid rgba(22,32,64,.08); border-radius:1.2rem; padding:2rem; }
+.work-panel h3, .steps-grid h3 { font-family:Georgia,"Times New Roman",serif; color:var(--navy); margin:0 0 1rem; }
+.lavora-list.light li { color:var(--body-text); }
+.work-steps { max-width:980px; margin:0 auto; text-align:center; }
+.steps-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.25rem; margin:2.5rem 0 0; text-align:left; }
+.steps-grid > div { background:var(--white); border:1px solid rgba(22,32,64,.08); border-radius:1.2rem; padding:1.6rem; }
+.steps-grid span { display:block; color:var(--orange); font-size:.78rem; font-weight:700; letter-spacing:.12em; margin-bottom:.8rem; }
+.steps-grid p { color:var(--gray); font-size:.92rem; line-height:1.7; margin:0; font-weight:300; }
 .footer { background:var(--gray-light); padding:2.5rem 6vw; text-align:center; border-top:1px solid rgba(22,32,64,.08); }
 .footer-inner { max-width:1100px; margin:0 auto; display:flex; flex-direction:column; align-items:center; gap:1rem; position:relative; }
 .footer-logo { display:inline-flex; width:210px; max-width:70vw; height:74px; text-decoration:none; }
