@@ -1,6 +1,6 @@
 import { Link, createFileRoute, notFound } from "@tanstack/react-router";
 import { SiteLayout } from "../components/fibromental/Layout";
-import { getArticle, type Article } from "../lib/articles";
+import { getArticle } from "../lib/articles";
 import { getPublishedArticleBySlug } from "../lib/blog.functions";
 
 export const Route = createFileRoute("/blog/$slug")({
