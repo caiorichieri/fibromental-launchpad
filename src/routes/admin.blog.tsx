@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { SiteLayout } from "../components/fibromental/Layout";
 import { supabase } from "../integrations/supabase/client";
 import type { BlogArticleRow } from "../lib/articles";
-import { claimInitialAdmin, createManagedArticle, deleteManagedArticle, listManagedArticles, publishManagedArticle, updateManagedArticle, uploadBlogCover } from "../lib/blog.functions";
+import { createManagedArticle, deleteManagedArticle, listManagedArticles, provisionSingleAdmin, publishManagedArticle, updateManagedArticle, uploadBlogCover } from "../lib/blog.functions";
 
 export const Route = createFileRoute("/admin/blog")({
   head: () => ({ meta: [{ title: "Gestione notizie — FibroMental" }, { name: "robots", content: "noindex,nofollow" }] }),
@@ -18,6 +18,7 @@ type ArticleForm = {
 };
 
 const initialForm: ArticleForm = { slug: "", tag: "", title: "", excerpt: "", source: "", readTime: "5 min", coverImageUrl: "", coverAlt: "", paragraphs: "", isPublished: true };
+const ADMIN_EMAIL = "info@fibromental.it";
 
 function slugify(value: string) {
   return value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 120);
@@ -40,7 +41,7 @@ function rowToForm(article: BlogArticleRow): ArticleForm {
 
 function AdminBlogPage() {
   const router = useRouter();
-  const claimAdmin = useServerFn(claimInitialAdmin);
+  const provisionAdmin = useServerFn(provisionSingleAdmin);
   const loadArticles = useServerFn(listManagedArticles);
   const createArticle = useServerFn(createManagedArticle);
   const updateArticle = useServerFn(updateManagedArticle);
@@ -74,27 +75,26 @@ function AdminBlogPage() {
 
   async function handleLogin(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (email.trim().toLowerCase() !== ADMIN_EMAIL) {
+      setStatus({ type: "error", message: "Accesso riservato all’amministratore FibroMental." });
+      return;
+    }
     setBusy(true);
     setStatus(null);
     const loginResult = await supabase.auth.signInWithPassword({ email, password });
-    let session = loginResult.data.session;
-    let error = loginResult.error;
-    if (error) {
-      const signUpResult = await supabase.auth.signUp({ email, password });
-      session = signUpResult.data.session;
-      error = signUpResult.error;
-    }
     setBusy(false);
-    if (error || !session) {
-      setStatus({ type: "error", message: "Accesso non riuscito. Se è il primo accesso, controlla l’email di conferma." });
+    if (loginResult.error || !loginResult.data.session) {
+      setStatus({ type: "error", message: "Email o password non corretti." });
       return;
     }
-    setAccessToken(session.access_token);
-    await refreshArticles(session.access_token);
-  }
-
-  async function handleClaimAdmin() {
-    await runAction("Area amministratore attivata per questo account.", () => claimAdmin({ data: { accessToken } }));
+    const token = loginResult.data.session.access_token;
+    setAccessToken(token);
+    try {
+      await provisionAdmin({ data: { accessToken: token } });
+      await refreshArticles(token);
+    } catch (error) {
+      setStatus({ type: "error", message: error instanceof Error ? error.message : "Accesso non autorizzato." });
+    }
   }
 
   async function handleCoverUpload(file: File | null) {
@@ -177,7 +177,6 @@ function AdminBlogPage() {
             <div className="admin-grid">
               <form className="form-panel form-grid" onSubmit={handleSubmit}>
                 <div className="admin-form-top">
-                  <button className="admin-secondary" type="button" onClick={handleClaimAdmin} disabled={busy}>Attiva admin</button>
                   {editingId && <button className="admin-secondary" type="button" onClick={() => { setEditingId(null); setForm(initialForm); }}>Nuova notizia</button>}
                 </div>
                 <div className="slug-preview">/blog/{slugPreview || "anteprima-url"}</div>
