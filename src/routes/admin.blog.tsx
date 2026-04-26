@@ -177,7 +177,7 @@ function AdminBlogPage() {
         <section className="page-hero">
           <div className="page-hero-inner fade-in">
             <div className="pill-label">Area riservata</div>
-            <h1 className="display">Gestione notizie.<br /><em>Senza codice.</em></h1>
+            <h1 className="display text-slate-700">Gestione notizie.<br /><em>Senza codice.</em></h1>
             <p className="hero-sub" style={{ marginLeft: "auto", marginRight: "auto" }}>Crea, modifica e pubblica articoli SEO con copertina e URL dedicato.</p>
           </div>
         </section>
