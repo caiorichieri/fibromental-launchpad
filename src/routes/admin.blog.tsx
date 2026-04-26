@@ -57,19 +57,21 @@ function AdminBlogPage() {
     event.preventDefault();
     setBusy(true);
     setStatus(null);
-    let { data, error } = await supabase.auth.signInWithPassword({ email, password });
+    const loginResult = await supabase.auth.signInWithPassword({ email, password });
+    let session = loginResult.data.session;
+    let error = loginResult.error;
     if (error) {
       const signUpResult = await supabase.auth.signUp({ email, password });
-      data = signUpResult.data;
+      session = signUpResult.data.session;
       error = signUpResult.error;
     }
     setBusy(false);
-    if (error || !data.session) {
+    if (error || !session) {
       setStatus({ type: "error", message: "Accesso non riuscito. Se è il primo accesso, controlla l’email di conferma." });
       return;
     }
-    setAccessToken(data.session.access_token);
-    await refreshArticles(data.session.access_token);
+    setAccessToken(session.access_token);
+    await refreshArticles(session.access_token);
   }
 
   async function handleClaimAdmin() {
