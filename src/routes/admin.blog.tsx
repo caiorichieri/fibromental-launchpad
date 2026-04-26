@@ -177,7 +177,6 @@ function AdminBlogPage() {
             <div className="admin-grid">
               <form className="form-panel form-grid" onSubmit={handleSubmit}>
                 <div className="admin-form-top">
-                  <button className="admin-secondary" type="button" onClick={handleClaimAdmin} disabled={busy}>Attiva admin</button>
                   {editingId && <button className="admin-secondary" type="button" onClick={() => { setEditingId(null); setForm(initialForm); }}>Nuova notizia</button>}
                 </div>
                 <div className="slug-preview">/blog/{slugPreview || "anteprima-url"}</div>
