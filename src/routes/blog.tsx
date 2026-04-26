@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ArticleCard } from "../components/fibromental/ArticleCard";
 import { SiteLayout } from "../components/fibromental/Layout";
+import type { Article } from "../lib/articles";
 import { getPublishedArticles } from "../lib/blog.functions";
 
 export const Route = createFileRoute("/blog")({
@@ -31,7 +32,7 @@ function BlogPage() {
         </section>
         <section className="page-section blog-section">
           <div className="blog-grid">
-            {articles.map((article, index) => <ArticleCard key={article.slug} article={article} className={`delay-${Math.min(index % 4, 4)}`} />)}
+            {articles.map((article: Article, index: number) => <ArticleCard key={article.slug} article={article} className={`delay-${Math.min(index % 4, 4)}`} />)}
           </div>
         </section>
       </main>
