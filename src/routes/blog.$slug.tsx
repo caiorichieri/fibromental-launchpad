@@ -16,6 +16,11 @@ export const Route = createFileRoute("/blog/$slug")({
       { property: "og:title", content: article ? `${article.title} — FibroMental` : "Articolo FibroMental" },
       { property: "og:description", content: article?.excerpt ?? "Approfondimento FibroMental su fibromialgia e dolore cronico." },
       { property: "og:type", content: "article" },
+      ...(article ? [
+        { property: "og:image", content: article.coverImage },
+        { name: "twitter:image", content: article.coverImage },
+        { name: "twitter:card", content: "summary_large_image" },
+      ] : []),
     ] };
   },
   notFoundComponent: ArticleNotFound,
@@ -32,6 +37,9 @@ function ArticlePage() {
             <div className="article-meta">{article.tag} · {article.readTime}</div>
             <h1 className="display" style={{ fontSize: "clamp(2.35rem, 5vw, 4.2rem)" }}>{article.title}</h1>
             <p className="hero-sub">{article.excerpt}</p>
+            <figure className="article-cover">
+              <img src={article.coverImage} alt={article.coverAlt} width={1024} height={640} />
+            </figure>
           </article>
         </section>
         <section className="article-content">

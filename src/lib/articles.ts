@@ -1,3 +1,11 @@
+import sleepCover from "../assets/blog-sonno-fibromialgia.jpg";
+import centralSensitizationCover from "../assets/blog-sensibilizzazione-centrale.jpg";
+import boomBustCover from "../assets/blog-boom-bust.jpg";
+import catastrophizingCover from "../assets/blog-catastrofizzazione.jpg";
+import virtualRealityCover from "../assets/blog-vr-dolore-cronico.jpg";
+import acceptanceCover from "../assets/blog-act-accettazione.jpg";
+import integratedTherapiesCover from "../assets/blog-cbt-act-mindfulness.jpg";
+
 export type Article = {
   slug: string;
   tag: string;
@@ -5,6 +13,8 @@ export type Article = {
   excerpt: string;
   source: string;
   readTime: string;
+  coverImage: string;
+  coverAlt: string;
   paragraphs: string[];
 };
 
@@ -16,6 +26,8 @@ export const articles: Article[] = [
     excerpt: "La fibromialgia e il sonno non riparatore: cosa succede durante la notte, perché dormire non basta.",
     source: "Moldofsky (1975) · HRV e FM",
     readTime: "5 min",
+    coverImage: sleepCover,
+    coverAlt: "Persona che riposa su sfondo crema con sole arancione e forme blu, simbolo del sonno non riparatore nella fibromialgia",
     paragraphs: [
       "Nella fibromialgia il sonno può diventare un territorio contraddittorio: si arriva a letto esausti, ma il corpo non riesce davvero a recuperare.",
       "La letteratura descrive da decenni il sonno non riparatore come uno degli elementi centrali della condizione. Non è semplice insonnia: è una difficoltà del sistema nervoso a scendere di tono e a mantenere fasi di riposo profonde e continue.",
@@ -30,6 +42,8 @@ export const articles: Article[] = [
     excerpt: "Non è “tutto nella testa” — è nel sistema nervoso, ed è documentato.",
     source: "Yunus (2007) IASP · Clauw (2014) JAMA",
     readTime: "6 min",
+    coverImage: centralSensitizationCover,
+    coverAlt: "Illustrazione di percorsi nervosi luminosi su fondo navy per rappresentare la sensibilizzazione centrale",
     paragraphs: [
       "La sensibilizzazione centrale descrive un sistema nervoso che amplifica segnali che normalmente resterebbero più bassi o più circoscritti.",
       "Questo non rende il dolore meno reale. Al contrario: aiuta a spiegare perché il dolore può essere intenso anche quando gli esami tradizionali non mostrano una lesione proporzionata.",
@@ -44,6 +58,8 @@ export const articles: Article[] = [
     excerpt: "Un meccanismo che quasi tutti riconoscono — ma pochi capiscono davvero.",
     source: "Vlaeyen & Linton (2000) · pacing e FM",
     readTime: "5 min",
+    coverImage: boomBustCover,
+    coverAlt: "Onde colorate che salgono e scendono su fondo navy, metafora del ciclo boom-bust",
     paragraphs: [
       "Molte persone alternano giorni in cui provano a recuperare tutto e giorni in cui il corpo presenta il conto. È il ciclo boom-bust.",
       "Nei giorni migliori si tende a fare troppo, spesso per senso di colpa o per desiderio di normalità. Nei giorni successivi aumentano dolore, fatica e frustrazione.",
@@ -58,6 +74,8 @@ export const articles: Article[] = [
     excerpt: "Un meccanismo neurologico misurabile — e su cui si può lavorare.",
     source: "Sullivan et al. (1995) · Desdentado et al., PMC 2024",
     readTime: "6 min",
+    coverImage: catastrophizingCover,
+    coverAlt: "Cervello stilizzato con segnali luminosi, immagine editoriale sulla catastrofizzazione del dolore",
     paragraphs: [
       "Quando il dolore dura a lungo, la mente prova ad anticiparlo. Cerca pattern, pericoli, conseguenze. A volte lo fa in modo insistente.",
       "La catastrofizzazione non è debolezza né pessimismo volontario. È una strategia di allerta che nasce per proteggere, ma può finire per amplificare l’esperienza dolorosa.",
@@ -72,6 +90,8 @@ export const articles: Article[] = [
     excerpt: "Cosa dicono le meta-analisi più recenti specificamente sulla fibromialgia.",
     source: "Brea-Gómez et al. (2025) · Seong JMIR (2025) · Cortés-Pérez (2025)",
     readTime: "7 min",
+    coverImage: virtualRealityCover,
+    coverAlt: "Visore di realtà virtuale in ambiente immersivo con luci rosa e arancio",
     paragraphs: [
       "La realtà virtuale immersiva non è un effetto speciale applicato alla terapia. È un modo per offrire al sistema nervoso un ambiente credibile in cui sperimentare uno stato diverso.",
       "Nel dolore cronico, l’attenzione, il senso di presenza e la risposta fisiologica all’ambiente possono modificare temporaneamente il volume dell’esperienza dolorosa.",
@@ -86,6 +106,8 @@ export const articles: Article[] = [
     excerpt: "La differenza tra rassegnazione e accettazione che per molte persone cambia tutto.",
     source: "Eastwood & Godfrey (2024) · Heagney & Adams (2024)",
     readTime: "5 min",
+    coverImage: acceptanceCover,
+    coverAlt: "Mani aperte su sfondo crema con forme astratte nei colori FibroMental, simbolo di accettazione ACT",
     paragraphs: [
       "La parola accettazione può suonare dura. Per molte persone sembra voler dire: smetti di cercare aiuto, rassegnati, sopporta.",
       "Nell’ACT significa qualcosa di diverso: smettere di consumare tutte le energie nella lotta contro ciò che in quel momento non può essere eliminato del tutto, per tornare a muoversi verso ciò che conta.",
@@ -100,6 +122,8 @@ export const articles: Article[] = [
     excerpt: "Tre approcci a confronto — e perché integrarli funziona meglio che sceglierne uno solo.",
     source: "Heagney & Adams (2024) · Eastwood & Godfrey (2024) · PMC 2024",
     readTime: "7 min",
+    coverImage: integratedTherapiesCover,
+    coverAlt: "Percorsi astratti che convergono su fondo navy per rappresentare CBT, ACT e mindfulness integrate",
     paragraphs: [
       "CBT, ACT e mindfulness clinica intervengono su aspetti diversi della stessa esperienza: pensieri, comportamenti, attenzione, relazione con il corpo.",
       "La CBT aiuta a riconoscere cicli che mantengono sofferenza e limitazione. L’ACT lavora sulla flessibilità psicologica. La mindfulness clinica allena una presenza meno reattiva verso le sensazioni.",
