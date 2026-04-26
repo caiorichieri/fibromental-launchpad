@@ -2,6 +2,10 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { CONTACT_EMAIL, SiteLayout } from "../components/fibromental/Layout";
 
+const WHATSAPP_NUMBER = "393451124503";
+const WHATSAPP_MESSAGE = encodeURIComponent("Ciao, vorrei ricevere informazioni su FibroMental.");
+const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`;
+
 export const Route = createFileRoute("/contatti")({
   head: () => ({
     meta: [
@@ -72,6 +76,9 @@ function ContactPage() {
               <h2 className="section-title">Un primo contatto gratuito.</h2>
               <p className="body-text">Raccontaci in poche righe cosa ti porta qui. Un professionista ti risponderà direttamente e potrà orientarti sul percorso più adatto.</p>
               <p className="body-text">Email diretta: <a className="progetto-link" href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a></p>
+              <a className="whatsapp-button" href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" aria-label="Contatta FibroMental su WhatsApp">
+                Scrivici su WhatsApp <span className="arrow">→</span>
+              </a>
             </aside>
             <form className="form-panel form-grid fade-in delay-1" onSubmit={handleSubmit} noValidate>
               <div className="form-field">
