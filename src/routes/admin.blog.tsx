@@ -57,10 +57,15 @@ function AdminBlogPage() {
     event.preventDefault();
     setBusy(true);
     setStatus(null);
-    const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+    let { data, error } = await supabase.auth.signInWithPassword({ email, password });
+    if (error) {
+      const signUpResult = await supabase.auth.signUp({ email, password });
+      data = signUpResult.data;
+      error = signUpResult.error;
+    }
     setBusy(false);
     if (error || !data.session) {
-      setStatus({ type: "error", message: "Accesso non riuscito. Controlla email e password." });
+      setStatus({ type: "error", message: "Accesso non riuscito. Se è il primo accesso, controlla l’email di conferma." });
       return;
     }
     setAccessToken(data.session.access_token);
@@ -113,7 +118,7 @@ function AdminBlogPage() {
             <form className="form-panel admin-panel" onSubmit={handleLogin}>
               <div className="form-field"><label>Email</label><input type="email" value={email} onChange={(event) => setEmail(event.target.value)} required /></div>
               <div className="form-field"><label>Password</label><input type="password" value={password} onChange={(event) => setPassword(event.target.value)} required /></div>
-              <button className="form-button" disabled={busy}>{busy ? "Accesso…" : "Entra"}</button>
+              <button className="form-button" disabled={busy}>{busy ? "Accesso…" : "Entra o crea account"}</button>
             </form>
           ) : (
             <div className="admin-grid">
