@@ -1,9 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ArticleCard } from "../components/fibromental/ArticleCard";
 import { SiteLayout } from "../components/fibromental/Layout";
-import { articles } from "../lib/articles";
+import { getPublishedArticles } from "../lib/blog.functions";
 
 export const Route = createFileRoute("/blog")({
+  loader: () => getPublishedArticles(),
   head: () => ({
     meta: [
       { title: "Blog FibroMental — fibromialgia e sistema nervoso" },
@@ -12,10 +13,12 @@ export const Route = createFileRoute("/blog")({
       { property: "og:description", content: "Approfondimenti scientifici sulla fibromialgia, in parole semplici." },
     ],
   }),
+  errorComponent: BlogError,
   component: BlogPage,
 });
 
 function BlogPage() {
+  const articles = Route.useLoaderData();
   return (
     <SiteLayout>
       <main>
@@ -31,6 +34,19 @@ function BlogPage() {
             {articles.map((article, index) => <ArticleCard key={article.slug} article={article} className={`delay-${Math.min(index % 4, 4)}`} />)}
           </div>
         </section>
+      </main>
+    </SiteLayout>
+  );
+}
+
+function BlogError() {
+  return (
+    <SiteLayout>
+      <main className="page-hero">
+        <div className="page-hero-inner">
+          <h1 className="display">Blog temporaneamente non disponibile.</h1>
+          <p className="hero-sub" style={{ marginLeft: "auto", marginRight: "auto" }}>Riprova tra poco o contattaci per ricevere informazioni.</p>
+        </div>
       </main>
     </SiteLayout>
   );
