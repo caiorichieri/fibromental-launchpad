@@ -153,6 +153,16 @@ export const publishManagedArticle = createServerFn({ method: "POST" })
     return { success: true };
   });
 
+export const deleteManagedArticle = createServerFn({ method: "POST" })
+  .inputValidator((input: unknown) => idTokenSchema.parse(input))
+  .handler(async ({ data }) => {
+    await requireAdmin(data.accessToken);
+    const { error } = await supabaseAdmin.from("blog_articles").delete().eq("id", data.id);
+
+    if (error) throw new Error("Non è stato possibile eliminare la notizia.");
+    return { success: true };
+  });
+
 export const uploadBlogCover = createServerFn({ method: "POST" })
   .inputValidator((input: unknown) => coverUploadSchema.parse(input))
   .handler(async ({ data }) => {

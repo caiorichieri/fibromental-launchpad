@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { SiteLayout } from "../components/fibromental/Layout";
 import { supabase } from "../integrations/supabase/client";
 import type { BlogArticleRow } from "../lib/articles";
-import { claimInitialAdmin, createManagedArticle, listManagedArticles, publishManagedArticle, updateManagedArticle, uploadBlogCover } from "../lib/blog.functions";
+import { claimInitialAdmin, createManagedArticle, deleteManagedArticle, listManagedArticles, publishManagedArticle, updateManagedArticle, uploadBlogCover } from "../lib/blog.functions";
 
 export const Route = createFileRoute("/admin/blog")({
   head: () => ({ meta: [{ title: "Gestione notizie — FibroMental" }, { name: "robots", content: "noindex,nofollow" }] }),
@@ -45,6 +45,7 @@ function AdminBlogPage() {
   const createArticle = useServerFn(createManagedArticle);
   const updateArticle = useServerFn(updateManagedArticle);
   const publishArticle = useServerFn(publishManagedArticle);
+  const deleteArticle = useServerFn(deleteManagedArticle);
   const uploadCover = useServerFn(uploadBlogCover);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -145,6 +146,16 @@ function AdminBlogPage() {
     setStatus(null);
   }
 
+  async function handleDelete(article: BlogArticleRow) {
+    const confirmed = window.confirm(`Eliminare definitivamente “${article.title}”? Questa azione non può essere annullata.`);
+    if (!confirmed) return;
+    if (editingId === article.id) {
+      setEditingId(null);
+      setForm(initialForm);
+    }
+    await runAction("Notizia eliminata definitivamente.", () => deleteArticle({ data: { id: article.id, accessToken } }));
+  }
+
   return (
     <SiteLayout>
       <main>
@@ -189,7 +200,7 @@ function AdminBlogPage() {
                 {articles.length === 0 ? <p className="body-text">Nessuna notizia creata dal pannello.</p> : articles.map((article) => (
                   <div className={`admin-list-item ${selectedArticle?.id === article.id ? "active" : ""}`} key={article.id}>
                     <strong>{article.title}</strong><span>{article.is_published ? "Pubblicata" : "Bozza"} · /blog/{article.slug}</span>
-                    <div className="admin-actions"><button type="button" onClick={() => startEdit(article)}>Modifica</button><button type="button" onClick={() => runAction(article.is_published ? "Notizia messa in bozza." : "Notizia pubblicata.", () => publishArticle({ data: { id: article.id, accessToken, isPublished: !article.is_published } }))}>{article.is_published ? "Bozza" : "Pubblica"}</button></div>
+                    <div className="admin-actions"><button type="button" onClick={() => startEdit(article)}>Modifica</button><button type="button" onClick={() => runAction(article.is_published ? "Notizia messa in bozza." : "Notizia pubblicata.", () => publishArticle({ data: { id: article.id, accessToken, isPublished: !article.is_published } }))}>{article.is_published ? "Bozza" : "Pubblica"}</button><button className="danger" type="button" onClick={() => handleDelete(article)} disabled={busy}>Elimina</button></div>
                   </div>
                 ))}
               </aside>
