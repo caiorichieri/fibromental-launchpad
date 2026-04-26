@@ -186,7 +186,7 @@ function AdminBlogPage() {
             <form className="form-panel admin-panel" onSubmit={handleLogin}>
               <div className="form-field"><label>Email</label><input type="email" value={email} onChange={(event) => setEmail(event.target.value)} required /></div>
               <div className="form-field"><label>Password</label><input type="password" value={password} onChange={(event) => setPassword(event.target.value)} required /></div>
-              <button className="form-button" disabled={busy}>{busy ? "Accesso…" : "Entra o crea account"}</button>
+              <button className="form-button" disabled={busy}>{busy ? "Accesso…" : "Entra"}</button>
             </form>
           ) : (
             <div className="admin-grid">
