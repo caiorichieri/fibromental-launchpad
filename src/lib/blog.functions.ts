@@ -5,6 +5,7 @@ import { articleFromBlogRow, mergeArticles } from "./articles";
 
 const tokenSchema = z.object({ accessToken: z.string().min(20) });
 const idTokenSchema = tokenSchema.extend({ id: z.string().uuid() });
+const ADMIN_EMAIL = "info@fibromental.it";
 
 const articleSchema = z.object({
   slug: z.string().min(3).max(120).regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
@@ -30,10 +31,26 @@ const coverUploadSchema = tokenSchema.extend({
 async function requireAdmin(accessToken: string) {
   const { data: userData, error } = await supabaseAdmin.auth.getUser(accessToken);
   if (error || !userData.user) throw new Error("Accedi per gestire le notizie.");
+  if (userData.user.email?.toLowerCase() !== ADMIN_EMAIL) throw new Error("Accesso riservato all’amministratore FibroMental.");
   const { data: allowed } = await supabaseAdmin.rpc("has_role", { _user_id: userData.user.id, _role: "admin" });
   if (!allowed) throw new Error("Accesso riservato agli amministratori FibroMental.");
   return userData.user.id;
 }
+
+export const provisionSingleAdmin = createServerFn({ method: "POST" })
+  .inputValidator((input: unknown) => tokenSchema.parse(input))
+  .handler(async ({ data }) => {
+    const { data: userData, error } = await supabaseAdmin.auth.getUser(data.accessToken);
+    if (error || !userData.user) throw new Error("Accedi per gestire le notizie.");
+    if (userData.user.email?.toLowerCase() !== ADMIN_EMAIL) throw new Error("Questo accesso è riservato a info@fibromental.it.");
+
+    const { error: deleteError } = await supabaseAdmin.from("user_roles").delete().eq("role", "admin").neq("user_id", userData.user.id);
+    if (deleteError) throw new Error("Non è stato possibile aggiornare gli accessi admin.");
+
+    const { error: upsertError } = await supabaseAdmin.from("user_roles").upsert({ user_id: userData.user.id, role: "admin" }, { onConflict: "user_id,role" });
+    if (upsertError) throw new Error("Non è stato possibile attivare l’amministratore.");
+    return { success: true };
+  });
 
 export const getPublishedArticles = createServerFn({ method: "GET" }).handler(async () => {
   const { data, error } = await supabaseAdmin
