@@ -1,8 +1,9 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
-import { requireSupabaseAuth } from "../integrations/supabase/auth-middleware";
 import { supabaseAdmin } from "../integrations/supabase/client.server";
 import { articleFromBlogRow, mergeArticles } from "./articles";
+
+const tokenSchema = z.object({ accessToken: z.string().min(20) });
 
 const articleSchema = z.object({
   slug: z.string().min(3).max(120).regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
@@ -16,6 +17,16 @@ const articleSchema = z.object({
   paragraphs: z.array(z.string().min(20).max(1800)).min(1).max(20),
   isPublished: z.boolean(),
 });
+
+const managedArticleSchema = articleSchema.extend({ accessToken: z.string().min(20) });
+
+async function requireAdmin(accessToken: string) {
+  const { data: userData, error } = await supabaseAdmin.auth.getUser(accessToken);
+  if (error || !userData.user) throw new Error("Accedi per gestire le notizie.");
+  const { data: allowed } = await supabaseAdmin.rpc("has_role", { _user_id: userData.user.id, _role: "admin" });
+  if (!allowed) throw new Error("Accesso riservato agli amministratori FibroMental.");
+  return userData.user.id;
+}
 
 export const getPublishedArticles = createServerFn({ method: "GET" }).handler(async () => {
   const { data, error } = await supabaseAdmin
@@ -42,20 +53,19 @@ export const getPublishedArticleBySlug = createServerFn({ method: "GET" })
     return row ? articleFromBlogRow(row) : null;
   });
 
-export const listManagedArticles = createServerFn({ method: "GET" })
-  .middleware([requireSupabaseAuth])
-  .handler(async () => {
+export const listManagedArticles = createServerFn({ method: "POST" })
+  .inputValidator((input: unknown) => tokenSchema.parse(input))
+  .handler(async ({ data }) => {
+    await requireAdmin(data.accessToken);
     const { data, error } = await supabaseAdmin.from("blog_articles").select("*").order("updated_at", { ascending: false });
     if (error) throw new Error("Non è stato possibile caricare gli articoli salvati.");
     return data || [];
   });
 
 export const createManagedArticle = createServerFn({ method: "POST" })
-  .middleware([requireSupabaseAuth])
-  .inputValidator((input: unknown) => articleSchema.parse(input))
-  .handler(async ({ data, context }) => {
-    const { data: allowed } = await supabaseAdmin.rpc("has_role", { _user_id: context.userId, _role: "admin" });
-    if (!allowed) throw new Error("Accesso riservato agli amministratori FibroMental.");
+  .inputValidator((input: unknown) => managedArticleSchema.parse(input))
+  .handler(async ({ data }) => {
+    const userId = await requireAdmin(data.accessToken);
 
     const { error } = await supabaseAdmin.from("blog_articles").insert({
       slug: data.slug,
@@ -69,8 +79,8 @@ export const createManagedArticle = createServerFn({ method: "POST" })
       paragraphs: data.paragraphs,
       is_published: data.isPublished,
       published_at: data.isPublished ? new Date().toISOString() : null,
-      created_by: context.userId,
-      updated_by: context.userId,
+      created_by: userId,
+      updated_by: userId,
     });
 
     if (error) throw new Error(error.code === "23505" ? "Esiste già una notizia con questo URL." : "Non è stato possibile salvare la notizia.");
