@@ -29,6 +29,7 @@ export function Header() {
         <Link to="/" className="nav-link" activeOptions={{ exact: true }}>Home</Link>
         <Link to="/blog" className="nav-link">Blog</Link>
         <Link to="/chi-siamo" className="nav-link">Chi siamo</Link>
+        <Link to="/lavora-con-noi" className="nav-link">Lavora con noi</Link>
         <Link to="/contatti" className="nav-link">Contatti</Link>
       </div>
       <Link to="/contatti" className="nav-cta">Scrivici</Link>

@@ -200,7 +200,7 @@ function HomePage() {
                 <li>Supporto clinico e supervisione continua</li>
                 <li>Possibilità di partecipare ai progetti pilota con le associazioni partner</li>
               </ul>
-              <Link to="/contatti" className="lavora-cta">Scrivici per saperne di più →</Link>
+              <Link to="/lavora-con-noi" className="lavora-cta">Scopri come collaborare →</Link>
             </div>
             <div className="fade-in delay-1"><div className="lavora-quote"><p>“Il vantaggio degli ambienti immersivi è che permettono di fare con i pazienti cose che la sola parola non riesce a raggiungere.”</p><cite>Team clinico MetaCare</cite></div></div>
           </div>

@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as LavoraConNoiRouteImport } from './routes/lavora-con-noi'
 import { Route as ContattiRouteImport } from './routes/contatti'
 import { Route as ChiSiamoRouteImport } from './routes/chi-siamo'
 import { Route as BlogRouteImport } from './routes/blog'
@@ -20,6 +21,11 @@ import { Route as AdminBlogRouteImport } from './routes/admin.blog'
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LavoraConNoiRoute = LavoraConNoiRouteImport.update({
+  id: '/lavora-con-noi',
+  path: '/lavora-con-noi',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContattiRoute = ContattiRouteImport.update({
@@ -58,6 +64,7 @@ export interface FileRoutesByFullPath {
   '/blog': typeof BlogRouteWithChildren
   '/chi-siamo': typeof ChiSiamoRoute
   '/contatti': typeof ContattiRoute
+  '/lavora-con-noi': typeof LavoraConNoiRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/admin/blog': typeof AdminBlogRoute
   '/blog/$slug': typeof BlogSlugRoute
@@ -67,6 +74,7 @@ export interface FileRoutesByTo {
   '/blog': typeof BlogRouteWithChildren
   '/chi-siamo': typeof ChiSiamoRoute
   '/contatti': typeof ContattiRoute
+  '/lavora-con-noi': typeof LavoraConNoiRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/admin/blog': typeof AdminBlogRoute
   '/blog/$slug': typeof BlogSlugRoute
@@ -77,6 +85,7 @@ export interface FileRoutesById {
   '/blog': typeof BlogRouteWithChildren
   '/chi-siamo': typeof ChiSiamoRoute
   '/contatti': typeof ContattiRoute
+  '/lavora-con-noi': typeof LavoraConNoiRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/admin/blog': typeof AdminBlogRoute
   '/blog/$slug': typeof BlogSlugRoute
@@ -88,6 +97,7 @@ export interface FileRouteTypes {
     | '/blog'
     | '/chi-siamo'
     | '/contatti'
+    | '/lavora-con-noi'
     | '/sitemap.xml'
     | '/admin/blog'
     | '/blog/$slug'
@@ -97,6 +107,7 @@ export interface FileRouteTypes {
     | '/blog'
     | '/chi-siamo'
     | '/contatti'
+    | '/lavora-con-noi'
     | '/sitemap.xml'
     | '/admin/blog'
     | '/blog/$slug'
@@ -106,6 +117,7 @@ export interface FileRouteTypes {
     | '/blog'
     | '/chi-siamo'
     | '/contatti'
+    | '/lavora-con-noi'
     | '/sitemap.xml'
     | '/admin/blog'
     | '/blog/$slug'
@@ -116,6 +128,7 @@ export interface RootRouteChildren {
   BlogRoute: typeof BlogRouteWithChildren
   ChiSiamoRoute: typeof ChiSiamoRoute
   ContattiRoute: typeof ContattiRoute
+  LavoraConNoiRoute: typeof LavoraConNoiRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   AdminBlogRoute: typeof AdminBlogRoute
 }
@@ -127,6 +140,13 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lavora-con-noi': {
+      id: '/lavora-con-noi'
+      path: '/lavora-con-noi'
+      fullPath: '/lavora-con-noi'
+      preLoaderRoute: typeof LavoraConNoiRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contatti': {
@@ -189,6 +209,7 @@ const rootRouteChildren: RootRouteChildren = {
   BlogRoute: BlogRouteWithChildren,
   ChiSiamoRoute: ChiSiamoRoute,
   ContattiRoute: ContattiRoute,
+  LavoraConNoiRoute: LavoraConNoiRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   AdminBlogRoute: AdminBlogRoute,
 }
