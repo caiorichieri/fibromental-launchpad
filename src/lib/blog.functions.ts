@@ -57,9 +57,9 @@ export const listManagedArticles = createServerFn({ method: "POST" })
   .inputValidator((input: unknown) => tokenSchema.parse(input))
   .handler(async ({ data }) => {
     await requireAdmin(data.accessToken);
-    const { data, error } = await supabaseAdmin.from("blog_articles").select("*").order("updated_at", { ascending: false });
+    const { data: rows, error } = await supabaseAdmin.from("blog_articles").select("*").order("updated_at", { ascending: false });
     if (error) throw new Error("Non è stato possibile caricare gli articoli salvati.");
-    return data || [];
+    return rows || [];
   });
 
 export const createManagedArticle = createServerFn({ method: "POST" })
