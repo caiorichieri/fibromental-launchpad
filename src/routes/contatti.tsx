@@ -65,7 +65,7 @@ function ContactPage() {
         <section className="page-hero">
           <div className="page-hero-inner fade-in">
             <div className="pill-label">Contatti</div>
-            <h1 className="display">Scrivici.<br /><em>Ti risponde una persona.</em></h1>
+            <h1 className="display text-slate-700">Scrivici.<br /><em>Ti risponde una persona.</em></h1>
             <p className="hero-sub" style={{ marginLeft: "auto", marginRight: "auto" }}>Per informazioni sul percorso, sull’app gratuita, su una collaborazione o su come iniziare.</p>
           </div>
         </section>
