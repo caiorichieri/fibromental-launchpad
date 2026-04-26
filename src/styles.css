@@ -267,7 +267,7 @@
   .site-nav { padding:1rem 1.5rem; }
   .hero { grid-template-columns:1fr; padding:7rem 1.5rem 4rem; gap:2.5rem; min-height:auto; }
   .page-section, .article-content { padding:4rem 1.5rem; }
-  .section-inner, .app-inner, .lavora-inner, .contact-grid, .admin-grid { grid-template-columns:1fr; gap:2.5rem; }
+  .section-inner, .app-inner, .lavora-inner, .contact-grid, .admin-grid, .work-grid, .steps-grid { grid-template-columns:1fr; gap:2.5rem; }
   .admin-two-col { grid-template-columns:1fr; }
   .section-inner.reverse { direction:ltr; } .aree-grid, .progetti-grid, .blog-grid { grid-template-columns:1fr; }
   .ricerca-stats { gap:1.5rem; } .page-hero { padding:8rem 1.5rem 4rem; }
