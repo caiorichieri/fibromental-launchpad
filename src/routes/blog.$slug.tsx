@@ -8,15 +8,16 @@ export const Route = createFileRoute("/blog/$slug")({
     if (!article) throw notFound();
     return { article };
   },
-  head: ({ loaderData }) => ({
-    meta: [
-      { title: `${loaderData.article.title} — FibroMental` },
-      { name: "description", content: loaderData.article.excerpt },
-      { property: "og:title", content: `${loaderData.article.title} — FibroMental` },
-      { property: "og:description", content: loaderData.article.excerpt },
+  head: ({ loaderData }) => {
+    const article = loaderData?.article;
+    return { meta: [
+      { title: article ? `${article.title} — FibroMental` : "Articolo FibroMental" },
+      { name: "description", content: article?.excerpt ?? "Approfondimento FibroMental su fibromialgia e dolore cronico." },
+      { property: "og:title", content: article ? `${article.title} — FibroMental` : "Articolo FibroMental" },
+      { property: "og:description", content: article?.excerpt ?? "Approfondimento FibroMental su fibromialgia e dolore cronico." },
       { property: "og:type", content: "article" },
-    ],
-  }),
+    ] };
+  },
   notFoundComponent: ArticleNotFound,
   component: ArticlePage,
 });
