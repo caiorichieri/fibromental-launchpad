@@ -1,7 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 import { supabaseAdmin } from "../integrations/supabase/client.server";
-import { articleFromBlogRow, mergeArticles } from "./articles";
+import { articleFromBlogRow, articles, mergeArticles } from "./articles";
 
 const tokenSchema = z.object({ accessToken: z.string().min(20) });
 const idTokenSchema = tokenSchema.extend({ id: z.string().uuid() });
@@ -35,6 +35,33 @@ async function requireAdmin(accessToken: string) {
   const { data: allowed } = await supabaseAdmin.rpc("has_role", { _user_id: userData.user.id, _role: "admin" });
   if (!allowed) throw new Error("Accesso riservato agli amministratori FibroMental.");
   return userData.user.id;
+}
+
+async function seedInitialArticles(userId: string) {
+  const { data: rows, error: selectError } = await supabaseAdmin.from("blog_articles").select("slug").in("slug", articles.map((article) => article.slug));
+  if (selectError) throw new Error("Non è stato possibile verificare le notizie iniziali.");
+
+  const existingSlugs = new Set((rows || []).map((row) => row.slug));
+  const missingArticles = articles.filter((article) => !existingSlugs.has(article.slug));
+  if (missingArticles.length === 0) return;
+
+  const { error: insertError } = await supabaseAdmin.from("blog_articles").insert(missingArticles.map((article) => ({
+    slug: article.slug,
+    tag: article.tag,
+    title: article.title,
+    excerpt: article.excerpt,
+    source: article.source,
+    read_time: article.readTime,
+    cover_image_url: article.coverImage,
+    cover_alt: article.coverAlt,
+    paragraphs: article.paragraphs,
+    is_published: true,
+    published_at: new Date().toISOString(),
+    created_by: userId,
+    updated_by: userId,
+  })));
+
+  if (insertError) throw new Error("Non è stato possibile importare le notizie iniziali.");
 }
 
 export const provisionSingleAdmin = createServerFn({ method: "POST" })
@@ -80,7 +107,8 @@ export const getPublishedArticleBySlug = createServerFn({ method: "GET" })
 export const listManagedArticles = createServerFn({ method: "POST" })
   .inputValidator((input: unknown) => tokenSchema.parse(input))
   .handler(async ({ data }) => {
-    await requireAdmin(data.accessToken);
+    const userId = await requireAdmin(data.accessToken);
+    await seedInitialArticles(userId);
     const { data: rows, error } = await supabaseAdmin.from("blog_articles").select("*").order("updated_at", { ascending: false });
     if (error) throw new Error("Non è stato possibile caricare gli articoli salvati.");
     return rows || [];
