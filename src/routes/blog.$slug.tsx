@@ -1,10 +1,11 @@
 import { Link, createFileRoute, notFound } from "@tanstack/react-router";
 import { SiteLayout } from "../components/fibromental/Layout";
 import { getArticle } from "../lib/articles";
+import { getPublishedArticleBySlug } from "../lib/blog.functions";
 
 export const Route = createFileRoute("/blog/$slug")({
-  loader: ({ params }) => {
-    const article = getArticle(params.slug);
+  loader: async ({ params }) => {
+    const article = (await getPublishedArticleBySlug({ data: { slug: params.slug } })) || getArticle(params.slug);
     if (!article) throw notFound();
     return { article };
   },
@@ -23,6 +24,7 @@ export const Route = createFileRoute("/blog/$slug")({
       ] : []),
     ] };
   },
+  errorComponent: ArticleError,
   notFoundComponent: ArticleNotFound,
   component: ArticlePage,
 });
@@ -44,12 +46,26 @@ function ArticlePage() {
         </section>
         <section className="article-content">
           <article className="article-layout fade-in">
-            {article.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+            {article.paragraphs.map((paragraph: string) => <p key={paragraph}>{paragraph}</p>)}
             <h2>Un percorso, non una scorciatoia</h2>
             <p>Ogni contenuto del blog ha finalità informative e non sostituisce una valutazione clinica. Se vuoi capire se FibroMental può essere adatto alla tua situazione, puoi contattarci per un primo orientamento.</p>
             <Link to="/contatti" className="hero-cta">Parla con MetaCare <span className="arrow">→</span></Link>
           </article>
         </section>
+      </main>
+    </SiteLayout>
+  );
+}
+
+function ArticleError() {
+  return (
+    <SiteLayout>
+      <main className="page-hero">
+        <div className="page-hero-inner">
+          <h1 className="display">Articolo temporaneamente non disponibile.</h1>
+          <p className="hero-sub" style={{ marginLeft: "auto", marginRight: "auto" }}>Riprova tra poco o torna al blog.</p>
+          <Link to="/blog" className="hero-cta">Torna al blog</Link>
+        </div>
       </main>
     </SiteLayout>
   );

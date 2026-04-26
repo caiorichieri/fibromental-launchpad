@@ -226,6 +226,16 @@
 .status-box { border-radius:.8rem; padding:1rem; font-size:.9rem; line-height:1.5; }
 .status-success { background:rgba(232,130,10,.1); color:var(--navy); }
 .status-error { background:rgba(200,80,112,.12); color:var(--pink); }
+.admin-panel { max-width:520px; margin:0 auto; display:grid; gap:1rem; }
+.admin-grid { max-width:1120px; margin:0 auto; display:grid; grid-template-columns:1.2fr .8fr; gap:2rem; align-items:start; }
+.admin-secondary { border:1px solid rgba(22,32,64,.14); background:var(--cream); color:var(--navy); border-radius:100px; padding:.75rem 1rem; cursor:pointer; font:inherit; transition:background .2s,color .2s,border-color .2s; }
+.admin-secondary:hover { background:var(--navy); color:var(--white); border-color:var(--navy); }
+.admin-check { display:flex; align-items:center; gap:.6rem; color:var(--navy); font-size:.9rem; }
+.admin-list { position:sticky; top:6rem; }
+.admin-list-item { border-top:1px solid rgba(22,32,64,.08); padding:1rem 0; display:grid; gap:.35rem; }
+.admin-list-item strong { color:var(--navy); font-family:Georgia,"Times New Roman",serif; line-height:1.35; }
+.admin-list-item span { color:var(--gray); font-size:.82rem; }
+.admin-status { max-width:520px; margin:1rem auto 0; }
 .fade-in { opacity:0; transform:translateY(28px); transition:opacity .7s ease, transform .7s ease; }
 .fade-in.visible { opacity:1; transform:translateY(0); }
 .delay-1 { transition-delay:.08s; } .delay-2 { transition-delay:.12s; } .delay-3 { transition-delay:.16s; } .delay-4 { transition-delay:.2s; }
@@ -235,7 +245,7 @@
   .site-nav { padding:1rem 1.5rem; }
   .hero { grid-template-columns:1fr; padding:7rem 1.5rem 4rem; gap:2.5rem; min-height:auto; }
   .page-section, .article-content { padding:4rem 1.5rem; }
-  .section-inner, .app-inner, .lavora-inner, .contact-grid { grid-template-columns:1fr; gap:2.5rem; }
+  .section-inner, .app-inner, .lavora-inner, .contact-grid, .admin-grid { grid-template-columns:1fr; gap:2.5rem; }
   .section-inner.reverse { direction:ltr; } .aree-grid, .progetti-grid, .blog-grid { grid-template-columns:1fr; }
   .ricerca-stats { gap:1.5rem; } .page-hero { padding:8rem 1.5rem 4rem; }
   .display { font-size: clamp(2.4rem, 12vw, 4rem); }

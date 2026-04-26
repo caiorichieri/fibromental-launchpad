@@ -5,6 +5,7 @@ import catastrophizingCover from "../assets/blog-catastrofizzazione.jpg";
 import virtualRealityCover from "../assets/blog-vr-dolore-cronico.jpg";
 import acceptanceCover from "../assets/blog-act-accettazione.jpg";
 import integratedTherapiesCover from "../assets/blog-cbt-act-mindfulness.jpg";
+import type { Tables } from "../integrations/supabase/types";
 
 export type Article = {
   slug: string;
@@ -17,6 +18,8 @@ export type Article = {
   coverAlt: string;
   paragraphs: string[];
 };
+
+export type BlogArticleRow = Tables<"blog_articles">;
 
 export const articles: Article[] = [
   {
@@ -135,4 +138,23 @@ export const articles: Article[] = [
 
 export function getArticle(slug: string) {
   return articles.find((article) => article.slug === slug);
+}
+
+export function articleFromBlogRow(row: BlogArticleRow): Article {
+  return {
+    slug: row.slug,
+    tag: row.tag,
+    title: row.title,
+    excerpt: row.excerpt,
+    source: row.source || "FibroMental",
+    readTime: row.read_time,
+    coverImage: row.cover_image_url || integratedTherapiesCover,
+    coverAlt: row.cover_alt || row.title,
+    paragraphs: row.paragraphs,
+  };
+}
+
+export function mergeArticles(databaseArticles: Article[]) {
+  const databaseSlugs = new Set(databaseArticles.map((article) => article.slug));
+  return [...databaseArticles, ...articles.filter((article) => !databaseSlugs.has(article.slug))];
 }
