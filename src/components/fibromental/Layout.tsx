@@ -1,4 +1,7 @@
 import { Link } from "@tanstack/react-router";
+import fibroLogoFooter from "../../assets/fibromental-logo-footer.png";
+import fibroLogo from "../../assets/fibromental-logo-transparent.png";
+import metacareLogo from "../../assets/metacare-logo-transparent.png";
 import { ScrollReveal } from "./ScrollReveal";
 
 export const CONTACT_EMAIL = "info@metacare.it";
@@ -11,6 +14,7 @@ export function SiteLayout({ children }: { children: React.ReactNode }) {
       <ScrollReveal />
       <Header />
       {children}
+      <MetaCareBanner />
       <Footer />
     </div>
   );
@@ -20,7 +24,7 @@ export function Header() {
   return (
     <nav className="site-nav" aria-label="Navigazione principale">
       <Link to="/" className="nav-logo" aria-label="FibroMental home">
-        Fibro<span>Mental</span>
+        <img src={fibroLogo} alt="FibroMental" />
       </Link>
       <div className="nav-links" aria-hidden={false}>
         <Link to="/" className="nav-link" activeOptions={{ exact: true }}>Home</Link>
@@ -36,10 +40,12 @@ export function Header() {
 export function MetaCareBanner() {
   return (
     <div className="metacare-banner">
+      <a href="https://www.metacare.it" target="_blank" rel="noopener noreferrer" className="mc-logo-btn" aria-label="MetaCare">
+        <img src={metacareLogo} alt="MetaCare" />
+      </a>
       <p>
         <strong>FibroMental</strong> è un brand di <strong>MetaCare S.r.l.</strong> — struttura sanitaria autorizzata all’erogazione di prestazioni di psicologia e psicoterapia (Prot. n° <span style={{ opacity: 0.5 }}>{METACARE_AUTH_NUMBER}</span> del <span style={{ opacity: 0.5 }}>{METACARE_AUTH_DATE}</span>)
       </p>
-      <a href="https://www.metacare.it" target="_blank" rel="noopener noreferrer" className="mc-logo-btn">logo MetaCare</a>
     </div>
   );
 }
@@ -48,9 +54,7 @@ export function Footer() {
   return (
     <footer className="footer">
       <div className="footer-inner">
-        <p>
-          <span>FibroMental</span> è un brand di <strong style={{ color: "rgba(255,255,255,.55)", fontWeight: 500 }}>MetaCare S.r.l.</strong> — struttura sanitaria autorizzata all’erogazione di prestazioni di psicologia e psicoterapia (Prot. n° {METACARE_AUTH_NUMBER} del {METACARE_AUTH_DATE})
-        </p>
+        <Link to="/" className="footer-logo" aria-label="FibroMental home"><img src={fibroLogoFooter} alt="FibroMental" /></Link>
         <p style={{ fontSize: ".75rem", color: "rgba(255,255,255,.2)" }}>© 2026 MetaCare S.r.l. · <a href="https://www.metacare.it" target="_blank" rel="noopener noreferrer">metacare.it</a></p>
       </div>
     </footer>
