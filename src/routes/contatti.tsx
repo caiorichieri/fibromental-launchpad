@@ -49,7 +49,7 @@ function ContactPage() {
       form.reset();
       setStatus({ type: "success", message: "Messaggio inviato. Ti risponderemo appena possibile." });
     } catch {
-      setStatus({ type: "error", message: "Non siamo riusciti a inviare il messaggio. Puoi scrivere direttamente a info@metacare.it." });
+      setStatus({ type: "error", message: `Non siamo riusciti a inviare il messaggio. Puoi scrivere direttamente a ${CONTACT_EMAIL}.` });
     } finally {
       setIsSubmitting(false);
     }
@@ -95,7 +95,7 @@ function ContactPage() {
                 <label htmlFor="message">Messaggio</label>
                 <textarea id="message" name="message" maxLength={1500} required />
               </div>
-              <p className="form-note">Il messaggio viene inviato all’indirizzo MetaCare configurato. Prima del lancio va confermata l’email reale di destinazione.</p>
+              <p className="form-note">Il messaggio viene inviato all’indirizzo FibroMental: {CONTACT_EMAIL}.</p>
               {status && <div className={`status-box ${status.type === "success" ? "status-success" : "status-error"}`}>{status.message}</div>}
               <button className="form-button" type="submit" disabled={isSubmitting}>{isSubmitting ? "Invio in corso…" : "Invia messaggio →"}</button>
             </form>
