@@ -20,7 +20,7 @@ function WorkWithUsPage() {
         <section className="page-hero lavora-page-hero">
           <div className="page-hero-inner fade-in">
             <div className="pill-label">Lavora con noi</div>
-            <h1 className="display text-slate-500">Sei psicologo o psicoterapeuta?<br /><em>Costruiamo insieme il percorso.</em></h1>
+            <h1 className="display text-slate-600 text-center font-thin">Sei psicologo o psicoterapeuta?<br /><em>Costruiamo insieme il percorso.</em></h1>
             <p className="hero-sub" style={{ marginLeft: "auto", marginRight: "auto" }}>
               FibroMental accoglie professionisti interessati al trattamento psicologico della fibromialgia e del dolore cronico, con strumenti clinici strutturati e un lavoro in rete.
             </p>
