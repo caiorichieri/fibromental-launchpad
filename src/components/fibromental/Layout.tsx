@@ -1,4 +1,5 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useRouterState } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 import fibroLogo from "../../assets/fibromental-logo-transparent.png";
 import metacareLogo from "../../assets/metacare-logo-transparent.png";
 import { ScrollReveal } from "./ScrollReveal";
@@ -20,12 +21,15 @@ export function SiteLayout({ children }: { children: React.ReactNode }) {
 }
 
 export function Header() {
+  const [open, setOpen] = useState(false);
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  useEffect(() => { setOpen(false); }, [pathname]);
   return (
     <nav className="site-nav" aria-label="Navigazione principale">
       <Link to="/" className="nav-logo" aria-label="FibroMental home">
         <img src={fibroLogo} alt="FibroMental" />
       </Link>
-      <div className="nav-links" aria-hidden={false}>
+      <div className={`nav-links${open ? " open" : ""}`}>
         <Link to="/" className="nav-link" activeOptions={{ exact: true }}>Home</Link>
         <Link to="/blog" className="nav-link">Blog</Link>
         <Link to="/chi-siamo" className="nav-link">Chi siamo</Link>
@@ -33,6 +37,15 @@ export function Header() {
         <Link to="/contatti" className="nav-link">Contatti</Link>
       </div>
       <Link to="/contatti" className="nav-cta">Scrivici</Link>
+      <button
+        type="button"
+        className={`nav-toggle${open ? " open" : ""}`}
+        aria-label="Apri menu"
+        aria-expanded={open}
+        onClick={() => setOpen((v) => !v)}
+      >
+        <span /><span /><span />
+      </button>
     </nav>
   );
 }
