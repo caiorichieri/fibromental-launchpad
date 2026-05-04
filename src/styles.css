@@ -199,6 +199,7 @@
 .lavora-page-hero { background:var(--cream); }
 .lavora-page-hero .display { color:var(--navy); overflow-wrap:break-word; }
 .lavora-page-hero .hero-sub { color:var(--body-text); }
+.lavora-page-hero .fade-in { opacity:1; transform:none; }
 .work-grid { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr .95fr; gap:4rem; align-items:start; }
 .work-panel { background:var(--cream); border:1px solid rgba(123,45,139,.08); border-radius:1.2rem; padding:2rem; }
 .work-panel h3, .steps-grid h3 { font-family:Georgia,"Times New Roman",serif; color:var(--navy); margin:0 0 1rem; }
