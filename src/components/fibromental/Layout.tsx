@@ -4,8 +4,8 @@ import metacareLogo from "../../assets/metacare-logo-transparent.png";
 import { ScrollReveal } from "./ScrollReveal";
 
 export const CONTACT_EMAIL = "info@fibromental.it";
-export const METACARE_AUTH_NUMBER = "[XXXX]";
-export const METACARE_AUTH_DATE = "[XX/XX/XX]";
+export const METACARE_AUTH_NUMBER = "4710";
+export const METACARE_AUTH_DATE = "13/01/2026";
 
 export function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -44,7 +44,7 @@ export function MetaCareBanner() {
         <img src={metacareLogo} alt="MetaCare" />
       </a>
       <p>
-        <strong>FibroMental</strong> è un brand di <strong>MetaCare S.r.l.</strong> — struttura sanitaria autorizzata all’erogazione di prestazioni di psicologia e psicoterapia (Prot. n° <span style={{ opacity: 0.5 }}>{METACARE_AUTH_NUMBER}</span> del <span style={{ opacity: 0.5 }}>{METACARE_AUTH_DATE}</span>)
+        <strong>FibroMental</strong> è un brand di <strong>MetaCare S.r.l.</strong> — struttura sanitaria autorizzata all’erogazione di prestazioni di psicologia e psicoterapia (Prot. n° {METACARE_AUTH_NUMBER} del {METACARE_AUTH_DATE})
       </p>
     </div>
   );
