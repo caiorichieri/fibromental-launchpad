@@ -141,6 +141,10 @@ export function getArticle(slug: string) {
 }
 
 export function articleFromBlogRow(row: BlogArticleRow): Article {
+  const seedArticle = articles.find((article) => article.slug === row.slug);
+  const savedCover = row.cover_image_url || "";
+  const isValidUrl = /^https?:\/\//i.test(savedCover);
+  const coverImage = isValidUrl ? savedCover : seedArticle?.coverImage || integratedTherapiesCover;
   return {
     slug: row.slug,
     tag: row.tag,
@@ -148,7 +152,7 @@ export function articleFromBlogRow(row: BlogArticleRow): Article {
     excerpt: row.excerpt,
     source: row.source || "FibroMental",
     readTime: row.read_time,
-    coverImage: row.cover_image_url || integratedTherapiesCover,
+    coverImage,
     coverAlt: row.cover_alt || row.title,
     paragraphs: row.paragraphs,
   };
