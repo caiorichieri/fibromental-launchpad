@@ -36,16 +36,16 @@
 
 :root {
   --radius: 0.625rem;
-  --navy: #162040;
+  --navy: #7B2D8B;
   --orange: #E8820A;
   --orange-light: #F5A030;
-  --pink: #C85070;
-  --cream: #FDFAF6;
+  --pink: #9B2DB8;
+  --cream: #FDF4FF;
   --white: #FFFFFF;
   --gray: #6B7280;
-  --gray-light: #F3F0EB;
-  --text: #1A1A2E;
-  --body-text: #3D3D5C;
+  --gray-light: #F5E8FF;
+  --text: #4A1259;
+  --body-text: #5C2D6E;
   --background: oklch(0.985 0.009 75.91);
   --foreground: oklch(0.18 0.045 279.54);
   --card: oklch(1 0 0);
