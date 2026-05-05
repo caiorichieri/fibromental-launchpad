@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { APP_URL, SiteLayout } from "../components/fibromental/Layout";
-import phoneHero from "../assets/app-phone-hero.png";
+import fibroLogo from "../assets/fibromental-logo-transparent.png";
 import { ClipboardList, Map, BookOpen, CalendarDays, LineChart, Mail, UserCircle2, Smartphone } from "lucide-react";
 
 export const Route = createFileRoute("/app")({
@@ -32,7 +32,14 @@ function AppPage() {
               <p className="app-free-note">Gratuita · Senza store · Funziona su qualsiasi dispositivo</p>
             </div>
             <div className="app-phone-wrap fade-in delay-1">
-              <img src={phoneHero} alt="App FibroMental su smartphone" width={1024} height={1280} />
+              <div className="phone-mockup" role="img" aria-label="App FibroMental su smartphone">
+                <div className="phone-frame">
+                  <div className="phone-notch" />
+                  <div className="phone-screen">
+                    <img src={fibroLogo} alt="FibroMental" className="phone-logo" />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
