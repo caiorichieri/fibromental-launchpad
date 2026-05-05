@@ -120,6 +120,10 @@ export const claimInitialAdmin = createServerFn({ method: "POST" })
     const { data: userData, error } = await supabaseAdmin.auth.getUser(data.accessToken);
     if (error || !userData.user) throw new Error("Accedi per attivare l’area notizie.");
 
+    if (userData.user.email?.toLowerCase() !== ADMIN_EMAIL) {
+      throw new Error("Accesso riservato all’amministratore FibroMental.");
+    }
+
     const { count, error: countError } = await supabaseAdmin
       .from("user_roles")
       .select("id", { count: "exact", head: true })
