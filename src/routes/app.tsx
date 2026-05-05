@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { APP_URL, SiteLayout } from "../components/fibromental/Layout";
 import phoneHero from "../assets/app-phone-hero.png";
+import { ClipboardList, Map, BookOpen, CalendarDays, LineChart, Mail, UserCircle2, Smartphone } from "lucide-react";
 
 export const Route = createFileRoute("/app")({
   head: () => ({
@@ -49,7 +50,7 @@ function AppPage() {
             <div className="features-grid">
               {features.map((f, i) => (
                 <div className={`feature-card fade-in delay-${Math.min(i % 4 + 1, 4)}`} key={f.title}>
-                  <div className="feature-icon" aria-hidden>{f.icon}</div>
+                  <div className="feature-icon" aria-hidden><f.icon strokeWidth={1.5} /></div>
                   <h3>{f.title}</h3>
                   <p>{f.text}</p>
                 </div>
@@ -116,12 +117,12 @@ function AppPage() {
 }
 
 const features = [
-  { icon: "📋", title: "Questionario FIQR", text: "Lo standard internazionale per la valutazione della fibromialgia. Funzionalità fisica, impatto globale e gravità dei sintomi in un punteggio strutturato." },
-  { icon: "🗺️", title: "Mappa del dolore", text: "Diagramma anatomico interattivo con vista frontale e posteriore. Per ogni regione: intensità, tipo di dolore e note." },
-  { icon: "📖", title: "Diario quotidiano", text: "Umore, energia, sonno, rigidità e note libere. Un percorso guidato per riconoscere schemi e correlazioni." },
-  { icon: "📅", title: "Calendario settimanale", text: "Ogni giorno colorato — verde, arancione, rosso — in base al tuo stato. Uno sguardo per capire come stai davvero." },
-  { icon: "📊", title: "Andamento e grafici", text: "FIQR, regioni doloranti, umore, energia, sonno e rigidità — visualizza l'evoluzione nel tempo." },
-  { icon: "📧", title: "Riepilogo al medico", text: "Condividi via email gli ultimi questionari, mappe e diari. Sempre col tuo consenso esplicito." },
-  { icon: "👤", title: "Profilo personale", text: "Gestisci dati, password e — se vuoi — elimina account e dati in modo permanente." },
-  { icon: "📱", title: "Installabile (PWA)", text: "Installa FibroMental sul telefono come un'app nativa, senza passare dagli store. Funziona anche offline." },
+  { icon: ClipboardList, title: "Questionario FIQR", text: "Lo standard internazionale per la valutazione della fibromialgia. Funzionalità fisica, impatto globale e gravità dei sintomi in un punteggio strutturato." },
+  { icon: Map, title: "Mappa del dolore", text: "Diagramma anatomico interattivo con vista frontale e posteriore. Per ogni regione: intensità, tipo di dolore e note." },
+  { icon: BookOpen, title: "Diario quotidiano", text: "Umore, energia, sonno, rigidità e note libere. Un percorso guidato per riconoscere schemi e correlazioni." },
+  { icon: CalendarDays, title: "Calendario settimanale", text: "Ogni giorno colorato — verde, arancione, rosso — in base al tuo stato. Uno sguardo per capire come stai davvero." },
+  { icon: LineChart, title: "Andamento e grafici", text: "FIQR, regioni doloranti, umore, energia, sonno e rigidità — visualizza l'evoluzione nel tempo." },
+  { icon: Mail, title: "Riepilogo al medico", text: "Condividi via email gli ultimi questionari, mappe e diari. Sempre col tuo consenso esplicito." },
+  { icon: UserCircle2, title: "Profilo personale", text: "Gestisci dati, password e — se vuoi — elimina account e dati in modo permanente." },
+  { icon: Smartphone, title: "Installabile (PWA)", text: "Installa FibroMental sul telefono come un'app nativa, senza passare dagli store. Funziona anche offline." },
 ];
