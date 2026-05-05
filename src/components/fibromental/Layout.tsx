@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import fibroLogo from "../../assets/fibromental-logo-transparent.png";
 import metacareLogo from "../../assets/metacare-logo-transparent.png";
 import { ScrollReveal } from "./ScrollReveal";
-import { NewsletterPopup } from "./NewsletterPopup";
 
 export const CONTACT_EMAIL = "info@fibromental.it";
 export const METACARE_AUTH_NUMBER = "4710";
@@ -18,7 +17,6 @@ export function SiteLayout({ children }: { children: React.ReactNode }) {
       {children}
       <MetaCareBanner />
       <Footer />
-      <NewsletterPopup />
     </div>
   );
 }
