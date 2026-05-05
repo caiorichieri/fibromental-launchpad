@@ -27,7 +27,6 @@ function AppPage() {
               <p className="hero-sub">Il tuo compagno digitale per la fibromialgia. Registra i sintomi, osserva l'andamento nel tempo, condividi i dati con il tuo medico — in un unico spazio sicuro e accessibile.</p>
               <div className="app-cta-row">
                 <a href={APP_URL} target="_blank" rel="noopener noreferrer" className="hero-cta">Installa l'app <span className="arrow">→</span></a>
-                <a href={APP_URL} target="_blank" rel="noopener noreferrer" className="app-secondary-cta">Apri app.fibromental.it</a>
               </div>
               <p className="app-free-note">Gratuita · Senza store · Funziona su qualsiasi dispositivo</p>
             </div>
