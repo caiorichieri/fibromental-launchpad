@@ -7,6 +7,7 @@ import { ScrollReveal } from "./ScrollReveal";
 export const CONTACT_EMAIL = "info@fibromental.it";
 export const METACARE_AUTH_NUMBER = "4710";
 export const METACARE_AUTH_DATE = "13/01/2026";
+export const APP_URL = "https://app.fibromental.it";
 
 export function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -34,9 +35,10 @@ export function Header() {
         <Link to="/blog" className="nav-link">Blog</Link>
         <Link to="/chi-siamo" className="nav-link">Chi siamo</Link>
         <Link to="/lavora-con-noi" className="nav-link">Lavora con noi</Link>
+        <Link to="/app" className="nav-link">App</Link>
         <Link to="/contatti" className="nav-link">Contatti</Link>
       </div>
-      <Link to="/contatti" className="nav-cta">Scrivici</Link>
+      <a href={APP_URL} target="_blank" rel="noopener noreferrer" className="nav-cta">Installa l'app</a>
       <button
         type="button"
         className={`nav-toggle${open ? " open" : ""}`}
