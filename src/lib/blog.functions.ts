@@ -120,6 +120,10 @@ export const claimInitialAdmin = createServerFn({ method: "POST" })
     const { data: userData, error } = await supabaseAdmin.auth.getUser(data.accessToken);
     if (error || !userData.user) throw new Error("Accedi per attivare l’area notizie.");
 
+    if (userData.user.email?.toLowerCase() !== ADMIN_EMAIL) {
+      throw new Error("Accesso riservato all’amministratore FibroMental.");
+    }
+
     const { count, error: countError } = await supabaseAdmin
       .from("user_roles")
       .select("id", { count: "exact", head: true })
@@ -220,7 +224,7 @@ export const uploadBlogCover = createServerFn({ method: "POST" })
     const { error } = await supabaseAdmin.storage.from("blog-covers").upload(path, bytes, { contentType: data.contentType, upsert: false });
     if (error) throw new Error("Non è stato possibile caricare la copertina.");
 
-    const { data: signed } = await supabaseAdmin.storage.from("blog-covers").createSignedUrl(path, 60 * 60 * 24 * 365 * 10);
+    const { data: signed } = await supabaseAdmin.storage.from("blog-covers").createSignedUrl(path, 60 * 60 * 24 * 365);
     if (!signed?.signedUrl) throw new Error("Copertina caricata, ma URL non generato.");
     return { url: signed.signedUrl };
   });
