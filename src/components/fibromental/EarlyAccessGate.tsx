@@ -146,7 +146,13 @@ export function EarlyAccessGate() {
           {step === "success" ? (
             <div className="ea-success">
               <h2 id="ea-title">Grazie ❤️</h2>
-              <p>Le tue risposte sono state salvate in modo <strong>completamente anonimo</strong>. Ti scriveremo a <strong>{email}</strong> il giorno del lancio per darti accesso in anteprima a FibroMental.</p>
+              <p>Le tue risposte sono state salvate in modo <strong>completamente anonimo</strong>. Hai ora accesso in anteprima al portale FibroMental.</p>
+              <a href="https://app.fibromental.it" target="_blank" rel="noopener noreferrer" className="ea-btn ea-btn-success">
+                Accedi al portale
+              </a>
+              <p className="ea-help" style={{ marginTop: "1rem" }}>
+                Ti scriveremo anche a <strong>{email}</strong> il giorno del lancio ufficiale.
+              </p>
             </div>
           ) : (
             <>
