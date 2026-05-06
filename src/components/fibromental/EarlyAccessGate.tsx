@@ -3,7 +3,7 @@ import { supabase } from "@/integrations/supabase/client";
 import fibroLogo from "../../assets/fibromental-logo-transparent.png";
 
 const LAUNCH_DATE = new Date("2026-05-12T00:00:00+02:00");
-const STORAGE_KEY = "fibromental_early_access_done_v1";
+const STORAGE_KEY = "fibromental_early_access_done_v2";
 
 const QUESTIONS: string[] = [
   "Descrivi la situazione in cui ti trovi in questo momento — anche con una sola frase. Non c'è risposta giusta o sbagliata.",
