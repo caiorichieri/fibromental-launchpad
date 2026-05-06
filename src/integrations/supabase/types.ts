@@ -71,6 +71,30 @@ export type Database = {
         }
         Relationships: []
       }
+      early_access_signups: {
+        Row: {
+          answers: Json
+          consent: boolean
+          created_at: string
+          email: string
+          id: string
+        }
+        Insert: {
+          answers?: Json
+          consent?: boolean
+          created_at?: string
+          email: string
+          id?: string
+        }
+        Update: {
+          answers?: Json
+          consent?: boolean
+          created_at?: string
+          email?: string
+          id?: string
+        }
+        Relationships: []
+      }
       newsletter_subscribers: {
         Row: {
           created_at: string

@@ -379,3 +379,40 @@
 .newsletter-success { text-align:center; }
 .newsletter-badge { width:54px; height:54px; border-radius:50%; background:linear-gradient(135deg, #4ade80, #16a34a); color:#fff; font-size:1.6rem; display:flex; align-items:center; justify-content:center; margin:0 auto 1rem; }
 @media (min-width: 640px) { .newsletter-overlay { align-items:center; } .newsletter-card { margin-bottom:0; } }
+
+/* Early Access Gate */
+.ea-gate { position: fixed; inset: 0; z-index: 9999; background: linear-gradient(135deg, rgba(123,45,139,.96), rgba(232,130,10,.92)); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; padding: 1rem; overflow-y: auto; }
+.ea-card { background: var(--white,#fff); border-radius: 1.4rem; padding: 1.8rem 1.6rem; max-width: 640px; width: 100%; box-shadow: 0 30px 80px rgba(0,0,0,.35); max-height: 95vh; overflow-y: auto; }
+.ea-head { display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; margin-bottom:1.2rem; }
+.ea-logo { height: 38px; width:auto; }
+.ea-countdown { display:flex; flex-direction:column; align-items:flex-end; }
+.ea-countdown-label { font-size:.7rem; letter-spacing:.1em; text-transform:uppercase; color:var(--gray,#666); margin-bottom:.3rem; }
+.ea-countdown-grid { display:flex; gap:.5rem; }
+.ea-countdown-grid > div { background:var(--navy,#7B2D8B); color:#fff; padding:.4rem .55rem; border-radius:.5rem; min-width:46px; text-align:center; display:flex; flex-direction:column; line-height:1.05; }
+.ea-countdown-grid strong { font-size:1.1rem; font-weight:700; }
+.ea-countdown-grid span { font-size:.62rem; opacity:.85; text-transform:uppercase; letter-spacing:.06em; margin-top:.15rem; }
+.ea-progress { height:6px; background:rgba(123,45,139,.12); border-radius:999px; overflow:hidden; margin-bottom:.5rem; }
+.ea-progress-bar { height:100%; background:linear-gradient(90deg, var(--navy,#7B2D8B), var(--orange,#E8820A)); transition: width .3s ease; }
+.ea-step-meta { font-size:.78rem; color:var(--gray,#666); margin:0 0 1rem; letter-spacing:.04em; }
+.ea-question { font-family:Georgia,"Times New Roman",serif; color:var(--navy,#7B2D8B); font-size:1.3rem; line-height:1.35; margin:0 0 1rem; }
+.ea-help { color:var(--gray,#666); font-size:.92rem; margin:0 0 .9rem; }
+.ea-textarea, .ea-input { width:100%; border:1px solid rgba(123,45,139,.25); border-radius:.8rem; padding:.9rem 1rem; font-size:1rem; font-family:inherit; background:var(--cream,#fff8ef); color:var(--navy,#7B2D8B); outline:none; transition:border-color .2s, box-shadow .2s; resize:vertical; }
+.ea-textarea:focus, .ea-input:focus { border-color:var(--orange,#E8820A); box-shadow:0 0 0 3px rgba(232,130,10,.15); }
+.ea-consent { display:flex; gap:.6rem; align-items:flex-start; margin-top:.9rem; font-size:.86rem; color:var(--gray,#555); line-height:1.45; cursor:pointer; }
+.ea-consent input { margin-top:.2rem; }
+.ea-error { color:#c0392b; font-size:.86rem; margin:.7rem 0 0; }
+.ea-actions { display:flex; justify-content:space-between; gap:.6rem; margin-top:1.4rem; }
+.ea-btn { background:var(--navy,#7B2D8B); color:#fff; border:none; padding:.85rem 1.4rem; border-radius:.7rem; font-weight:600; font-size:.95rem; cursor:pointer; transition:background .2s, transform .15s; font-family:inherit; }
+.ea-btn:hover:not(:disabled) { background:var(--orange,#E8820A); transform:translateY(-1px); }
+.ea-btn:disabled { opacity:.6; cursor:wait; }
+.ea-btn-ghost { background:transparent; color:var(--navy,#7B2D8B); border:1px solid rgba(123,45,139,.3); padding:.85rem 1.2rem; border-radius:.7rem; font-weight:500; font-size:.92rem; cursor:pointer; font-family:inherit; transition:background .2s; }
+.ea-btn-ghost:hover:not(:disabled) { background:rgba(123,45,139,.06); }
+.ea-btn-ghost:disabled { opacity:.4; cursor:not-allowed; }
+.ea-success { text-align:center; padding:1rem 0 .5rem; }
+.ea-success h2 { font-family:Georgia,"Times New Roman",serif; color:var(--navy,#7B2D8B); font-size:1.6rem; margin:0 0 .8rem; }
+.ea-success p { color:var(--gray,#555); font-size:1rem; line-height:1.55; }
+@media (max-width: 520px) {
+  .ea-question { font-size:1.1rem; }
+  .ea-countdown-grid > div { min-width:40px; padding:.35rem .4rem; }
+  .ea-countdown-grid strong { font-size:.95rem; }
+}
