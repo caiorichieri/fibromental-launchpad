@@ -17,6 +17,10 @@ const QUESTIONS: string[] = [
   "La fibromialgia ha cambiato il modo in cui ti vedi — in quello che pensi di poter ancora fare, nei tuoi ruoli, nell'immagine che hai di te stessa?",
 ];
 
+const EMAIL_RE = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+
+type Step = "intro" | "questions" | "consent" | "success";
+
 function useCountdown(target: Date) {
   const [now, setNow] = useState<number>(() => Date.now());
   useEffect(() => {
@@ -25,32 +29,36 @@ function useCountdown(target: Date) {
   }, []);
   return useMemo(() => {
     const diff = Math.max(0, target.getTime() - now);
-    const days = Math.floor(diff / 86400000);
-    const hours = Math.floor((diff % 86400000) / 3600000);
-    const minutes = Math.floor((diff % 3600000) / 60000);
-    const seconds = Math.floor((diff % 60000) / 1000);
-    return { diff, days, hours, minutes, seconds };
+    return {
+      diff,
+      days: Math.floor(diff / 86400000),
+      hours: Math.floor((diff % 86400000) / 3600000),
+      minutes: Math.floor((diff % 3600000) / 60000),
+      seconds: Math.floor((diff % 60000) / 1000),
+    };
   }, [now, target]);
 }
 
 export function EarlyAccessGate() {
   const [mounted, setMounted] = useState(false);
   const [done, setDone] = useState(false);
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState<Step>("intro");
+  const [qIndex, setQIndex] = useState(0);
   const [answers, setAnswers] = useState<string[]>(() => QUESTIONS.map(() => ""));
   const [email, setEmail] = useState("");
-  const [consent, setConsent] = useState(true);
+  const [age, setAge] = useState("");
+  const [sex, setSex] = useState("");
+  const [consent, setConsent] = useState(false);
+  const [privacy, setPrivacy] = useState(false);
+  const [newsletter, setNewsletter] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [success, setSuccess] = useState(false);
   const countdown = useCountdown(LAUNCH_DATE);
 
   useEffect(() => {
     setMounted(true);
     try {
-      if (typeof window !== "undefined" && localStorage.getItem(STORAGE_KEY)) {
-        setDone(true);
-      }
+      if (typeof window !== "undefined" && localStorage.getItem(STORAGE_KEY)) setDone(true);
     } catch {}
   }, []);
 
@@ -61,55 +69,69 @@ export function EarlyAccessGate() {
     return () => { document.body.style.overflow = ""; };
   }, [mounted, done, countdown.diff]);
 
-  if (!mounted) return null;
-  if (done) return null;
-  if (countdown.diff <= 0) return null;
+  if (!mounted || done || countdown.diff <= 0) return null;
 
-  const isLast = step === QUESTIONS.length;
-  const totalSteps = QUESTIONS.length + 1;
-  const progress = Math.round(((step) / totalSteps) * 100);
-
-  function next() {
+  function startQuestions() {
     setError(null);
-    if (!isLast) {
-      if (!answers[step]?.trim()) {
-        setError("Per favore scrivi una breve risposta prima di continuare.");
-        return;
-      }
-      setStep((s) => s + 1);
-    }
+    if (!EMAIL_RE.test(email.trim())) { setError("Inserisci un indirizzo email valido."); return; }
+    const ageNum = Number(age);
+    if (!ageNum || ageNum < 10 || ageNum > 110) { setError("Inserisci un'età valida."); return; }
+    if (!sex) { setError("Seleziona un'opzione per il sesso."); return; }
+    setStep("questions");
+    setQIndex(0);
   }
 
-  function prev() {
+  function nextQuestion() {
     setError(null);
-    if (step > 0) setStep((s) => s - 1);
+    if (!answers[qIndex]?.trim()) { setError("Per favore scrivi una breve risposta prima di continuare."); return; }
+    if (qIndex < QUESTIONS.length - 1) setQIndex(qIndex + 1);
+    else setStep("consent");
+  }
+
+  function prevQuestion() {
+    setError(null);
+    if (qIndex > 0) setQIndex(qIndex - 1);
+    else setStep("intro");
   }
 
   async function submit() {
     setError(null);
-    const emailOk = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(email.trim());
-    if (!emailOk) { setError("Inserisci un indirizzo email valido."); return; }
-    if (!consent) { setError("Per ricevere l'app in anteprima è necessario il consenso."); return; }
+    if (!consent || !privacy) { setError("Per ricevere l'accesso anticipato è necessario accettare il consenso e la privacy."); return; }
     setSubmitting(true);
-    const payload = QUESTIONS.reduce<Record<string, string>>((acc, q, i) => {
+    const payload = QUESTIONS.reduce<Record<string, string>>((acc, _, i) => {
       acc[`q${i + 1}`] = answers[i] || "";
       return acc;
     }, {});
+    payload._age = age;
+    payload._sex = sex;
+    payload._newsletter = newsletter ? "yes" : "no";
     const { error: dbError } = await supabase
       .from("early_access_signups")
-      .insert({ email: email.trim().toLowerCase(), answers: payload, consent });
+      .insert({ email: email.trim().toLowerCase(), answers: payload, consent: true });
+    if (!dbError && newsletter) {
+      await supabase.from("newsletter_subscribers")
+        .insert({ email: email.trim().toLowerCase(), source: "early_access_gate" });
+    }
     setSubmitting(false);
     if (dbError) { setError("Si è verificato un errore. Riprova."); return; }
     try { localStorage.setItem(STORAGE_KEY, "1"); } catch {}
-    setSuccess(true);
+    setStep("success");
   }
+
+  const totalSteps = QUESTIONS.length + 2; // intro + questions + consent
+  const currentStepNum =
+    step === "intro" ? 1 :
+    step === "questions" ? 2 + qIndex :
+    step === "consent" ? totalSteps :
+    totalSteps;
+  const progress = Math.round((currentStepNum / totalSteps) * 100);
 
   return (
     <div className="ea-gate" role="dialog" aria-modal="true" aria-labelledby="ea-title">
-      <div className="ea-card">
-        <div className="ea-head">
-          <img src={fibroLogo} alt="FibroMental" className="ea-logo" />
-          <div className="ea-countdown" aria-live="polite">
+      <div className="ea-wrap">
+        <div className="ea-topbar">
+          <img src={fibroLogo} alt="FibroMental" className="ea-logo-top" />
+          <div className="ea-countdown-big" aria-live="polite">
             <span className="ea-countdown-label">Lancio tra</span>
             <div className="ea-countdown-grid">
               <div><strong>{countdown.days}</strong><span>giorni</span></div>
@@ -120,67 +142,111 @@ export function EarlyAccessGate() {
           </div>
         </div>
 
-        {success ? (
-          <div className="ea-success">
-            <h2 id="ea-title">Grazie ❤️</h2>
-            <p>Le tue risposte sono state salvate. Ti scriveremo a <strong>{email}</strong> il giorno del lancio per darti accesso in anteprima a FibroMental.</p>
-          </div>
-        ) : (
-          <>
-            <div className="ea-progress" aria-hidden="true">
-              <div className="ea-progress-bar" style={{ width: `${progress}%` }} />
+        <div className="ea-card">
+          {step === "success" ? (
+            <div className="ea-success">
+              <h2 id="ea-title">Grazie ❤️</h2>
+              <p>Le tue risposte sono state salvate in modo <strong>completamente anonimo</strong>. Ti scriveremo a <strong>{email}</strong> il giorno del lancio per darti accesso in anteprima a FibroMental.</p>
             </div>
-            <p className="ea-step-meta">Passo {step + 1} di {totalSteps}</p>
-
-            {!isLast ? (
-              <div className="ea-step">
-                <h2 id="ea-title" className="ea-question">{QUESTIONS[step]}</h2>
-                <textarea
-                  className="ea-textarea"
-                  placeholder="Scrivi qui la tua risposta…"
-                  value={answers[step]}
-                  onChange={(e) => {
-                    const v = e.target.value;
-                    setAnswers((arr) => { const n = [...arr]; n[step] = v; return n; });
-                  }}
-                  rows={5}
-                  maxLength={2000}
-                  autoFocus
-                />
+          ) : (
+            <>
+              <div className="ea-progress" aria-hidden="true">
+                <div className="ea-progress-bar" style={{ width: `${progress}%` }} />
               </div>
-            ) : (
-              <div className="ea-step">
-                <h2 id="ea-title" className="ea-question">Lascia la tua email per ricevere FibroMental in anteprima</h2>
-                <p className="ea-help">Ti avviseremo per primo il giorno del lancio. Niente spam.</p>
-                <input
-                  type="email"
-                  className="ea-input"
-                  placeholder="latuaemail@esempio.it"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  autoFocus
-                />
-                <label className="ea-consent">
-                  <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} />
-                  <span>Acconsento a ricevere FibroMental in anteprima e comunicazioni relative al lancio.</span>
-                </label>
-              </div>
-            )}
+              <p className="ea-step-meta">Passo {currentStepNum} di {totalSteps}</p>
 
-            {error && <p className="ea-error" role="alert">{error}</p>}
-
-            <div className="ea-actions">
-              <button type="button" className="ea-btn-ghost" onClick={prev} disabled={step === 0 || submitting}>Indietro</button>
-              {!isLast ? (
-                <button type="button" className="ea-btn" onClick={next}>Continua</button>
-              ) : (
-                <button type="button" className="ea-btn" onClick={submit} disabled={submitting}>
-                  {submitting ? "Invio…" : "Ricevi l'app in anteprima"}
-                </button>
+              {step === "intro" && (
+                <div className="ea-step">
+                  <h2 id="ea-title" className="ea-question">Garantisci l'accesso al portale prima del lancio</h2>
+                  <p className="ea-help">Rispondi a un breve questionario e riceverai FibroMental in anteprima. Per iniziare, lasciaci alcune informazioni di base.</p>
+                  <label className="ea-field">
+                    <span>Email</span>
+                    <input type="email" className="ea-input" placeholder="latuaemail@esempio.it"
+                      value={email} onChange={(e) => setEmail(e.target.value)} autoFocus />
+                  </label>
+                  <div className="ea-row">
+                    <label className="ea-field">
+                      <span>Età</span>
+                      <input type="number" className="ea-input" placeholder="Es. 42" min={10} max={110}
+                        value={age} onChange={(e) => setAge(e.target.value)} />
+                    </label>
+                    <label className="ea-field">
+                      <span>Sesso</span>
+                      <select className="ea-input" value={sex} onChange={(e) => setSex(e.target.value)}>
+                        <option value="">Seleziona…</option>
+                        <option value="F">Femmina</option>
+                        <option value="M">Maschio</option>
+                        <option value="other">Altro</option>
+                        <option value="na">Preferisco non rispondere</option>
+                      </select>
+                    </label>
+                  </div>
+                </div>
               )}
-            </div>
-          </>
-        )}
+
+              {step === "questions" && (
+                <div className="ea-step">
+                  <h2 id="ea-title" className="ea-question">{QUESTIONS[qIndex]}</h2>
+                  <textarea className="ea-textarea" placeholder="Scrivi qui la tua risposta…"
+                    value={answers[qIndex]}
+                    onChange={(e) => {
+                      const v = e.target.value;
+                      setAnswers((arr) => { const n = [...arr]; n[qIndex] = v; return n; });
+                    }}
+                    rows={5} maxLength={2000} autoFocus />
+                </div>
+              )}
+
+              {step === "consent" && (
+                <div className="ea-step">
+                  <h2 id="ea-title" className="ea-question">Un ultimo passo: il tuo consenso</h2>
+                  <p className="ea-help">
+                    Le tue risposte sono trattate in modo <strong>completamente anonimo</strong> e usate solo in forma aggregata per migliorare FibroMental. La tua email viene conservata unicamente per inviarti l'accesso in anteprima al portale.
+                  </p>
+                  <label className="ea-consent">
+                    <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} />
+                    <span>Acconsento a ricevere l'accesso in anteprima a FibroMental e le comunicazioni relative al lancio.</span>
+                  </label>
+                  <label className="ea-consent">
+                    <input type="checkbox" checked={privacy} onChange={(e) => setPrivacy(e.target.checked)} />
+                    <span>Ho letto e accetto la <a href="/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a> e confermo che le mie risposte saranno trattate in forma anonima.</span>
+                  </label>
+                  <label className="ea-consent">
+                    <input type="checkbox" checked={newsletter} onChange={(e) => setNewsletter(e.target.checked)} />
+                    <span>Voglio iscrivermi alla newsletter di FibroMental per ricevere contenuti utili sulla fibromialgia.</span>
+                  </label>
+                </div>
+              )}
+
+              {error && <p className="ea-error" role="alert">{error}</p>}
+
+              <div className="ea-actions">
+                {step === "intro" && (
+                  <>
+                    <span />
+                    <button type="button" className="ea-btn" onClick={startQuestions}>Inizia il questionario</button>
+                  </>
+                )}
+                {step === "questions" && (
+                  <>
+                    <button type="button" className="ea-btn-ghost" onClick={prevQuestion}>Indietro</button>
+                    <button type="button" className="ea-btn" onClick={nextQuestion}>
+                      {qIndex === QUESTIONS.length - 1 ? "Continua" : "Avanti"}
+                    </button>
+                  </>
+                )}
+                {step === "consent" && (
+                  <>
+                    <button type="button" className="ea-btn-ghost" onClick={() => { setStep("questions"); setQIndex(QUESTIONS.length - 1); }} disabled={submitting}>Indietro</button>
+                    <button type="button" className="ea-btn" onClick={submit} disabled={submitting}>
+                      {submitting ? "Invio…" : "Conferma e ricevi l'app"}
+                    </button>
+                  </>
+                )}
+              </div>
+            </>
+          )}
+        </div>
       </div>
     </div>
   );
