@@ -19,7 +19,7 @@ const QUESTIONS: string[] = [
 
 const EMAIL_RE = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
 
-type Step = "intro" | "questions" | "consent" | "success";
+type Step = "welcome" | "intro" | "questions" | "consent" | "success";
 
 function useCountdown(target: Date) {
   const [now, setNow] = useState<number>(() => Date.now());
@@ -42,7 +42,7 @@ function useCountdown(target: Date) {
 export function EarlyAccessGate() {
   const [mounted, setMounted] = useState(false);
   const [done, setDone] = useState(false);
-  const [step, setStep] = useState<Step>("intro");
+  const [step, setStep] = useState<Step>("welcome");
   const [qIndex, setQIndex] = useState(0);
   const [answers, setAnswers] = useState<string[]>(() => QUESTIONS.map(() => ""));
   const [email, setEmail] = useState("");
@@ -143,7 +143,14 @@ export function EarlyAccessGate() {
         </div>
 
         <div className="ea-card">
-          {step === "success" ? (
+        {step === "welcome" ? (
+          <div className="ea-welcome">
+            <img src={fibroLogo} alt="FibroMental" className="ea-welcome-logo" />
+            <h2 id="ea-title" className="ea-welcome-title">Ti Crediamo</h2>
+            <p className="ea-welcome-date">12 maggio<br /><span>Giornata mondiale per la Fibromialgia</span></p>
+            <button type="button" className="ea-btn" onClick={() => setStep("intro")}>Continua</button>
+          </div>
+        ) : step === "success" ? (
             <div className="ea-success">
               <h2 id="ea-title">Grazie ❤️</h2>
               <p>Le tue risposte sono state salvate in modo <strong>completamente anonimo</strong>. Hai ora accesso in anteprima al portale FibroMental.</p>
