@@ -224,7 +224,7 @@ export const uploadBlogCover = createServerFn({ method: "POST" })
     const { error } = await supabaseAdmin.storage.from("blog-covers").upload(path, bytes, { contentType: data.contentType, upsert: false });
     if (error) throw new Error("Non è stato possibile caricare la copertina.");
 
-    const { data: signed } = await supabaseAdmin.storage.from("blog-covers").createSignedUrl(path, 60 * 60 * 24 * 365);
-    if (!signed?.signedUrl) throw new Error("Copertina caricata, ma URL non generato.");
-    return { url: signed.signedUrl };
+    const { data: publicData } = supabaseAdmin.storage.from("blog-covers").getPublicUrl(path);
+    if (!publicData?.publicUrl) throw new Error("Copertina caricata, ma URL non generato.");
+    return { url: publicData.publicUrl };
   });
