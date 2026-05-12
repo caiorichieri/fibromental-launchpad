@@ -16,7 +16,7 @@ const articleSchema = z.object({
   readTime: z.string().min(3).max(20),
   coverImageUrl: z.string().url().optional().or(z.literal("")),
   coverAlt: z.string().max(220).optional(),
-  paragraphs: z.array(z.string().min(20).max(1800)).min(1).max(20),
+  paragraphs: z.array(z.string().min(1).max(4000)).min(1).max(120),
   isPublished: z.boolean(),
 });
 
