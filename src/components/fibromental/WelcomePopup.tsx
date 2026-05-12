@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import fibroLogo from "../../assets/fibromental-logo-transparent.png";
+import welcomeBg from "../../assets/welcome-bg.png";
 
 const STORAGE_KEY = "fibromental_welcome_12mag_v1";
 
@@ -28,8 +29,17 @@ export function WelcomePopup() {
 
   return (
     <div className="ea-gate" role="dialog" aria-modal="true" aria-labelledby="wp-title" onClick={close}>
-      <div className="ea-card" onClick={(e) => e.stopPropagation()} style={{ maxWidth: 480 }}>
-        <div className="ea-welcome">
+      <div
+        className="ea-card wp-card"
+        onClick={(e) => e.stopPropagation()}
+        style={{
+          maxWidth: 480,
+          backgroundImage: `url(${welcomeBg})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        <div className="ea-welcome wp-welcome">
           <img src={fibroLogo} alt="FibroMental" className="ea-welcome-logo" />
           <h2 id="wp-title" className="ea-welcome-title">Ti Crediamo</h2>
           <p className="ea-welcome-date">12 maggio<br /><span>Giornata mondiale per la Fibromialgia</span></p>
