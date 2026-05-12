@@ -1,7 +1,6 @@
 import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
-import { EarlyAccessGate } from "@/components/fibromental/EarlyAccessGate";
 
 function NotFoundComponent() {
   return (
@@ -87,7 +86,6 @@ function RootComponent() {
   return (
     <>
       <Outlet />
-      <EarlyAccessGate />
     </>
   );
 }
