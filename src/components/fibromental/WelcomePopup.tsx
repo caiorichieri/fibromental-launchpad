@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import fibroLogo from "../../assets/fibromental-logo-transparent.png";
-import welcomeBg from "../../assets/welcome-bg.png";
+import tiCrediamo from "../../assets/ti-crediamo.png";
 
-const STORAGE_KEY = "fibromental_welcome_12mag_v1";
+const STORAGE_KEY = "fibromental_welcome_12mag_v2";
 
 export function WelcomePopup() {
   const [open, setOpen] = useState(false);
@@ -28,23 +27,63 @@ export function WelcomePopup() {
   if (!open) return null;
 
   return (
-    <div className="ea-gate" role="dialog" aria-modal="true" aria-labelledby="wp-title" onClick={close}>
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-label="Ti Crediamo - 12 maggio Giornata Mondiale della Fibromialgia"
+      onClick={close}
+      style={{
+        position: "fixed",
+        inset: 0,
+        background: "rgba(0,0,0,0.7)",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        zIndex: 9999,
+        padding: "1rem",
+      }}
+    >
       <div
-        className="ea-card wp-card"
         onClick={(e) => e.stopPropagation()}
         style={{
+          position: "relative",
+          width: "100%",
           maxWidth: 480,
-          backgroundImage: `url(${welcomeBg})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
+          aspectRatio: "1 / 1",
+          borderRadius: 16,
+          overflow: "hidden",
+          boxShadow: "0 20px 60px rgba(0,0,0,0.4)",
         }}
       >
-        <div className="ea-welcome wp-welcome">
-          <img src={fibroLogo} alt="FibroMental" className="ea-welcome-logo" />
-          <h2 id="wp-title" className="ea-welcome-title">Ti Crediamo</h2>
-          <p className="ea-welcome-date">12 maggio<br /><span>Giornata mondiale per la Fibromialgia</span></p>
-          <button type="button" className="ea-btn" onClick={close}>Continua</button>
-        </div>
+        <img
+          src={tiCrediamo}
+          alt="Ti Crediamo - 12 maggio Giornata Mondiale della Fibromialgia"
+          style={{ width: "100%", height: "100%", display: "block", objectFit: "cover" }}
+        />
+        <button
+          type="button"
+          onClick={close}
+          aria-label="Chiudi"
+          style={{
+            position: "absolute",
+            top: 12,
+            right: 12,
+            width: 36,
+            height: 36,
+            borderRadius: "50%",
+            border: "none",
+            background: "rgba(0,0,0,0.55)",
+            color: "#fff",
+            fontSize: 20,
+            lineHeight: 1,
+            cursor: "pointer",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          ✕
+        </button>
       </div>
     </div>
   );
