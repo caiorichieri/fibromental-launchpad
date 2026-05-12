@@ -1,6 +1,7 @@
 import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
+import { WelcomePopup } from "@/components/fibromental/WelcomePopup";
 
 function NotFoundComponent() {
   return (
@@ -86,6 +87,7 @@ function RootComponent() {
   return (
     <>
       <Outlet />
+      <WelcomePopup />
     </>
   );
 }
