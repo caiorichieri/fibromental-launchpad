@@ -4,7 +4,7 @@ import { SiteLayout } from "../components/fibromental/Layout";
 import type { Article } from "../lib/articles";
 import { getPublishedArticles } from "../lib/blog.functions";
 
-export const Route = createFileRoute("/blog")({
+export const Route = createFileRoute("/blog/")({
   loader: () => getPublishedArticles(),
   head: () => ({
     meta: [
