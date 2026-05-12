@@ -425,6 +425,10 @@
 .ea-welcome-title { font-family:Georgia,"Times New Roman",serif; font-size:2.6rem; color:var(--purple,#7b2d8b); margin:0; letter-spacing:-.5px; }
 .ea-welcome-date { font-size:1.4rem; font-weight:600; color:var(--orange,#e8820a); margin:0; line-height:1.3; }
 .ea-welcome-date span { display:block; font-size:1rem; font-weight:400; color:var(--gray,#666); margin-top:.3rem; }
+.wp-card { color:#1a1a1a; }
+.wp-welcome .ea-welcome-title { color:#111; }
+.wp-welcome .ea-welcome-date { color:#111; }
+.wp-welcome .ea-welcome-date span { color:rgba(0,0,0,.7); }
 .ea-logo-top { height:46px; width:auto; filter: drop-shadow(0 4px 14px rgba(0,0,0,.25)); }
 .ea-countdown-big .ea-countdown-label { color:#fff; font-size:.78rem; letter-spacing:.18em; text-transform:uppercase; opacity:.95; display:block; margin-bottom:.5rem; font-weight:600; }
 .ea-countdown-big .ea-countdown-grid { display:flex; gap:.55rem; justify-content:center; }
