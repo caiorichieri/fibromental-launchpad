@@ -33,6 +33,7 @@ export const Route = createRootRoute({
       { title: "Fibromental" },
       { name: "description", content: "Fibromental" },
       { name: "author", content: "Lovable" },
+      { name: "google-site-verification", content: "YL27JhrQKbEHB8tx3UiW5_XA3Dw2zPSxYSAtKE50Ar4" },
       { property: "og:title", content: "Fibromental" },
       { property: "og:description", content: "Fibromental" },
       { property: "og:type", content: "website" },
