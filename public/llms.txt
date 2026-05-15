@@ -1,0 +1,25 @@
+# FibroMental
+
+> FibroMental è il percorso psicologico evidence-based di MetaCare S.r.l. dedicato a fibromialgia e dolore cronico, con un'app gratuita per monitorare sintomi e qualità di vita.
+
+FibroMental lavora dove il dolore cronico ha le sue radici — nel sistema nervoso centrale — integrando CBT, ACT, mindfulness clinica e realtà virtuale. Il sito raccoglie informazioni cliniche, divulgazione scientifica e l'accesso all'app.
+
+## Pagine
+
+- [Home](/): Cosa è FibroMental, percorso clinico e meccanismo della sensibilizzazione centrale.
+- [App FibroMental](/app): App gratuita per monitorare sintomi, FIQR, mappa del dolore e diario quotidiano.
+- [Chi siamo](/chi-siamo): Il team MetaCare e la visione clinica dietro FibroMental.
+- [Lavora con noi](/lavora-con-noi): Collaborazioni per psicologi e psicoterapeuti.
+- [Contatti](/contatti): Scrivi a MetaCare per informazioni e primo orientamento.
+
+## Blog
+
+- [Blog](/blog): Approfondimenti scientifici su fibromialgia, sistema nervoso e strumenti psicologici.
+- [Sonno e fibromialgia](/blog/sonno-fibromialgia): Perché il sonno non è riparatore nella fibromialgia.
+- [Sensibilizzazione centrale](/blog/sensibilizzazione-centrale): Cos'è davvero e perché cambia tutto.
+- [Ciclo boom-bust](/blog/ciclo-boom-bust): Perché i giorni buoni peggiorano quelli cattivi.
+- [Catastrofizzazione del dolore](/blog/catastrofizzazione-dolore): Non è una scelta, è neurobiologia.
+- [Realtà virtuale e dolore cronico](/blog/realta-virtuale-dolore-cronico): Cosa fa la VR e perché funziona.
+- [Accettazione del dolore](/blog/act-accettazione): Accettare non significa arrendersi.
+- [CBT, ACT, mindfulness](/blog/cbt-act-mindfulness-fibromialgia): Tre approcci a confronto per la fibromialgia.
+- [Fibromialgia e sessualità](/blog/fibromialgia-e-sessualita): Il costo nascosto del dolore cronico.
