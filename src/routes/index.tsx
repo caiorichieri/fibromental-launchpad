@@ -9,9 +9,48 @@ export const Route = createFileRoute("/")({
     meta: [
       { title: "FibroMental — percorso psicologico per fibromialgia" },
       { name: "description", content: "FibroMental è il percorso MetaCare per lavorare su dolore cronico, sistema nervoso e fibromialgia con psicoterapia evidence-based." },
-      { property: "og:title", content: "FibroMental — MetaCare" },
-      { property: "og:description", content: "Un percorso psicologico per la fibromialgia, tra mente, corpo e sistema nervoso." },
+      { property: "og:title", content: "FibroMental — Percorso psicologico per la fibromialgia" },
+      { property: "og:description", content: "Il percorso MetaCare per lavorare su dolore cronico, sistema nervoso e fibromialgia con psicoterapia evidence-based." },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://fibromental.app/" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://fibromental.app/" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: [
+            {
+              "@type": "Question",
+              name: "Perché uno psicologo se ho un problema nel corpo?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "La fibromialgia non è un problema psicologico — il dolore è reale e documentato. Ma mente e corpo sono lo stesso sistema nervoso: lavorare sulla regolazione del sistema nervoso, sullo stress e sui pattern appresi può modificare l'amplificazione del dolore. Per questo la psicoterapia evidence-based (CBT, ACT, mindfulness) è inclusa nelle linee guida internazionali per la fibromialgia.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Cos'è la sensibilizzazione centrale?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "È il meccanismo neurobiologico alla base della fibromialgia: il sistema nervoso centrale, dopo stress prolungato o esperienze difficili, amplifica i segnali di dolore. Non è una questione di forza di volontà — è documentato in risonanza magnetica funzionale e nelle linee guida IASP.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "FibroMental sostituisce il medico o i farmaci?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "No. FibroMental è un percorso psicologico complementare al lavoro del medico curante, del reumatologo e dell'algologo. Non sostituisce diagnosi né farmaci, ma lavora sulla regolazione del sistema nervoso, sulla qualità di vita e sulla gestione dei sintomi.",
+              },
+            },
+          ],
+        }),
+      },
     ],
   }),
   component: HomePage,
