@@ -6,11 +6,15 @@ import { ClipboardList, Map, BookOpen, CalendarDays, LineChart, Mail, UserCircle
 export const Route = createFileRoute("/app")({
   head: () => ({
     meta: [
-      { title: "App FibroMental — Il tuo compagno digitale per la fibromialgia" },
+      { title: "App FibroMental — monitora la fibromialgia" },
       { name: "description", content: "Monitora sintomi, FIQR, mappa del dolore e diario quotidiano. L'app FibroMental è gratuita, sicura e installabile su qualsiasi dispositivo." },
       { property: "og:title", content: "App FibroMental — Monitora. Comprendi. Migliora." },
       { property: "og:description", content: "L'app gratuita per chi convive con la fibromialgia. FIQR, mappa del dolore, diario, grafici e riepilogo per il medico." },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://fibromental.app/app" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://fibromental.app/app" },
     ],
   }),
   component: AppPage,
