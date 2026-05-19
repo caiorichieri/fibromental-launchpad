@@ -8,6 +8,11 @@ export const Route = createFileRoute("/lavora-con-noi")({
       { name: "description", content: "FibroMental cerca psicologi e psicoterapeuti interessati a collaborare su percorsi evidence-based per fibromialgia e dolore cronico." },
       { property: "og:title", content: "Lavora con noi — FibroMental" },
       { property: "og:description", content: "Una pagina per psicologi e psicoterapeuti che vogliono collaborare con FibroMental." },
+      { property: "og:url", content: "https://fibromental.app/lavora-con-noi" },
+      { property: "og:type", content: "website" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://fibromental.app/lavora-con-noi" },
     ],
   }),
   component: WorkWithUsPage,
