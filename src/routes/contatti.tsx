@@ -13,6 +13,11 @@ export const Route = createFileRoute("/contatti")({
       { name: "description", content: "Contatta il team MetaCare per informazioni su FibroMental, app gratuita, collaborazioni o primo orientamento clinico." },
       { property: "og:title", content: "Contatti FibroMental" },
       { property: "og:description", content: "Scrivi a MetaCare per informazioni sul percorso FibroMental." },
+      { property: "og:url", content: "https://fibromental.app/contatti" },
+      { property: "og:type", content: "website" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://fibromental.app/contatti" },
     ],
   }),
   component: ContactPage,
