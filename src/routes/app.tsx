@@ -28,7 +28,8 @@ function AppPage() {
           <div className="app-page-hero-inner">
             <div className="fade-in">
               <div className="hero-tag">App FibroMental</div>
-              <h1 className="display">Monitora. <em>Comprendi.</em><br />Migliora.</h1>
+              <h1 className="display">App FibroMental — monitora la tua fibromialgia</h1>
+              <p className="display" style={{ fontSize: "clamp(2rem, 4.5vw, 3.4rem)", margin: ".5rem 0 0" }}>Monitora. <em>Comprendi.</em><br />Migliora.</p>
               <p className="hero-sub">Il tuo compagno digitale per la fibromialgia. Registra i sintomi, osserva l'andamento nel tempo, condividi i dati con il tuo medico — in un unico spazio sicuro e accessibile.</p>
               <div className="app-cta-row">
                 <a href={APP_URL} target="_blank" rel="noopener noreferrer" className="hero-cta">Installa l'app <span className="arrow">→</span></a>
@@ -79,7 +80,7 @@ function AppPage() {
             </div>
             <div className="benefits-stack fade-in delay-1">
               <div className="benefit-block">
-                <h4>Per te</h4>
+                <h3>Per te</h3>
                 <ul className="lavora-list light">
                   <li>Consapevolezza giorno dopo giorno</li>
                   <li>Interfaccia semplice, guidata, senza barriere</li>
@@ -88,7 +89,7 @@ function AppPage() {
                 </ul>
               </div>
               <div className="benefit-block">
-                <h4>Per il tuo medico</h4>
+                <h3>Per il tuo medico</h3>
                 <ul className="lavora-list light">
                   <li>Dati standardizzati FIQR</li>
                   <li>Visione longitudinale dei sintomi</li>
@@ -105,10 +106,10 @@ function AppPage() {
               <div className="pill-label">Sicurezza & Privacy</div>
               <h2 className="section-title">I tuoi dati sanitari sono solo tuoi.</h2>
               <div className="privacy-grid">
-                <div className="privacy-item"><span aria-hidden>🔒</span><h4>Crittografia</h4><p>Password protette con bcrypt, comunicazioni HTTPS/TLS, token JWT con scadenza automatica.</p></div>
-                <div className="privacy-item"><span aria-hidden>🛡️</span><h4>Mai condivisi</h4><p>I dati non vengono mai ceduti a terzi. Il riepilogo al medico parte solo col tuo consenso esplicito.</p></div>
-                <div className="privacy-item"><span aria-hidden>📜</span><h4>Conforme GDPR</h4><p>Diritto di accesso, rettifica, cancellazione completa e portabilità in qualsiasi momento.</p></div>
-                <div className="privacy-item"><span aria-hidden>🚫</span><h4>Nessun tracciamento</h4><p>Niente cookie pubblicitari, niente profilazione. Solo i cookie tecnici strettamente necessari.</p></div>
+                <div className="privacy-item"><span aria-hidden>🔒</span><h3>Crittografia</h3><p>Password protette con bcrypt, comunicazioni HTTPS/TLS, token JWT con scadenza automatica.</p></div>
+                <div className="privacy-item"><span aria-hidden>🛡️</span><h3>Mai condivisi</h3><p>I dati non vengono mai ceduti a terzi. Il riepilogo al medico parte solo col tuo consenso esplicito.</p></div>
+                <div className="privacy-item"><span aria-hidden>📜</span><h3>Conforme GDPR</h3><p>Diritto di accesso, rettifica, cancellazione completa e portabilità in qualsiasi momento.</p></div>
+                <div className="privacy-item"><span aria-hidden>🚫</span><h3>Nessun tracciamento</h3><p>Niente cookie pubblicitari, niente profilazione. Solo i cookie tecnici strettamente necessari.</p></div>
               </div>
             </div>
           </div>
