@@ -11,18 +11,40 @@ export const Route = createFileRoute("/blog/$slug")({
   },
   head: ({ loaderData }) => {
     const article = loaderData?.article;
+    const url = article ? `https://fibromental.app/blog/${article.slug}` : "https://fibromental.app/blog";
     return { meta: [
       { title: article ? `${article.title} — FibroMental` : "Articolo FibroMental" },
       { name: "description", content: article?.excerpt ?? "Approfondimento FibroMental su fibromialgia e dolore cronico." },
       { property: "og:title", content: article ? `${article.title} — FibroMental` : "Articolo FibroMental" },
       { property: "og:description", content: article?.excerpt ?? "Approfondimento FibroMental su fibromialgia e dolore cronico." },
       { property: "og:type", content: "article" },
+      { property: "og:url", content: url },
       ...(article ? [
         { property: "og:image", content: article.coverImage },
         { name: "twitter:image", content: article.coverImage },
         { name: "twitter:card", content: "summary_large_image" },
       ] : []),
-    ] };
+    ],
+    links: article ? [{ rel: "canonical", href: url }] : [],
+    scripts: article ? [{
+      type: "application/ld+json",
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Article",
+        headline: article.title,
+        description: article.excerpt,
+        image: article.coverImage,
+        url,
+        author: { "@type": "Organization", name: "MetaCare S.r.l." },
+        publisher: {
+          "@type": "Organization",
+          name: "MetaCare S.r.l.",
+          logo: { "@type": "ImageObject", url: "https://fibromental.app/favicon.ico" },
+        },
+        mainEntityOfPage: { "@type": "WebPage", "@id": url },
+      }),
+    }] : [],
+    };
   },
   errorComponent: ArticleError,
   notFoundComponent: ArticleNotFound,
