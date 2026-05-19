@@ -12,6 +12,24 @@ export const Route = createFileRoute("/blog/")({
       { name: "description", content: "Articoli FibroMental su fibromialgia, sensibilizzazione centrale, dolore cronico, CBT, ACT, mindfulness e realtà virtuale." },
       { property: "og:title", content: "Blog FibroMental" },
       { property: "og:description", content: "Approfondimenti scientifici sulla fibromialgia, in parole semplici." },
+      { property: "og:url", content: "https://fibromental.app/blog" },
+      { property: "og:type", content: "website" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://fibromental.app/blog" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          name: "Blog FibroMental",
+          description: "Approfondimenti scientifici sulla fibromialgia, in parole semplici.",
+          url: "https://fibromental.app/blog",
+          isPartOf: { "@id": "https://fibromental.app/#website" },
+        }),
+      },
     ],
   }),
   errorComponent: BlogError,
@@ -31,6 +49,7 @@ function BlogPage() {
           </div>
         </section>
         <section className="page-section blog-section">
+          <h2 className="section-title" style={{ textAlign: "center", maxWidth: 720, margin: "0 auto 2rem" }}>Tutti gli articoli</h2>
           <div className="blog-grid">
             {articles.map((article: Article, index: number) => <ArticleCard key={article.slug} article={article} className={`delay-${Math.min(index % 4, 4)}`} />)}
           </div>
