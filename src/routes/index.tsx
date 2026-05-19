@@ -63,7 +63,8 @@ function HomePage() {
         <section className="hero">
           <div className="hero-text fade-in">
             <div className="hero-tag">Per la fibromialgia</div>
-            <h1 className="display text-slate-700">Il tuo corpo sa quello che<br /><em>gli altri non vedono.</em></h1>
+            <h1 className="display text-slate-700">FibroMental — percorso psicologico per la fibromialgia</h1>
+            <p className="display text-slate-700" style={{ fontSize: "clamp(2.2rem, 5vw, 4rem)", margin: ".5rem 0 0" }}>Il tuo corpo sa quello che<br /><em>gli altri non vedono.</em></p>
             <p className="hero-sub">FibroMental è un percorso psicologico che lavora dove il dolore ha le sue radici — nel sistema nervoso, tra mente e corpo.</p>
             <a href="#cta" className="hero-cta">Scopri come funziona <span className="arrow">→</span></a>
           </div>
@@ -250,7 +251,7 @@ function HomePage() {
 }
 
 function AppFeature({ icon, title, text }: { icon: string; title: string; text: string }) {
-  return <div className="app-feature"><div className="app-feature-icon">{icon}</div><div><h4>{title}</h4><p>{text}</p></div></div>;
+  return <div className="app-feature"><div className="app-feature-icon">{icon}</div><div><h3>{title}</h3><p>{text}</p></div></div>;
 }
 
 function Stat({ number, label, source }: { number: string; label: string; source: string }) {

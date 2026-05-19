@@ -9,6 +9,11 @@ export const Route = createFileRoute("/chi-siamo")({
       { name: "description", content: "FibroMental è un brand MetaCare S.r.l. dedicato a percorsi psicologici evidence-based per fibromialgia e dolore cronico." },
       { property: "og:title", content: "Chi siamo — MetaCare e FibroMental" },
       { property: "og:description", content: "Il team e la visione clinica dietro FibroMental." },
+      { property: "og:url", content: "https://fibromental.app/chi-siamo" },
+      { property: "og:type", content: "website" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://fibromental.app/chi-siamo" },
     ],
   }),
   component: AboutPage,
