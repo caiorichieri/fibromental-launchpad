@@ -37,6 +37,7 @@ export function Header() {
         <Link to="/lavora-con-noi" className="nav-link">Lavora con noi</Link>
         <Link to="/app" className="nav-link">App</Link>
         <Link to="/contatti" className="nav-link">Contatti</Link>
+        <Link to="/admin/blog" className="nav-link">Area riservata</Link>
       </div>
       <a href={APP_URL} target="_blank" rel="noopener noreferrer" className="nav-cta">Installa l'app</a>
       <button
