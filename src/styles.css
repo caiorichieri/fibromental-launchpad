@@ -127,7 +127,7 @@
 /* Circular WhatsApp CTA placed over the hero yarn illustration */
 .hero-circle-cta {
   position: absolute;
-  top: -10cm;
+  top: -6cm;
   left: 50%;
   transform: translateX(-50%);
   display: inline-flex;
