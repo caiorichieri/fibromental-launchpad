@@ -66,7 +66,10 @@ function HomePage() {
             <h1 className="display text-slate-700">FibroMental — percorso psicologico per la fibromialgia</h1>
             <p className="display text-slate-700" style={{ fontSize: "clamp(2.2rem, 5vw, 4rem)", margin: ".5rem 0 0" }}>Il tuo corpo sa quello che<br /><em>gli altri non vedono.</em></p>
             <p className="hero-sub">FibroMental è un percorso psicologico che lavora dove il dolore ha le sue radici — nel sistema nervoso, tra mente e corpo.</p>
-            <a href="#cta" className="hero-cta">Scopri come funziona <span className="arrow">→</span></a>
+            <div className="hero-cta-group" style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginTop: "1.5rem" }}>
+              <a href="https://wa.me/393313904736?text=Ciao%2C%20scrivo%20dal%20sito%20FibroMental%20e%20vorrei%20parlare%20con%20uno%20psicologo." target="_blank" rel="noopener noreferrer" className="hero-cta" style={{ background: "var(--primary)", color: "var(--primary-foreground)" }}>Parla subito con uno psicologo! <span className="arrow">→</span></a>
+              <a href="#cta" className="hero-cta" style={{ background: "transparent", border: "2px solid currentColor" }}>Scopri come funziona <span className="arrow">→</span></a>
+            </div>
           </div>
           <div className="hero-visual fade-in delay-2"><YarnHero /></div>
         </section>
