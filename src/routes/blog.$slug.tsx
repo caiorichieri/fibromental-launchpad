@@ -69,6 +69,24 @@ function ArticlePage() {
         <section className="article-content">
           <article className="article-layout fade-in">
             {article.paragraphs.map((paragraph: string) => <p key={paragraph}>{paragraph}</p>)}
+            <a
+              href="https://wa.me/393313904736?text=Ciao%2C%20scrivo%20dal%20sito%20Funzionabene%20e%20vorrei%20prenotare%20una%20seduta."
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Prenota una seduta su WhatsApp"
+              className="blog-cta-pill"
+            >
+              <span className="hero-circle-cta-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.198-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12.02 21.785h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.002-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884zm8.413-18.297A11.815 11.815 0 0012.02 0C5.495 0 .184 5.31.18 11.836c0 2.086.546 4.122 1.582 5.918L.057 24l6.404-1.68a11.87 11.87 0 005.559 1.413h.005c6.522 0 11.833-5.31 11.836-11.836a11.77 11.77 0 00-3.428-8.41z"/>
+                </svg>
+              </span>
+              <span className="hero-circle-cta-text">
+                <span className="hero-circle-cta-eyebrow">Scrivici su WhatsApp</span>
+                <span className="hero-circle-cta-title">Prenota una Seduta</span>
+              </span>
+              <span className="hero-circle-cta-arrow" aria-hidden="true">→</span>
+            </a>
             <h2>Un percorso, non una scorciatoia</h2>
             <p>Ogni contenuto del blog ha finalità informative e non sostituisce una valutazione clinica. Se vuoi capire se FibroMental può essere adatto alla tua situazione, puoi contattarci per un primo orientamento.</p>
             <Link to="/contatti" className="hero-cta">Parla con MetaCare <span className="arrow">→</span></Link>

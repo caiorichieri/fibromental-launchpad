@@ -219,6 +219,51 @@
     transform: translateY(-2px) scale(1.03);
   }
 }
+
+/* Inline pill variant for blog articles — same look, no absolute positioning */
+.blog-cta-pill {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: .85rem;
+  padding: .9rem 1.6rem .9rem 1.1rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: .01em;
+  white-space: nowrap;
+  box-shadow:
+    0 14px 36px -8px rgba(18,140,126,.55),
+    0 4px 12px rgba(18,140,126,.25),
+    inset 0 1px 0 rgba(255,255,255,.25);
+  transition: transform .25s ease, box-shadow .25s ease;
+  isolation: isolate;
+  margin: 1.5rem 0;
+}
+.blog-cta-pill::before,
+.blog-cta-pill::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 2px solid rgba(37,211,102,.55);
+  pointer-events: none;
+  z-index: -1;
+  animation: heroPillPulse 2.4s ease-out infinite;
+}
+.blog-cta-pill::after { animation-delay: 1.2s; }
+.blog-cta-pill:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow:
+    0 20px 44px -8px rgba(18,140,126,.65),
+    0 6px 16px rgba(18,140,126,.3),
+    inset 0 1px 0 rgba(255,255,255,.3);
+}
+.blog-cta-pill .hero-circle-cta-arrow { margin-left: .25rem; font-size: 1.1rem; transition: transform .25s ease; }
+.blog-cta-pill:hover .hero-circle-cta-arrow { transform: translateX(3px); }
 .arrow { display:inline-block; transition: transform .2s; }
 .bridge-patologia { background:var(--navy); padding:4rem 6vw; text-align:center; }
 .bridge-patologia p { font-size:clamp(1.1rem,2vw,1.4rem); line-height:1.8; color:rgba(255,255,255,.75); max-width:720px; margin:0 auto; font-weight:300; }
