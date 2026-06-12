@@ -67,11 +67,25 @@ function HomePage() {
             <p className="display text-slate-700" style={{ fontSize: "clamp(2.2rem, 5vw, 4rem)", margin: ".5rem 0 0" }}>Il tuo corpo sa quello che<br /><em>gli altri non vedono.</em></p>
             <p className="hero-sub">FibroMental è un percorso psicologico che lavora dove il dolore ha le sue radici — nel sistema nervoso, tra mente e corpo.</p>
             <div className="hero-cta-group" style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginTop: "1.5rem" }}>
-              <a href="https://wa.me/393313904736?text=Ciao%2C%20scrivo%20dal%20sito%20FibroMental%20e%20vorrei%20parlare%20con%20uno%20psicologo." target="_blank" rel="noopener noreferrer" className="hero-cta" style={{ background: "var(--primary)", color: "var(--primary-foreground)" }}>Parla subito con uno psicologo! <span className="arrow">→</span></a>
               <a href="#cta" className="hero-cta" style={{ background: "transparent", border: "2px solid currentColor" }}>Scopri come funziona <span className="arrow">→</span></a>
             </div>
           </div>
-          <div className="hero-visual fade-in delay-2"><YarnHero /></div>
+          <div className="hero-visual fade-in delay-2" style={{ position: "relative" }}>
+            <YarnHero />
+            <a
+              href="https://wa.me/393313904736?text=Ciao%2C%20scrivo%20dal%20sito%20FibroMental%20e%20vorrei%20parlare%20con%20uno%20psicologo."
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Parla subito con uno psicologo su WhatsApp"
+              className="hero-circle-cta"
+            >
+              <span className="hero-circle-cta-inner">
+                <span className="hero-circle-cta-eyebrow">Parla ora</span>
+                <span className="hero-circle-cta-title">con uno psicologo</span>
+                <span className="hero-circle-cta-arrow" aria-hidden="true">→</span>
+              </span>
+            </a>
+          </div>
         </section>
 
         <div className="bridge-patologia fade-in">
