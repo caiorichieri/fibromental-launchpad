@@ -89,7 +89,6 @@ function ArticlePage() {
             </a>
             <h2>Un percorso, non una scorciatoia</h2>
             <p>Ogni contenuto del blog ha finalità informative e non sostituisce una valutazione clinica. Se vuoi capire se FibroMental può essere adatto alla tua situazione, puoi contattarci per un primo orientamento.</p>
-            <Link to="/contatti" className="hero-cta">Parla con MetaCare <span className="arrow">→</span></Link>
           </article>
         </section>
       </main>
