@@ -70,7 +70,7 @@ function ArticlePage() {
           <article className="article-layout fade-in">
             {article.paragraphs.map((paragraph: string) => <p key={paragraph}>{paragraph}</p>)}
             <a
-              href="https://wa.me/393313904736?text=Ciao%2C%20scrivo%20dal%20sito%20Funzionabene%20e%20vorrei%20prenotare%20una%20seduta."
+              href="https://wa.me/393313904736?text=Ciao%2C%20scrivo%20dal%20sito%20FibroMental%20e%20vorrei%20prenotare%20una%20seduta."
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Prenota una seduta su WhatsApp"
