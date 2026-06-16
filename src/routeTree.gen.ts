@@ -13,7 +13,6 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as LavoraConNoiRouteImport } from './routes/lavora-con-noi'
 import { Route as ContattiRouteImport } from './routes/contatti'
 import { Route as ChiSiamoRouteImport } from './routes/chi-siamo'
-import { Route as AppRouteImport } from './routes/app'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
@@ -39,11 +38,6 @@ const ChiSiamoRoute = ChiSiamoRouteImport.update({
   path: '/chi-siamo',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AppRoute = AppRouteImport.update({
-  id: '/app',
-  path: '/app',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -67,7 +61,6 @@ const AdminBlogRoute = AdminBlogRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/app': typeof AppRoute
   '/chi-siamo': typeof ChiSiamoRoute
   '/contatti': typeof ContattiRoute
   '/lavora-con-noi': typeof LavoraConNoiRoute
@@ -78,7 +71,6 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/app': typeof AppRoute
   '/chi-siamo': typeof ChiSiamoRoute
   '/contatti': typeof ContattiRoute
   '/lavora-con-noi': typeof LavoraConNoiRoute
@@ -90,7 +82,6 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/app': typeof AppRoute
   '/chi-siamo': typeof ChiSiamoRoute
   '/contatti': typeof ContattiRoute
   '/lavora-con-noi': typeof LavoraConNoiRoute
@@ -103,7 +94,6 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/app'
     | '/chi-siamo'
     | '/contatti'
     | '/lavora-con-noi'
@@ -114,7 +104,6 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/app'
     | '/chi-siamo'
     | '/contatti'
     | '/lavora-con-noi'
@@ -125,7 +114,6 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
-    | '/app'
     | '/chi-siamo'
     | '/contatti'
     | '/lavora-con-noi'
@@ -137,7 +125,6 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AppRoute: typeof AppRoute
   ChiSiamoRoute: typeof ChiSiamoRoute
   ContattiRoute: typeof ContattiRoute
   LavoraConNoiRoute: typeof LavoraConNoiRoute
@@ -177,13 +164,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ChiSiamoRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/app': {
-      id: '/app'
-      path: '/app'
-      fullPath: '/app'
-      preLoaderRoute: typeof AppRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
@@ -217,7 +197,6 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AppRoute: AppRoute,
   ChiSiamoRoute: ChiSiamoRoute,
   ContattiRoute: ContattiRoute,
   LavoraConNoiRoute: LavoraConNoiRoute,
