@@ -370,8 +370,9 @@
 .article-content h2 { color:var(--navy); font-size:1.8rem; margin:2.5rem 0 1rem; }
 .contact-grid { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:.85fr 1.15fr; gap:4rem; align-items:start; }
 .contact-card, .form-panel { background:var(--white); border:1px solid rgba(123,45,139,.08); border-radius:1.2rem; padding:2rem; }
-.whatsapp-button { margin-top:1.6rem; background:var(--pink); color:var(--white); padding:.95rem 1.7rem; font-size:.95rem; box-shadow:0 4px 20px rgba(200,80,112,.28); }
-.whatsapp-button:hover { background:var(--navy); transform:translateY(-2px); box-shadow:0 4px 24px rgba(123,45,139,.22); }
+.whatsapp-button { margin-top:1.6rem; display:inline-flex; align-items:center; gap:.6rem; background:linear-gradient(135deg,#25D366 0%,#128C7E 100%); color:var(--white); padding:.95rem 1.7rem; font-size:.95rem; box-shadow:0 4px 20px rgba(18,140,126,.32); }
+.whatsapp-button:hover { background:linear-gradient(135deg,#128C7E 0%,#0e6b60 100%); transform:translateY(-2px); box-shadow:0 6px 24px rgba(18,140,126,.4); }
+.whatsapp-button svg { width:20px; height:20px; fill:currentColor; flex-shrink:0; }
 .form-grid { display:grid; gap:1rem; }
 .form-field { display:grid; gap:.45rem; }
 .form-field label { font-size:.82rem; color:var(--navy); font-weight:600; }
