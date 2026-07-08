@@ -2,9 +2,20 @@ import { Link, createFileRoute } from "@tanstack/react-router";
 import { ArticleCard } from "../components/fibromental/ArticleCard";
 import { CONTACT_EMAIL, SiteLayout } from "../components/fibromental/Layout";
 import { CtaThread, YarnFree, YarnHand, YarnHero, YarnOpen, YarnRecognition, YarnResearch } from "../components/fibromental/YarnVisuals";
-import { articles } from "../lib/articles";
+import type { Article } from "../lib/articles";
+import { articles as fallbackArticles } from "../lib/articles";
+import { getPublishedArticles } from "../lib/blog.functions";
 
 export const Route = createFileRoute("/")({
+  loader: async () => {
+    try {
+      return await getPublishedArticles();
+    } catch {
+      return fallbackArticles;
+    }
+  },
+  staleTime: 0,
+  shouldReload: true,
   head: () => ({
     meta: [
       { title: "FibroMental — percorso psicologico per fibromialgia" },
@@ -57,6 +68,7 @@ export const Route = createFileRoute("/")({
 });
 
 function HomePage() {
+  const articles = Route.useLoaderData() as Article[];
   return (
     <SiteLayout>
       <main>
@@ -233,7 +245,7 @@ function HomePage() {
             <h2 className="section-title">Capire la fibromialgia.<br />Dalla ricerca, in parole semplici.</h2>
             <p className="body-text" style={{ fontSize: ".95rem" }}>Articoli scritti dal team MetaCare, fondati sulla letteratura scientifica internazionale.</p>
           </div>
-          <div className="blog-grid">{articles.map((article, index) => <ArticleCard key={article.slug} article={article} className={`delay-${Math.min(index % 4, 4)}`} />)}</div>
+          <div className="blog-grid">{articles.map((article: Article, index: number) => <ArticleCard key={article.slug} article={article} className={`delay-${Math.min(index % 4, 4)}`} />)}</div>
         </section>
 
         <section className="page-section white">
