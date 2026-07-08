@@ -68,6 +68,7 @@ export const Route = createFileRoute("/")({
 });
 
 function HomePage() {
+  const articles = Route.useLoaderData() as Article[];
   return (
     <SiteLayout>
       <main>
