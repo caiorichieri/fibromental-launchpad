@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as LavoraConNoiRouteImport } from './routes/lavora-con-noi'
+import { Route as CorsiRouteImport } from './routes/corsi'
 import { Route as ContattiRouteImport } from './routes/contatti'
 import { Route as ChiSiamoRouteImport } from './routes/chi-siamo'
 import { Route as IndexRouteImport } from './routes/index'
@@ -26,6 +27,11 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
 const LavoraConNoiRoute = LavoraConNoiRouteImport.update({
   id: '/lavora-con-noi',
   path: '/lavora-con-noi',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CorsiRoute = CorsiRouteImport.update({
+  id: '/corsi',
+  path: '/corsi',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContattiRoute = ContattiRouteImport.update({
@@ -63,6 +69,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/chi-siamo': typeof ChiSiamoRoute
   '/contatti': typeof ContattiRoute
+  '/corsi': typeof CorsiRoute
   '/lavora-con-noi': typeof LavoraConNoiRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/admin/blog': typeof AdminBlogRoute
@@ -73,6 +80,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/chi-siamo': typeof ChiSiamoRoute
   '/contatti': typeof ContattiRoute
+  '/corsi': typeof CorsiRoute
   '/lavora-con-noi': typeof LavoraConNoiRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/admin/blog': typeof AdminBlogRoute
@@ -84,6 +92,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/chi-siamo': typeof ChiSiamoRoute
   '/contatti': typeof ContattiRoute
+  '/corsi': typeof CorsiRoute
   '/lavora-con-noi': typeof LavoraConNoiRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/admin/blog': typeof AdminBlogRoute
@@ -96,6 +105,7 @@ export interface FileRouteTypes {
     | '/'
     | '/chi-siamo'
     | '/contatti'
+    | '/corsi'
     | '/lavora-con-noi'
     | '/sitemap.xml'
     | '/admin/blog'
@@ -106,6 +116,7 @@ export interface FileRouteTypes {
     | '/'
     | '/chi-siamo'
     | '/contatti'
+    | '/corsi'
     | '/lavora-con-noi'
     | '/sitemap.xml'
     | '/admin/blog'
@@ -116,6 +127,7 @@ export interface FileRouteTypes {
     | '/'
     | '/chi-siamo'
     | '/contatti'
+    | '/corsi'
     | '/lavora-con-noi'
     | '/sitemap.xml'
     | '/admin/blog'
@@ -127,6 +139,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ChiSiamoRoute: typeof ChiSiamoRoute
   ContattiRoute: typeof ContattiRoute
+  CorsiRoute: typeof CorsiRoute
   LavoraConNoiRoute: typeof LavoraConNoiRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   AdminBlogRoute: typeof AdminBlogRoute
@@ -148,6 +161,13 @@ declare module '@tanstack/react-router' {
       path: '/lavora-con-noi'
       fullPath: '/lavora-con-noi'
       preLoaderRoute: typeof LavoraConNoiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/corsi': {
+      id: '/corsi'
+      path: '/corsi'
+      fullPath: '/corsi'
+      preLoaderRoute: typeof CorsiRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contatti': {
@@ -199,6 +219,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ChiSiamoRoute: ChiSiamoRoute,
   ContattiRoute: ContattiRoute,
+  CorsiRoute: CorsiRoute,
   LavoraConNoiRoute: LavoraConNoiRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   AdminBlogRoute: AdminBlogRoute,
