@@ -2,9 +2,20 @@ import { Link, createFileRoute } from "@tanstack/react-router";
 import { ArticleCard } from "../components/fibromental/ArticleCard";
 import { CONTACT_EMAIL, SiteLayout } from "../components/fibromental/Layout";
 import { CtaThread, YarnFree, YarnHand, YarnHero, YarnOpen, YarnRecognition, YarnResearch } from "../components/fibromental/YarnVisuals";
-import { articles } from "../lib/articles";
+import type { Article } from "../lib/articles";
+import { articles as fallbackArticles } from "../lib/articles";
+import { getPublishedArticles } from "../lib/blog.functions";
 
 export const Route = createFileRoute("/")({
+  loader: async () => {
+    try {
+      return await getPublishedArticles();
+    } catch {
+      return fallbackArticles;
+    }
+  },
+  staleTime: 0,
+  shouldReload: true,
   head: () => ({
     meta: [
       { title: "FibroMental — percorso psicologico per fibromialgia" },
