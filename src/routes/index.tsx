@@ -218,7 +218,7 @@ function HomePage() {
               <div className="pill-label">Formazione · Per professionisti</div>
               <h2 className="section-title">Sei psicologo o psicoterapeuta? <em>Formati con FibroMental.</em></h2>
               <p className="body-text">Un corso clinico sulla fibromialgia per comprendere il quadro, leggere l'esperienza della persona e acquisire strumenti concreti per il supporto psicologico e la psicoterapia — CBT, ACT, mindfulness clinica e realtà virtuale immersiva.</p>
-              <p className="body-text">Il corso è erogato tramite la piattaforma <strong>Bidoc.it</strong>.</p>
+              <p className="body-text">Il corso è erogato tramite una piattaforma esterna dedicata.</p>
               <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginTop: "1.25rem" }}>
                 <Link to="/corsi" className="hero-cta">Scopri il corso <span className="arrow">→</span></Link>
               </div>

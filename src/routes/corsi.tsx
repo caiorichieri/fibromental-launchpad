@@ -63,7 +63,7 @@ function CorsiPage() {
             </p>
             <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", justifyContent: "center", marginTop: "1.5rem" }}>
               <a href={BIDOC_URL} target="_blank" rel="noopener noreferrer" className="hero-cta">
-                Iscriviti su Bidoc.it <span className="arrow">→</span>
+                Iscriviti ora <span className="arrow">→</span>
               </a>
               <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="whatsapp-button">
                 <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
@@ -94,7 +94,7 @@ function CorsiPage() {
                 <li>Corso riservato a psicologi e psicoterapeuti</li>
               </ul>
               <p className="body-text" style={{ fontSize: ".9rem", opacity: 0.75 }}>
-                Iscrizioni, programma dettagliato, crediti ECM e costi sono gestiti sulla piattaforma Bidoc.it.
+                Iscrizioni, programma dettagliato, crediti ECM e costi sono gestiti sulla piattaforma esterna dedicata.
               </p>
             </div>
             <div className="fade-in delay-1">
@@ -148,14 +148,14 @@ function CorsiPage() {
           <div className="section-inner reverse">
             <div className="fade-in">
               <div className="pill-label">Iscrizione</div>
-              <h2 className="section-title">Scopri il programma e iscriviti su Bidoc.it</h2>
+              <h2 className="section-title">Scopri il programma e iscriviti ora</h2>
               <p className="body-text">
-                Il corso è erogato attraverso la piattaforma <strong>Bidoc.it</strong>. Lì trovi programma completo, modalità,
+                Il corso è erogato attraverso una piattaforma esterna dedicata. Lì trovi programma completo, modalità,
                 crediti e iscrizione.
               </p>
               <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginTop: "1.25rem" }}>
                 <a href={BIDOC_URL} target="_blank" rel="noopener noreferrer" className="cta-button">
-                  Vai a Bidoc.it <span className="arrow">→</span>
+                  Iscriviti ora <span className="arrow">→</span>
                 </a>
                 <Link to="/contatti" className="hero-cta" style={{ background: "transparent", border: "2px solid currentColor" }}>
                   Contattaci <span className="arrow">→</span>
