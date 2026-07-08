@@ -9,17 +9,17 @@ const WHATSAPP_URL =
 export const Route = createFileRoute("/corsi")({
   head: () => ({
     meta: [
-      { title: "Corsi — Formazione clinica FibroMental sulla fibromialgia" },
+      { title: "Formazione FibroMental — Corso clinico per psicologi e psicoterapeuti" },
       {
         name: "description",
         content:
-          "Corso clinico FibroMental sulla fibromialgia per psicologi e psicoterapeuti: CBT, ACT, mindfulness clinica e realtà virtuale immersiva.",
+          "Corso clinico riservato a psicologi e psicoterapeuti sulla fibromialgia: CBT, ACT, mindfulness clinica e realtà virtuale immersiva.",
       },
-      { property: "og:title", content: "Formazione FibroMental — Corso clinico sulla fibromialgia" },
+      { property: "og:title", content: "Formazione FibroMental — Corso clinico per psicologi e psicoterapeuti" },
       {
         property: "og:description",
         content:
-          "Un percorso formativo per comprendere la fibromialgia e acquisire strumenti concreti per il supporto psicologico e la psicoterapia.",
+          "Percorso formativo riservato a professionisti della salute mentale per comprendere la fibromialgia e acquisire strumenti concreti per la psicoterapia.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://fibromental.app/corsi" },
@@ -53,13 +53,16 @@ function CorsiPage() {
       <main>
         <section className="page-hero">
           <div className="page-hero-inner fade-in">
-            <div className="pill-label">Formazione clinica · Corsi</div>
+            <div className="pill-label">Formazione clinica · Riservato a professionisti</div>
+            <div className="professionisti-badge">
+              <span>Riservato a psicologi e psicoterapeuti</span>
+            </div>
             <h1 className="display text-slate-700">
-              Formazione <em>FibroMental.</em>
+              Formazione <em>FibroMental</em> per psicologi e psicoterapeuti.
             </h1>
             <p className="hero-sub" style={{ marginLeft: "auto", marginRight: "auto" }}>
-              Un percorso formativo per comprendere la fibromialgia, leggere l'esperienza della persona e acquisire strumenti
-              concreti per il supporto psicologico e la psicoterapia.
+              Un percorso formativo clinico per comprendere la fibromialgia, leggere l'esperienza della persona e acquisire
+              strumenti concreti da portare in seduta — CBT, ACT, mindfulness clinica e realtà virtuale immersiva.
             </p>
             <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", justifyContent: "center", marginTop: "1.5rem" }}>
               <a href={BIDOC_URL} target="_blank" rel="noopener noreferrer" className="hero-cta">
@@ -79,10 +82,11 @@ function CorsiPage() {
           <div className="section-inner">
             <div className="fade-in">
               <div className="pill-label">Il corso</div>
-              <h2 className="section-title">Corso clinico sulla fibromialgia.</h2>
+              <h2 className="section-title">Corso clinico per professionisti sulla fibromialgia.</h2>
               <p className="body-text">
                 Molti pazienti con fibromialgia arrivano in terapia con dolore, stanchezza, insonnia, emozioni intense, senso di
-                incomprensione e difficoltà nella vita quotidiana.
+                incomprensione e difficoltà nella vita quotidiana. Questo corso ti aiuta a leggere il quadro clinico e a
+                impostare un lavoro terapeutico strutturato e personalizzato.
               </p>
               <p className="body-text">
                 Il corso FibroMental ti aiuta a capire <strong>cosa sta accadendo</strong> e come impostare un{" "}
@@ -148,10 +152,10 @@ function CorsiPage() {
           <div className="section-inner reverse">
             <div className="fade-in">
               <div className="pill-label">Iscrizione</div>
-              <h2 className="section-title">Scopri il programma e iscriviti ora</h2>
+              <h2 className="section-title">Iscriviti al corso riservato per professionisti</h2>
               <p className="body-text">
-                Il corso è erogato attraverso una piattaforma esterna dedicata. Lì trovi programma completo, modalità,
-                crediti e iscrizione.
+                Il corso è erogato attraverso una piattaforma esterna dedicata. Lì trovi programma completo, modalità e
+                iscrizione — riservato a psicologi e psicoterapeuti.
               </p>
               <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginTop: "1.25rem" }}>
                 <a href={BIDOC_URL} target="_blank" rel="noopener noreferrer" className="cta-button">
