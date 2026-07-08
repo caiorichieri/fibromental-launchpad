@@ -54,7 +54,7 @@ function CorsiPage() {
         <section className="page-hero">
           <div className="page-hero-inner fade-in">
             <div className="pill-label">Formazione clinica · Riservato a professionisti</div>
-            <div className="professionisti-badge" style={{ marginBottom: "1rem" }}>
+            <div className="professionisti-badge">
               <span>Riservato a psicologi e psicoterapeuti</span>
             </div>
             <h1 className="display text-slate-700">
