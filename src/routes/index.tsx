@@ -216,6 +216,7 @@ function HomePage() {
           <div className="section-inner reverse">
             <div className="fade-in">
               <div className="pill-label">La ricerca</div>
+              <></>
               <h2 className="section-title">Cosa dice la ricerca.</h2>
               <p className="body-text">Le tecniche integrate in FibroMental sono evidence-based, sostenute da letteratura peer-reviewed internazionale.</p>
               <p className="body-text">CBT e ACT per la fibromialgia hanno il profilo di evidenza più solido tra gli interventi psicologici documentati per questa condizione. La realtà virtuale applicata al dolore cronico è un campo in rapida crescita.</p>
