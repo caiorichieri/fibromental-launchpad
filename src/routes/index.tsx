@@ -245,7 +245,7 @@ function HomePage() {
             <h2 className="section-title">Capire la fibromialgia.<br />Dalla ricerca, in parole semplici.</h2>
             <p className="body-text" style={{ fontSize: ".95rem" }}>Articoli scritti dal team MetaCare, fondati sulla letteratura scientifica internazionale.</p>
           </div>
-          <div className="blog-grid">{articles.map((article, index) => <ArticleCard key={article.slug} article={article} className={`delay-${Math.min(index % 4, 4)}`} />)}</div>
+          <div className="blog-grid">{articles.map((article: Article, index: number) => <ArticleCard key={article.slug} article={article} className={`delay-${Math.min(index % 4, 4)}`} />)}</div>
         </section>
 
         <section className="page-section white">
