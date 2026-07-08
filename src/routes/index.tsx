@@ -213,6 +213,28 @@ function HomePage() {
         </section>
 
         <section className="page-section white">
+          <div className="section-inner">
+            <div className="fade-in">
+              <div className="pill-label">Formazione · Per professionisti</div>
+              <h2 className="section-title">Sei psicologo o psicoterapeuta? <em>Formati con FibroMental.</em></h2>
+              <p className="body-text">Un corso clinico sulla fibromialgia per comprendere il quadro, leggere l'esperienza della persona e acquisire strumenti concreti per il supporto psicologico e la psicoterapia — CBT, ACT, mindfulness clinica e realtà virtuale immersiva.</p>
+              <p className="body-text">Il corso è erogato tramite la piattaforma <strong>Bidoc.it</strong>.</p>
+              <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginTop: "1.25rem" }}>
+                <Link to="/corsi" className="hero-cta">Scopri il corso <span className="arrow">→</span></Link>
+              </div>
+            </div>
+            <div className="fade-in delay-1">
+              <Link to="/corsi" className="area-card" style={{ display: "block", textDecoration: "none" }}>
+                <div className="pill-label" style={{ marginBottom: ".5rem" }}>Corso clinico</div>
+                <h3 style={{ margin: 0 }}>Formazione FibroMental sulla fibromialgia</h3>
+                <p style={{ marginTop: ".5rem" }}>CBT · ACT · Mindfulness clinica · Realtà virtuale immersiva. Materiali clinici, casi applicativi e attestato di partecipazione.</p>
+                <p style={{ marginTop: ".75rem", fontWeight: 600 }}>Vai al corso →</p>
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        <section className="page-section white">
           <div className="section-inner reverse">
             <div className="fade-in">
               <div className="pill-label">La ricerca</div>
