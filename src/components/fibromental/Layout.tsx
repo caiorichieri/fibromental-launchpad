@@ -33,6 +33,7 @@ export function Header() {
       <div className={`nav-links${open ? " open" : ""}`}>
         <Link to="/" className="nav-link" activeOptions={{ exact: true }}>Home</Link>
         <Link to="/blog" className="nav-link">Blog</Link>
+        <Link to="/corsi" className="nav-link">Corsi</Link>
         <Link to="/chi-siamo" className="nav-link">Chi siamo</Link>
         <Link to="/lavora-con-noi" className="nav-link">Lavora con noi</Link>
         
