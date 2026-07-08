@@ -94,7 +94,7 @@ function CorsiPage() {
                 <li>Corso riservato a psicologi e psicoterapeuti</li>
               </ul>
               <p className="body-text" style={{ fontSize: ".9rem", opacity: 0.75 }}>
-                Iscrizioni, programma dettagliato, crediti ECM e costi sono gestiti sulla piattaforma esterna dedicata.
+                Iscrizioni, programa dettagliato e costi sono gestiti sulla piattaforma esterna dedicata.
               </p>
             </div>
             <div className="fade-in delay-1">
