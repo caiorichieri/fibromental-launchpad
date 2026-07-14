@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "../components/fibromental/Layout";
-import { YarnHand, YarnResearch } from "../components/fibromental/YarnVisuals";
+import { YarnHand } from "../components/fibromental/YarnVisuals";
 import { CourseSignupForm } from "../components/fibromental/CourseSignupForm";
 
 const WHATSAPP_URL =
