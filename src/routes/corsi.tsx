@@ -1,8 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "../components/fibromental/Layout";
 import { YarnHand, YarnResearch } from "../components/fibromental/YarnVisuals";
+import { CourseSignupForm } from "../components/fibromental/CourseSignupForm";
 
-const BIDOC_URL = "https://www.bidoc.it";
 const WHATSAPP_URL =
   "https://wa.me/393313904736?text=Ciao%2C%20vorrei%20informazioni%20sul%20corso%20FibroMental%20per%20psicologi%20e%20psicoterapeuti.";
 
@@ -65,7 +65,7 @@ function CorsiPage() {
               strumenti concreti da portare in seduta — CBT, ACT, mindfulness clinica e realtà virtuale immersiva.
             </p>
             <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", justifyContent: "center", marginTop: "1.5rem" }}>
-              <a href={BIDOC_URL} target="_blank" rel="noopener noreferrer" className="hero-cta">
+              <a href="#iscrizione" className="hero-cta">
                 Iscriviti ora <span className="arrow">→</span>
               </a>
               <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="whatsapp-button">
@@ -98,7 +98,7 @@ function CorsiPage() {
                 <li>Corso riservato a psicologi e psicoterapeuti</li>
               </ul>
               <p className="body-text" style={{ fontSize: ".9rem", opacity: 0.75 }}>
-                Iscrizioni, programa dettagliato e costi sono gestiti sulla piattaforma esterna dedicata.
+                Iscrizione online sicura tramite pagamento con carta. Costo: <strong>€ 80,00</strong>.
               </p>
             </div>
             <div className="fade-in delay-1">
@@ -148,26 +148,23 @@ function CorsiPage() {
           </div>
         </section>
 
-        <section className="page-section navy experience">
+        <section className="page-section navy experience" id="iscrizione">
           <div className="section-inner reverse">
             <div className="fade-in">
               <div className="pill-label">Iscrizione</div>
-              <h2 className="section-title">Iscriviti al corso riservato per professionisti</h2>
+              <h2 className="section-title">Iscriviti al corso — € 80</h2>
               <p className="body-text">
-                Il corso è erogato attraverso una piattaforma esterna dedicata. Lì trovi programma completo, modalità e
-                iscrizione — riservato a psicologi e psicoterapeuti.
+                Compila il modulo e completa il pagamento sicuro. Riceverai subito un'email di conferma con i
+                dettagli del corso. Riservato a psicologi e psicoterapeuti.
               </p>
               <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginTop: "1.25rem" }}>
-                <a href={BIDOC_URL} target="_blank" rel="noopener noreferrer" className="cta-button">
-                  Iscriviti ora <span className="arrow">→</span>
-                </a>
                 <Link to="/contatti" className="hero-cta" style={{ background: "transparent", border: "2px solid currentColor" }}>
-                  Contattaci <span className="arrow">→</span>
+                  Hai domande? Contattaci <span className="arrow">→</span>
                 </Link>
               </div>
             </div>
             <div className="fade-in delay-1">
-              <YarnResearch />
+              <CourseSignupForm />
             </div>
           </div>
         </section>
