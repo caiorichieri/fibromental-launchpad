@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as UnsubscribeRouteImport } from './routes/unsubscribe'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as LavoraConNoiRouteImport } from './routes/lavora-con-noi'
 import { Route as CorsiRouteImport } from './routes/corsi'
@@ -24,6 +25,11 @@ import { Route as LovableEmailTransactionalSendRouteImport } from './routes/lova
 import { Route as LovableEmailTransactionalPreviewRouteImport } from './routes/lovable/email/transactional/preview'
 import { Route as LovableEmailQueueProcessRouteImport } from './routes/lovable/email/queue/process'
 
+const UnsubscribeRoute = UnsubscribeRouteImport.update({
+  id: '/unsubscribe',
+  path: '/unsubscribe',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
@@ -105,6 +111,7 @@ export interface FileRoutesByFullPath {
   '/corsi': typeof CorsiRoute
   '/lavora-con-noi': typeof LavoraConNoiRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/unsubscribe': typeof UnsubscribeRoute
   '/admin/blog': typeof AdminBlogRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/email/unsubscribe': typeof EmailUnsubscribeRoute
@@ -121,6 +128,7 @@ export interface FileRoutesByTo {
   '/corsi': typeof CorsiRoute
   '/lavora-con-noi': typeof LavoraConNoiRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/unsubscribe': typeof UnsubscribeRoute
   '/admin/blog': typeof AdminBlogRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/email/unsubscribe': typeof EmailUnsubscribeRoute
@@ -138,6 +146,7 @@ export interface FileRoutesById {
   '/corsi': typeof CorsiRoute
   '/lavora-con-noi': typeof LavoraConNoiRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/unsubscribe': typeof UnsubscribeRoute
   '/admin/blog': typeof AdminBlogRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/email/unsubscribe': typeof EmailUnsubscribeRoute
@@ -156,6 +165,7 @@ export interface FileRouteTypes {
     | '/corsi'
     | '/lavora-con-noi'
     | '/sitemap.xml'
+    | '/unsubscribe'
     | '/admin/blog'
     | '/blog/$slug'
     | '/email/unsubscribe'
@@ -172,6 +182,7 @@ export interface FileRouteTypes {
     | '/corsi'
     | '/lavora-con-noi'
     | '/sitemap.xml'
+    | '/unsubscribe'
     | '/admin/blog'
     | '/blog/$slug'
     | '/email/unsubscribe'
@@ -188,6 +199,7 @@ export interface FileRouteTypes {
     | '/corsi'
     | '/lavora-con-noi'
     | '/sitemap.xml'
+    | '/unsubscribe'
     | '/admin/blog'
     | '/blog/$slug'
     | '/email/unsubscribe'
@@ -205,6 +217,7 @@ export interface RootRouteChildren {
   CorsiRoute: typeof CorsiRoute
   LavoraConNoiRoute: typeof LavoraConNoiRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  UnsubscribeRoute: typeof UnsubscribeRoute
   AdminBlogRoute: typeof AdminBlogRoute
   BlogSlugRoute: typeof BlogSlugRoute
   EmailUnsubscribeRoute: typeof EmailUnsubscribeRoute
@@ -217,6 +230,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/unsubscribe': {
+      id: '/unsubscribe'
+      path: '/unsubscribe'
+      fullPath: '/unsubscribe'
+      preLoaderRoute: typeof UnsubscribeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
@@ -325,6 +345,7 @@ const rootRouteChildren: RootRouteChildren = {
   CorsiRoute: CorsiRoute,
   LavoraConNoiRoute: LavoraConNoiRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  UnsubscribeRoute: UnsubscribeRoute,
   AdminBlogRoute: AdminBlogRoute,
   BlogSlugRoute: BlogSlugRoute,
   EmailUnsubscribeRoute: EmailUnsubscribeRoute,
@@ -337,3 +358,12 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { createStart } from '@tanstack/react-start'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+  }
+}
