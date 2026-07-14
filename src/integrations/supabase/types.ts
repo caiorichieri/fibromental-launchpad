@@ -71,6 +71,51 @@ export type Database = {
         }
         Relationships: []
       }
+      course_signups: {
+        Row: {
+          amount_cents: number
+          created_at: string
+          currency: string
+          email: string
+          first_name: string
+          id: string
+          last_name: string
+          order_number: string | null
+          profession: string | null
+          status: string
+          stripe_payment_intent_id: string | null
+          stripe_session_id: string | null
+        }
+        Insert: {
+          amount_cents: number
+          created_at?: string
+          currency?: string
+          email: string
+          first_name: string
+          id?: string
+          last_name: string
+          order_number?: string | null
+          profession?: string | null
+          status?: string
+          stripe_payment_intent_id?: string | null
+          stripe_session_id?: string | null
+        }
+        Update: {
+          amount_cents?: number
+          created_at?: string
+          currency?: string
+          email?: string
+          first_name?: string
+          id?: string
+          last_name?: string
+          order_number?: string | null
+          profession?: string | null
+          status?: string
+          stripe_payment_intent_id?: string | null
+          stripe_session_id?: string | null
+        }
+        Relationships: []
+      }
       early_access_signups: {
         Row: {
           answers: Json
