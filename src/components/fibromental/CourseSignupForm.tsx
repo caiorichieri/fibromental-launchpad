@@ -8,7 +8,6 @@ type FormState = {
   lastName: string;
   email: string;
   profession: string;
-  orderNumber: string;
   consent: boolean;
 };
 
@@ -17,7 +16,6 @@ const empty: FormState = {
   lastName: "",
   email: "",
   profession: "",
-  orderNumber: "",
   consent: false,
 };
 
@@ -62,7 +60,7 @@ export function CourseSignupForm() {
           lastName: form.lastName,
           email: form.email,
           profession: form.profession,
-          orderNumber: form.orderNumber,
+          orderNumber: "",
           returnUrl,
           environment: getStripeEnvironment(),
         },
@@ -110,7 +108,7 @@ export function CourseSignupForm() {
       <div className="signup-price">
         <div>
           <span className="signup-price-label">Corso Clinico FibroMental</span>
-          <span className="signup-price-sub">Riservato a psicologi e psicoterapeuti</span>
+          <span className="signup-price-sub">Riservato a professionisti</span>
         </div>
         <div className="signup-price-amount">€ 80,00</div>
       </div>
@@ -135,12 +133,8 @@ export function CourseSignupForm() {
             <option value="Psicologo/a">Psicologo/a</option>
             <option value="Psicoterapeuta">Psicoterapeuta</option>
             <option value="Specializzando/a">Specializzando/a</option>
-            <option value="Altro">Altro professionista sanitario</option>
+            <option value="Altro">Altro professionista</option>
           </select>
-        </label>
-        <label className="signup-field">
-          <span>N° iscrizione all'Ordine</span>
-          <input type="text" value={form.orderNumber} onChange={onChange("orderNumber")} />
         </label>
       </div>
 

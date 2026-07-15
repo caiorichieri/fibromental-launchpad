@@ -4,18 +4,18 @@ import { YarnHand } from "../components/fibromental/YarnVisuals";
 import { CourseSignupForm } from "../components/fibromental/CourseSignupForm";
 
 const WHATSAPP_URL =
-  "https://wa.me/393313904736?text=Ciao%2C%20vorrei%20informazioni%20sul%20corso%20FibroMental%20per%20psicologi%20e%20psicoterapeuti.";
+  "https://wa.me/393313904736?text=Ciao%2C%20vorrei%20informazioni%20sul%20corso%20FibroMental.";
 
 export const Route = createFileRoute("/corsi")({
   head: () => ({
     meta: [
-      { title: "Formazione FibroMental — Corso clinico per psicologi e psicoterapeuti" },
+      { title: "Formazione FibroMental — Corso clinico riservato a professionisti" },
       {
         name: "description",
         content:
-          "Corso clinico riservato a psicologi e psicoterapeuti sulla fibromialgia: CBT, ACT, mindfulness clinica e realtà virtuale immersiva.",
+          "Corso clinico riservato a professionisti sulla fibromialgia: CBT, ACT, mindfulness clinica e realtà virtuale immersiva.",
       },
-      { property: "og:title", content: "Formazione FibroMental — Corso clinico per psicologi e psicoterapeuti" },
+      { property: "og:title", content: "Formazione FibroMental — Corso clinico riservato a professionisti" },
       {
         property: "og:description",
         content:
@@ -55,10 +55,10 @@ function CorsiPage() {
           <div className="page-hero-inner fade-in">
             <div className="pill-label">Formazione clinica · Riservato a professionisti</div>
             <div className="professionisti-badge">
-              <span>Riservato a psicologi e psicoterapeuti</span>
+              <span>Riservato a professionisti</span>
             </div>
             <h1 className="display text-slate-700">
-              Formazione <em>FibroMental</em> per psicologi e psicoterapeuti.
+              Formazione <em>FibroMental</em> per professionisti.
             </h1>
             <p className="hero-sub" style={{ marginLeft: "auto", marginRight: "auto" }}>
               Un percorso formativo clinico per comprendere la fibromialgia, leggere l'esperienza della persona e acquisire
@@ -82,7 +82,7 @@ function CorsiPage() {
           <div className="section-inner">
             <div className="fade-in">
               <div className="pill-label">Il corso</div>
-              <h2 className="section-title">Corso clinico per professionisti sulla fibromialgia.</h2>
+          <h2 className="section-title">Corso clinico per professionisti sulla fibromialgia.</h2>
               <p className="body-text">
                 Molti pazienti con fibromialgia arrivano in terapia con dolore, stanchezza, insonnia, emozioni intense, senso di
                 incomprensione e difficoltà nella vita quotidiana. Questo corso ti aiuta a leggere il quadro clinico e a
@@ -95,7 +95,7 @@ function CorsiPage() {
               <ul className="body-text" style={{ paddingLeft: "1.2rem", lineHeight: 1.9 }}>
                 <li>Materiali clinici, casi applicativi e strumenti operativi per le sedute</li>
                 <li>Attestato di partecipazione FibroMental</li>
-                <li>Corso riservato a psicologi e psicoterapeuti</li>
+                <li>Corso riservato a professionisti</li>
               </ul>
               <p className="body-text" style={{ fontSize: ".9rem", opacity: 0.75 }}>
                 Iscrizione online sicura tramite pagamento con carta. Costo: <strong>€ 80,00</strong>.
@@ -155,7 +155,7 @@ function CorsiPage() {
               <h2 className="section-title">Iscriviti al corso — € 80</h2>
               <p className="body-text">
                 Compila il modulo e completa il pagamento sicuro. Riceverai subito un'email di conferma con i
-                dettagli del corso. Riservato a psicologi e psicoterapeuti.
+                dettagli del corso. Riservato a professionisti.
               </p>
               <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginTop: "1.25rem" }}>
                 <Link to="/contatti" className="hero-cta" style={{ background: "transparent", border: "2px solid currentColor" }}>
