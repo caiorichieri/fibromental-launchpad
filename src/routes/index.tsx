@@ -215,8 +215,8 @@ function HomePage() {
         <section className="page-section white">
           <div className="section-inner">
             <div className="fade-in">
-              <div className="pill-label">Formazione · Riservato a psicologi e psicoterapeuti</div>
-              <h2 className="section-title">Formazione FibroMental per psicologi e psicoterapeuti.</h2>
+              <div className="pill-label">Formazione · Riservato a professionisti</div>
+              <h2 className="section-title">Formazione FibroMental per professionisti.</h2>
               <p className="body-text">Un corso clinico riservato a professionisti della salute mentale per comprendere la fibromialgia, leggere l'esperienza della persona e acquisire strumenti concreti per la psicoterapia — CBT, ACT, mindfulness clinica e realtà virtuale immersiva.</p>
               <p className="body-text">Il corso è erogato tramite una piattaforma esterna dedicata.</p>
               <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", marginTop: "1.25rem" }}>
@@ -226,7 +226,7 @@ function HomePage() {
             <div className="fade-in delay-1">
               <Link to="/corsi" className="area-card" style={{ display: "block", textDecoration: "none" }}>
                 <div className="pill-label" style={{ marginBottom: ".5rem" }}>Corso clinico · Riservato a professionisti</div>
-                <h3 style={{ margin: 0 }}>Formazione FibroMental per psicologi e psicoterapeuti</h3>
+                <h3 style={{ margin: 0 }}>Formazione FibroMental per professionisti</h3>
                 <p style={{ marginTop: ".5rem" }}>CBT · ACT · Mindfulness clinica · Realtà virtuale immersiva. Materiali clinici, casi applicativi e attestato di partecipazione.</p>
                 <p style={{ marginTop: ".75rem", fontWeight: 600 }}>Scopri il corso →</p>
               </Link>
