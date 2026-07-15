@@ -5,6 +5,7 @@ import catastrophizingCover from "../assets/blog-catastrofizzazione.jpg";
 import virtualRealityCover from "../assets/blog-vr-dolore-cronico.jpg";
 import acceptanceCover from "../assets/blog-act-accettazione.jpg";
 import integratedTherapiesCover from "../assets/blog-cbt-act-mindfulness.jpg";
+import invaliditaCover from "../assets/blog-invalidita-fibromialgia.jpg";
 import type { Tables } from "../integrations/supabase/types";
 
 export type Article = {
@@ -132,6 +133,28 @@ export const articles: Article[] = [
       "La CBT aiuta a riconoscere cicli che mantengono sofferenza e limitazione. L’ACT lavora sulla flessibilità psicologica. La mindfulness clinica allena una presenza meno reattiva verso le sensazioni.",
       "Nella fibromialgia raramente basta un solo strumento. Il quadro cambia da persona a persona, e anche nella stessa persona può cambiare nel tempo.",
       "Integrare significa scegliere con criterio: partire da ciò che serve ora, adattare il percorso, mantenere rigore clinico senza trasformare la terapia in un protocollo rigido."
+    ]
+  },
+  {
+    slug: "invalidita-fibromialgia-italia",
+    tag: "Diritti · Invalidità civile",
+    title: "Invalidità civile e fibromialgia in Italia: guida aggiornata",
+    excerpt: "Cosa prevede oggi l'INPS, cosa dicono i LEA e come muoversi tra certificati, commissioni e riconoscimento della malattia.",
+    source: "INPS · Ministero della Salute (LEA) · AISF",
+    readTime: "9 min",
+    coverImage: invaliditaCover,
+    coverAlt: "Illustrazione editoriale con silhouette di una donna che regge documenti medici e una bilancia della giustizia, simbolo del percorso di riconoscimento dell'invalidità per fibromialgia",
+    paragraphs: [
+      "La fibromialgia in Italia vive ancora in una zona grigia dal punto di vista del riconoscimento istituzionale. Non è inserita nei Livelli Essenziali di Assistenza (LEA) come malattia cronica invalidante e non compare nelle tabelle ministeriali usate dalle commissioni INPS per calcolare direttamente una percentuale di invalidità civile.",
+      "Questo non significa che una persona con fibromialgia non possa ottenere l'invalidità civile. Significa che il riconoscimento passa per una valutazione funzionale complessiva, spesso costruita a partire dalle comorbidità e dall'impatto reale della malattia sulla vita quotidiana, lavorativa e relazionale.",
+      "In pratica la commissione medica valuta la riduzione della capacità lavorativa e dell'autonomia personale. La diagnosi di fibromialgia da sola raramente basta: pesano molto la documentazione clinica dettagliata, le patologie associate (disturbi del sonno, sindrome del colon irritabile, cefalea, disturbi dell'umore) e una relazione specialistica che descriva con precisione limitazioni e frequenza dei sintomi.",
+      "Il primo passo formale è il certificato medico introduttivo (SS3), compilato online da un medico certificatore accreditato INPS — spesso il medico di famiglia. Con il numero di protocollo di quel certificato si presenta la domanda di invalidità civile all'INPS entro 90 giorni, direttamente dal portale o tramite patronato.",
+      "Dopo la domanda l'INPS convoca alla visita presso la Commissione Medica ASL, integrata da un medico INPS. Alla visita conviene portare: relazione del reumatologo o del centro di riferimento, esami strumentali, diario del dolore, certificazioni relative a comorbidità e terapie in corso. Più la documentazione è ordinata e coerente, più è semplice per la commissione ricostruire il quadro reale.",
+      "Le percentuali che vengono riconosciute variano molto. In assenza di una voce specifica per la fibromialgia, i medici usano per analogia le tabelle di altre patologie reumatologiche o del dolore cronico. Molti verbali si collocano tra il 46% e il 74%, soglie che aprono a benefici come esenzione dal ticket per patologia (in alcune Regioni), collocamento mirato al lavoro (dal 46%) e assegno mensile di assistenza (dal 74%, con requisiti di reddito). L'invalidità totale (100%) e l'indennità di accompagnamento restano riservate a quadri gravissimi, spesso con comorbidità importanti.",
+      "Sul fronte regionale la situazione è disomogenea. Alcune Regioni — tra cui Valle d'Aosta, Friuli Venezia Giulia, Toscana ed Emilia-Romagna in momenti diversi — hanno introdotto delibere che riconoscono la fibromialgia come malattia cronica ai fini di percorsi diagnostico-terapeutici dedicati o esenzioni parziali. A livello nazionale, invece, il riconoscimento nei LEA è oggetto di proposte di legge discusse ormai da anni ma non ancora approvate.",
+      "In caso di verbale insoddisfacente esistono due strade: chiedere l'aggravamento se il quadro clinico peggiora nel tempo, oppure impugnare il verbale con l'Accertamento Tecnico Preventivo (ATP) entro sei mesi. In entrambi i casi il supporto di un patronato o di un legale esperto in previdenza aiuta a evitare errori formali che costano mesi di attesa.",
+      "Da un punto di vista psicologico questo percorso è faticoso: implica raccontare più volte il proprio dolore a persone che non lo vedono, con il rischio di sentirsi messi in dubbio. È una parte del carico invisibile della malattia. Prendersene cura non significa solo compilare moduli, ma anche proteggere il proprio equilibrio mentre si attraversa la burocrazia.",
+      "In FibroMental non offriamo consulenza legale né compiliamo domande INPS: quel lavoro spetta a medici certificatori, patronati e avvocati. Il nostro percorso psicologico può però affiancare le persone che vivono il peso emotivo del riconoscimento, aiutandole a mantenere risorse, chiarezza e una relazione più sostenibile con la propria condizione, qualunque sia l'esito della valutazione."
     ]
   }
 ];
