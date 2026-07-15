@@ -35,7 +35,7 @@ const CourseConfirmationEmail = ({
       <Body style={main}>
         <Container style={container}>
           <Heading style={h1}>FibroMental</Heading>
-          <Text style={sub}>Formazione clinica per psicologi e psicoterapeuti</Text>
+          <Text style={sub}>Formazione clinica riservata a professionisti</Text>
 
           <Section style={card}>
             <Heading as="h2" style={h2}>
