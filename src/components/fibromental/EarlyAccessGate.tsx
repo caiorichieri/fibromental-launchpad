@@ -130,7 +130,7 @@ export function EarlyAccessGate() {
     <div className="ea-gate" role="dialog" aria-modal="true" aria-labelledby="ea-title">
       <div className="ea-wrap">
         <div className="ea-topbar">
-          <img src={fibroLogo} alt="FibroMental" className="ea-logo-top" />
+          <img src={fibroLogo} alt="Logo FibroMental" className="ea-logo-top" />
           <div className="ea-countdown-big" aria-live="polite">
             <span className="ea-countdown-label">Lancio tra</span>
             <div className="ea-countdown-grid">
@@ -145,7 +145,7 @@ export function EarlyAccessGate() {
         <div className="ea-card">
         {step === "welcome" ? (
           <div className="ea-welcome">
-            <img src={fibroLogo} alt="FibroMental" className="ea-welcome-logo" />
+            <img src={fibroLogo} alt="Logo FibroMental" className="ea-welcome-logo" />
             <h2 id="ea-title" className="ea-welcome-title">Ti Crediamo</h2>
             <p className="ea-welcome-date">12 maggio<br /><span>Giornata mondiale per la Fibromialgia</span></p>
             <button type="button" className="ea-btn" onClick={() => setStep("intro")}>Continua</button>
