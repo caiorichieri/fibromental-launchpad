@@ -84,10 +84,10 @@ function HomePage() {
           </div>
           <div className="hero-visual fade-in delay-2" style={{ position: "relative" }}>
             <a
-              href="https://wa.me/393313904736?text=Ciao%2C%20scrivo%20dal%20sito%20FibroMental%20e%20vorrei%20parlare%20con%20uno%20psicologo."
+              href="https://wa.me/393313904736?text=Ciao%2C%20scrivo%20dal%20sito%20FibroMental%20e%20vorrei%20prenotare%20una%20seduta."
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Parla subito con uno psicologo su WhatsApp"
+              aria-label="Prenota una seduta su WhatsApp"
               className="hero-circle-cta"
             >
               <span className="hero-circle-cta-icon" aria-hidden="true">
@@ -96,8 +96,8 @@ function HomePage() {
                 </svg>
               </span>
               <span className="hero-circle-cta-text">
-                <span className="hero-circle-cta-eyebrow">Parla ora su WhatsApp</span>
-                <span className="hero-circle-cta-title">Parla con uno psicologo</span>
+                <span className="hero-circle-cta-eyebrow">Scrivici su WhatsApp</span>
+                <span className="hero-circle-cta-title">Prenota una seduta</span>
               </span>
               <span className="hero-circle-cta-arrow" aria-hidden="true">→</span>
             </a>
