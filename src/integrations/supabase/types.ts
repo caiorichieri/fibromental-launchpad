@@ -248,6 +248,60 @@ export type Database = {
         }
         Relationships: []
       }
+      projects: {
+        Row: {
+          created_at: string
+          created_by: string | null
+          id: string
+          image_alt: string
+          image_url: string | null
+          is_published: boolean
+          link_label: string
+          link_url: string | null
+          period: string | null
+          sort_order: number
+          subtitle: string | null
+          summary: string
+          title: string
+          updated_at: string
+          updated_by: string | null
+        }
+        Insert: {
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          image_alt?: string
+          image_url?: string | null
+          is_published?: boolean
+          link_label?: string
+          link_url?: string | null
+          period?: string | null
+          sort_order?: number
+          subtitle?: string | null
+          summary: string
+          title: string
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Update: {
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          image_alt?: string
+          image_url?: string | null
+          is_published?: boolean
+          link_label?: string
+          link_url?: string | null
+          period?: string | null
+          sort_order?: number
+          subtitle?: string | null
+          summary?: string
+          title?: string
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Relationships: []
+      }
       suppressed_emails: {
         Row: {
           created_at: string
