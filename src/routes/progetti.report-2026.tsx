@@ -8,6 +8,7 @@ export const Route = createFileRoute("/progetti/report-2026")({
   head: () => ({
     meta: [
       { title: "Progetti — FibroMental" },
+      { name: "robots", content: "noindex,nofollow" },
       { name: "description", content: "Report conclusivo del percorso psicologico FibroMental: otto partecipanti, 32 sedute completate, zero abbandoni. Fattibilità, tollerabilità ed esperienza delle persone." },
       { property: "og:title", content: "Progetti — FibroMental" },
       { property: "og:description", content: "Report conclusivo del percorso psicologico FibroMental: otto partecipanti, 32 sedute completate, zero abbandoni." },
