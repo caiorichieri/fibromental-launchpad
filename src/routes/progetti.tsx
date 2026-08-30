@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "../components/fibromental/Layout";
 import { YarnResearch } from "../components/fibromental/YarnVisuals";
+import cfuLogo from "../assets/cfu-italia-logo.png";
 
 export const Route = createFileRoute("/progetti")({
   head: () => ({
@@ -67,6 +68,47 @@ function ProgettiPage() {
             "Questo report racconta cosa è successo durante FibroMental. Non lo fa con il linguaggio dei protocolli, ma con quello delle persone che lo hanno attraversato.",
             "Il documento descrive le attività realizzate e l'esperienza riferita dai partecipanti. I risultati riguardano la fattibilità, la tollerabilità e l'utilità percepita del percorso — non un'analisi di efficacia clinica. È un report di progetto, scritto per chi vuole capire cosa ha funzionato, cosa si può migliorare e cosa le persone hanno portato a casa.",
           ]} />
+        </div>
+      </section>
+
+      {/* Collaborazione CFU-Italia ODV */}
+      <section className="page-section white">
+        <div className="section-inner centered fade-in" style={{ textAlign: "center" }}>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              flexWrap: "wrap",
+              justifyContent: "center",
+              gap: "2rem",
+              padding: "2.5rem",
+              borderTop: "1px solid var(--border)",
+              borderBottom: "1px solid var(--border)",
+            }}
+          >
+            <img
+              src={cfuLogo}
+              alt="Logo CFU-Italia ODV"
+              style={{ height: 80, width: "auto", flex: "0 0 auto" }}
+            />
+            <div style={{ flex: "1 1 280px", textAlign: "center" }}>
+              <p className="body-text" style={{ maxWidth: 760, margin: "0 auto 0.75rem" }}>
+                Il percorso FibroMental è stato realizzato grazie alla collaborazione del{" "}
+                <strong>CFU-Italia ODV</strong> — Comitato Fibromialgici Uniti, che ha individuato
+                e coordinato la partecipazione di otto persone con fibromialgia residenti in
+                Friuli Venezia Giulia. Il coordinamento sul territorio è stato curato dalla
+                referente regionale <strong>Elisa Lombardi</strong>.
+              </p>
+              <a
+                href="https://www.cfuitalia.it"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ fontSize: ".85rem", color: "var(--orange)", textDecoration: "none" }}
+              >
+                cfuitalia.it
+              </a>
+            </div>
+          </div>
         </div>
       </section>
 
