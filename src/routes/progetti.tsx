@@ -71,6 +71,47 @@ function ProgettiPage() {
         </div>
       </section>
 
+      {/* Collaborazione CFU-Italia ODV */}
+      <section className="page-section white">
+        <div className="section-inner centered fade-in" style={{ textAlign: "center" }}>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              flexWrap: "wrap",
+              justifyContent: "center",
+              gap: "2rem",
+              padding: "2.5rem",
+              borderTop: "1px solid var(--border)",
+              borderBottom: "1px solid var(--border)",
+            }}
+          >
+            <img
+              src={cfuLogo}
+              alt="Logo CFU-Italia ODV"
+              style={{ height: 80, width: "auto", flex: "0 0 auto" }}
+            />
+            <div style={{ flex: "1 1 280px", textAlign: "center" }}>
+              <p className="body-text" style={{ maxWidth: 760, margin: "0 auto 0.75rem" }}>
+                Il percorso FibroMental è stato realizzato grazie alla collaborazione del{" "}
+                <strong>CFU-Italia ODV</strong> — Comitato Fibromialgici Uniti, che ha individuato
+                e coordinato la partecipazione di otto persone con fibromialgia residenti in
+                Friuli Venezia Giulia. Il coordinamento sul territorio è stato curato dalla
+                referente regionale <strong>Elisa Lombardi</strong>.
+              </p>
+              <a
+                href="https://www.cfuitalia.it"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ fontSize: ".85rem", color: "var(--orange)", textDecoration: "none" }}
+              >
+                cfuitalia.it
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Da dove siamo partiti */}
       <section className="page-section white">
         <div className="section-inner centered fade-in" style={{ textAlign: "left" }}>
