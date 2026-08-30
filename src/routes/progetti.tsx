@@ -174,7 +174,7 @@ function ProgettiPage() {
             "Sette partecipanti hanno ritenuto che quattro sedute non fossero sufficienti per un lavoro psicologico più approfondito. Sei persone hanno chiesto più spazio per il dialogo.",
           ]} />
         </div>
-        <div className="aree-grid fade-in" style={{ gridTemplateColumns: "repeat(3, 1fr)", maxWidth: 1100 }}>
+        <div className="aree-grid fade-in" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", maxWidth: 1100 }}>
           {[
             ["Più spazio di dialogo", "Prevedere un incontro iniziale e calibrare il tempo tra dialogo ed esercizi."],
             ["Oltre quattro sedute", "Proporre la continuità psicologica dopo il percorso finanziato."],
