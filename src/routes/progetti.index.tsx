@@ -8,6 +8,7 @@ export const Route = createFileRoute("/progetti/")({
   head: () => ({
     meta: [
       { title: "Progetti — FibroMental" },
+      { name: "robots", content: "noindex,nofollow" },
       { name: "description", content: "I progetti FibroMental: percorsi psicologici, collaborazioni e report. Scopri le iniziative realizzate con le associazioni e i risultati raggiunti." },
       { property: "og:title", content: "Progetti — FibroMental" },
       { property: "og:description", content: "I progetti FibroMental: percorsi psicologici, collaborazioni e report conclusivi." },

@@ -3,3 +3,4 @@ Allow: /
 Disallow: /admin/
 
 Sitemap: https://fibromental.app/sitemap.xml
+Disallow: /progetti
