@@ -93,7 +93,7 @@ function ProgettiPage() {
             />
             <div style={{ flex: "1 1 280px", textAlign: "center" }}>
               <p className="body-text" style={{ maxWidth: 760, margin: "0 auto 0.75rem" }}>
-                Il percorso FibroMental è stato realizzato grazie alla collaborazione del{" "}
+                Il progetto è stato realizzato grazie alla collaborazione del{" "}
                 <strong>CFU-Italia ODV</strong> — Comitato Fibromialgici Uniti, che ha individuato
                 e coordinato la partecipazione di otto persone con fibromialgia residenti in
                 Friuli Venezia Giulia. Il coordinamento sul territorio è stato curato dalla
