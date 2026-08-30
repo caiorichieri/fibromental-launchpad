@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as UnsubscribeRouteImport } from './routes/unsubscribe'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as ProgettiRouteImport } from './routes/progetti'
 import { Route as LavoraConNoiRouteImport } from './routes/lavora-con-noi'
 import { Route as CorsiRouteImport } from './routes/corsi'
 import { Route as ContattiRouteImport } from './routes/contatti'
@@ -37,6 +38,11 @@ const UnsubscribeRoute = UnsubscribeRouteImport.update({
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProgettiRoute = ProgettiRouteImport.update({
+  id: '/progetti',
+  path: '/progetti',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LavoraConNoiRoute = LavoraConNoiRouteImport.update({
@@ -135,6 +141,7 @@ export interface FileRoutesByFullPath {
   '/contatti': typeof ContattiRoute
   '/corsi': typeof CorsiRoute
   '/lavora-con-noi': typeof LavoraConNoiRoute
+  '/progetti': typeof ProgettiRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/unsubscribe': typeof UnsubscribeRoute
   '/admin/blog': typeof AdminBlogRoute
@@ -156,6 +163,7 @@ export interface FileRoutesByTo {
   '/contatti': typeof ContattiRoute
   '/corsi': typeof CorsiRoute
   '/lavora-con-noi': typeof LavoraConNoiRoute
+  '/progetti': typeof ProgettiRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/unsubscribe': typeof UnsubscribeRoute
   '/admin/blog': typeof AdminBlogRoute
@@ -178,6 +186,7 @@ export interface FileRoutesById {
   '/contatti': typeof ContattiRoute
   '/corsi': typeof CorsiRoute
   '/lavora-con-noi': typeof LavoraConNoiRoute
+  '/progetti': typeof ProgettiRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/unsubscribe': typeof UnsubscribeRoute
   '/admin/blog': typeof AdminBlogRoute
@@ -201,6 +210,7 @@ export interface FileRouteTypes {
     | '/contatti'
     | '/corsi'
     | '/lavora-con-noi'
+    | '/progetti'
     | '/sitemap.xml'
     | '/unsubscribe'
     | '/admin/blog'
@@ -222,6 +232,7 @@ export interface FileRouteTypes {
     | '/contatti'
     | '/corsi'
     | '/lavora-con-noi'
+    | '/progetti'
     | '/sitemap.xml'
     | '/unsubscribe'
     | '/admin/blog'
@@ -243,6 +254,7 @@ export interface FileRouteTypes {
     | '/contatti'
     | '/corsi'
     | '/lavora-con-noi'
+    | '/progetti'
     | '/sitemap.xml'
     | '/unsubscribe'
     | '/admin/blog'
@@ -265,6 +277,7 @@ export interface RootRouteChildren {
   ContattiRoute: typeof ContattiRoute
   CorsiRoute: typeof CorsiRoute
   LavoraConNoiRoute: typeof LavoraConNoiRoute
+  ProgettiRoute: typeof ProgettiRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   UnsubscribeRoute: typeof UnsubscribeRoute
   AdminBlogRoute: typeof AdminBlogRoute
@@ -295,6 +308,13 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/progetti': {
+      id: '/progetti'
+      path: '/progetti'
+      fullPath: '/progetti'
+      preLoaderRoute: typeof ProgettiRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/lavora-con-noi': {
@@ -425,6 +445,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContattiRoute: ContattiRoute,
   CorsiRoute: CorsiRoute,
   LavoraConNoiRoute: LavoraConNoiRoute,
+  ProgettiRoute: ProgettiRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   UnsubscribeRoute: UnsubscribeRoute,
   AdminBlogRoute: AdminBlogRoute,
@@ -443,3 +464,12 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { createStart } from '@tanstack/react-start'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+  }
+}
