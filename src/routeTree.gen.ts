@@ -11,13 +11,13 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as UnsubscribeRouteImport } from './routes/unsubscribe'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as ProgettiRouteImport } from './routes/progetti'
 import { Route as LavoraConNoiRouteImport } from './routes/lavora-con-noi'
 import { Route as CorsiRouteImport } from './routes/corsi'
 import { Route as ContattiRouteImport } from './routes/contatti'
 import { Route as ChiSiamoRouteImport } from './routes/chi-siamo'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
+import { Route as ProgettiReport2026RouteImport } from './routes/progetti.report-2026'
 import { Route as EmailUnsubscribeRouteImport } from './routes/email/unsubscribe'
 import { Route as CorsoReturnRouteImport } from './routes/corso.return'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
@@ -38,11 +38,6 @@ const UnsubscribeRoute = UnsubscribeRouteImport.update({
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ProgettiRoute = ProgettiRouteImport.update({
-  id: '/progetti',
-  path: '/progetti',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LavoraConNoiRoute = LavoraConNoiRouteImport.update({
@@ -73,6 +68,11 @@ const IndexRoute = IndexRouteImport.update({
 const BlogIndexRoute = BlogIndexRouteImport.update({
   id: '/blog/',
   path: '/blog/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProgettiReport2026Route = ProgettiReport2026RouteImport.update({
+  id: '/progetti/report-2026',
+  path: '/progetti/report-2026',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EmailUnsubscribeRoute = EmailUnsubscribeRouteImport.update({
@@ -141,13 +141,13 @@ export interface FileRoutesByFullPath {
   '/contatti': typeof ContattiRoute
   '/corsi': typeof CorsiRoute
   '/lavora-con-noi': typeof LavoraConNoiRoute
-  '/progetti': typeof ProgettiRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/unsubscribe': typeof UnsubscribeRoute
   '/admin/blog': typeof AdminBlogRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/corso/return': typeof CorsoReturnRoute
   '/email/unsubscribe': typeof EmailUnsubscribeRoute
+  '/progetti/report-2026': typeof ProgettiReport2026Route
   '/blog/': typeof BlogIndexRoute
   '/lovable/email/suppression': typeof LovableEmailSuppressionRoute
   '/api/public/payments/webhook': typeof ApiPublicPaymentsWebhookRoute
@@ -163,13 +163,13 @@ export interface FileRoutesByTo {
   '/contatti': typeof ContattiRoute
   '/corsi': typeof CorsiRoute
   '/lavora-con-noi': typeof LavoraConNoiRoute
-  '/progetti': typeof ProgettiRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/unsubscribe': typeof UnsubscribeRoute
   '/admin/blog': typeof AdminBlogRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/corso/return': typeof CorsoReturnRoute
   '/email/unsubscribe': typeof EmailUnsubscribeRoute
+  '/progetti/report-2026': typeof ProgettiReport2026Route
   '/blog': typeof BlogIndexRoute
   '/lovable/email/suppression': typeof LovableEmailSuppressionRoute
   '/api/public/payments/webhook': typeof ApiPublicPaymentsWebhookRoute
@@ -186,13 +186,13 @@ export interface FileRoutesById {
   '/contatti': typeof ContattiRoute
   '/corsi': typeof CorsiRoute
   '/lavora-con-noi': typeof LavoraConNoiRoute
-  '/progetti': typeof ProgettiRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/unsubscribe': typeof UnsubscribeRoute
   '/admin/blog': typeof AdminBlogRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/corso/return': typeof CorsoReturnRoute
   '/email/unsubscribe': typeof EmailUnsubscribeRoute
+  '/progetti/report-2026': typeof ProgettiReport2026Route
   '/blog/': typeof BlogIndexRoute
   '/lovable/email/suppression': typeof LovableEmailSuppressionRoute
   '/api/public/payments/webhook': typeof ApiPublicPaymentsWebhookRoute
@@ -210,13 +210,13 @@ export interface FileRouteTypes {
     | '/contatti'
     | '/corsi'
     | '/lavora-con-noi'
-    | '/progetti'
     | '/sitemap.xml'
     | '/unsubscribe'
     | '/admin/blog'
     | '/blog/$slug'
     | '/corso/return'
     | '/email/unsubscribe'
+    | '/progetti/report-2026'
     | '/blog/'
     | '/lovable/email/suppression'
     | '/api/public/payments/webhook'
@@ -232,13 +232,13 @@ export interface FileRouteTypes {
     | '/contatti'
     | '/corsi'
     | '/lavora-con-noi'
-    | '/progetti'
     | '/sitemap.xml'
     | '/unsubscribe'
     | '/admin/blog'
     | '/blog/$slug'
     | '/corso/return'
     | '/email/unsubscribe'
+    | '/progetti/report-2026'
     | '/blog'
     | '/lovable/email/suppression'
     | '/api/public/payments/webhook'
@@ -254,13 +254,13 @@ export interface FileRouteTypes {
     | '/contatti'
     | '/corsi'
     | '/lavora-con-noi'
-    | '/progetti'
     | '/sitemap.xml'
     | '/unsubscribe'
     | '/admin/blog'
     | '/blog/$slug'
     | '/corso/return'
     | '/email/unsubscribe'
+    | '/progetti/report-2026'
     | '/blog/'
     | '/lovable/email/suppression'
     | '/api/public/payments/webhook'
@@ -277,13 +277,13 @@ export interface RootRouteChildren {
   ContattiRoute: typeof ContattiRoute
   CorsiRoute: typeof CorsiRoute
   LavoraConNoiRoute: typeof LavoraConNoiRoute
-  ProgettiRoute: typeof ProgettiRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   UnsubscribeRoute: typeof UnsubscribeRoute
   AdminBlogRoute: typeof AdminBlogRoute
   BlogSlugRoute: typeof BlogSlugRoute
   CorsoReturnRoute: typeof CorsoReturnRoute
   EmailUnsubscribeRoute: typeof EmailUnsubscribeRoute
+  ProgettiReport2026Route: typeof ProgettiReport2026Route
   BlogIndexRoute: typeof BlogIndexRoute
   LovableEmailSuppressionRoute: typeof LovableEmailSuppressionRoute
   ApiPublicPaymentsWebhookRoute: typeof ApiPublicPaymentsWebhookRoute
@@ -308,13 +308,6 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/progetti': {
-      id: '/progetti'
-      path: '/progetti'
-      fullPath: '/progetti'
-      preLoaderRoute: typeof ProgettiRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/lavora-con-noi': {
@@ -357,6 +350,13 @@ declare module '@tanstack/react-router' {
       path: '/blog'
       fullPath: '/blog/'
       preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/progetti/report-2026': {
+      id: '/progetti/report-2026'
+      path: '/progetti/report-2026'
+      fullPath: '/progetti/report-2026'
+      preLoaderRoute: typeof ProgettiReport2026RouteImport
       parentRoute: typeof rootRouteImport
     }
     '/email/unsubscribe': {
@@ -445,13 +445,13 @@ const rootRouteChildren: RootRouteChildren = {
   ContattiRoute: ContattiRoute,
   CorsiRoute: CorsiRoute,
   LavoraConNoiRoute: LavoraConNoiRoute,
-  ProgettiRoute: ProgettiRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   UnsubscribeRoute: UnsubscribeRoute,
   AdminBlogRoute: AdminBlogRoute,
   BlogSlugRoute: BlogSlugRoute,
   CorsoReturnRoute: CorsoReturnRoute,
   EmailUnsubscribeRoute: EmailUnsubscribeRoute,
+  ProgettiReport2026Route: ProgettiReport2026Route,
   BlogIndexRoute: BlogIndexRoute,
   LovableEmailSuppressionRoute: LovableEmailSuppressionRoute,
   ApiPublicPaymentsWebhookRoute: ApiPublicPaymentsWebhookRoute,

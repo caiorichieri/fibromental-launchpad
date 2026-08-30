@@ -3,7 +3,7 @@ import { SiteLayout } from "../components/fibromental/Layout";
 import { YarnResearch } from "../components/fibromental/YarnVisuals";
 import cfuLogo from "../assets/cfu-italia-logo.png";
 
-export const Route = createFileRoute("/progetti")({
+export const Route = createFileRoute("/progetti/report-2026")({
   head: () => ({
     meta: [
       { title: "Progetti — FibroMental" },
