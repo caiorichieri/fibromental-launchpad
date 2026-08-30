@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "../components/fibromental/Layout";
 import { YarnResearch } from "../components/fibromental/YarnVisuals";
+import cfuLogo from "../assets/cfu-italia-logo.png";
 
 export const Route = createFileRoute("/progetti")({
   head: () => ({
