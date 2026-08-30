@@ -1,7 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "../components/fibromental/Layout";
-import { YarnResearch } from "../components/fibromental/YarnVisuals";
 import cfuLogo from "../assets/cfu-italia-logo.png";
+import swirlLogo from "../assets/progetti-swirl-logo.png";
+
 
 export const Route = createFileRoute("/progetti/report-2026")({
   head: () => ({
@@ -32,13 +33,17 @@ function ProgettiPage() {
     <SiteLayout>
       <section className="page-hero">
         <div className="page-hero-inner fade-in">
+          <img src={swirlLogo} alt="Simbolo FibroMental" style={{ width: 200, height: "auto", margin: "0 auto 1.5rem", display: "block" }} />
           <span className="pill-label">Progetti · FibroMental</span>
           <h1 className="display">Il percorso, le persone, <em>i risultati</em></h1>
           <p className="hero-sub" style={{ margin: "1.5rem auto 0", textAlign: "center" }}>
             Report conclusivo del percorso psicologico — otto partecipanti, maggio–agosto 2026
           </p>
-          <YarnResearch />
+          <p style={{ textAlign: "center", marginTop: "1.25rem" }}>
+            <Link to="/progetti" className="progetto-card-cta">← Tutti i progetti</Link>
+          </p>
         </div>
+
       </section>
 
       {/* Statistiche */}
