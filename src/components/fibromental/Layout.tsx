@@ -39,7 +39,6 @@ export function Header() {
         <Link to="/lavora-con-noi" className="nav-link">Lavora con noi</Link>
         
         <Link to="/contatti" className="nav-link">Contatti</Link>
-        <Link to="/admin/blog" className="nav-link">Area riservata</Link>
       </div>
       <a href={APP_URL} target="_blank" rel="noopener noreferrer" className="nav-cta">Installa l'app</a>
       <button
@@ -74,6 +73,7 @@ export function Footer() {
       <div className="footer-inner">
         <Link to="/" className="footer-logo" aria-label="FibroMental home"><img src={fibroLogo} alt="Logo FibroMental" /></Link>
         <p>© 2026 MetaCare S.r.l. · <a href="https://www.metacare.it" target="_blank" rel="noopener noreferrer">metacare.it</a></p>
+        <Link to="/admin/blog" className="footer-credit">Area riservata</Link>
         <a className="footer-credit" href="https://www.friulion.it" target="_blank" rel="noopener noreferrer">Sviluppato da Friuli On</a>
       </div>
     </footer>
