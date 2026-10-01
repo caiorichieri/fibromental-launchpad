@@ -47,7 +47,7 @@ function ProgettiIndexPage() {
               <h2>Percorso psicologico FibroMental 2026</h2>
               <p>
                 Quattro sedute psicologiche individuali per otto persone con fibromialgia,
-                realizzate in collaborazione con CFU-Italia ODV in Friuli Venezia Giulia.
+                realizzate in collaborazione con <a href="https://www.cfuitalia.it/" target="_blank" rel="noopener noreferrer">CFU-Italia ODV</a> in Friuli Venezia Giulia.
                 32 sedute completate, nessun abbandono.
               </p>
               <Link to="/progetti/report-2026" className="progetto-card-cta">Leggi il report →</Link>

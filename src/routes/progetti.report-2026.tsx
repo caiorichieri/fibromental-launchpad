@@ -100,7 +100,7 @@ function ProgettiPage() {
             <div style={{ flex: "1 1 280px", textAlign: "center" }}>
               <p className="body-text" style={{ maxWidth: 760, margin: "0 auto 0.75rem" }}>
                 Il progetto è stato realizzato grazie alla collaborazione del{" "}
-                <strong>CFU-Italia ODV</strong> — Comitato Fibromialgici Uniti, che ha individuato
+                <strong><a href="https://www.cfuitalia.it/" target="_blank" rel="noopener noreferrer">CFU-Italia ODV</a></strong> — Comitato Fibromialgici Uniti, che ha individuato
                 e coordinato la partecipazione di otto persone con fibromialgia residenti in
                 Friuli Venezia Giulia. Il coordinamento sul territorio è stato curato dalla
                 referente regionale <strong>Elisa Lombardi</strong>.
