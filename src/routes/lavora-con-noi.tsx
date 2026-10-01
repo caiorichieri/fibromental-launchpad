@@ -1,4 +1,5 @@
-import { Link, createFileRoute } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
+import { ApplicationForm } from "../components/fibromental/ApplicationForm";
 import { CONTACT_EMAIL, SiteLayout } from "../components/fibromental/Layout";
 
 export const Route = createFileRoute("/lavora-con-noi")({
@@ -61,8 +62,16 @@ function WorkWithUsPage() {
               <div><span>02</span><h3>Primo confronto</h3><p>Valutiamo insieme obiettivi, disponibilità e possibili forme di collaborazione.</p></div>
               <div><span>03</span><h3>Formazione e rete</h3><p>Se il profilo è in linea, avviamo il percorso di introduzione al protocollo.</p></div>
             </div>
-            <Link to="/contatti" className="cta-button">Candidati o chiedi informazioni <span className="arrow">→</span></Link>
-            <p className="form-note">Puoi anche scrivere direttamente a <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.</p>
+                        <p className="form-note">Puoi anche scrivere direttamente a <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.</p>
+          </div>
+        </section>
+
+        <section className="page-section white" id="candidatura">
+          <div className="section-inner centered fade-in" style={{ maxWidth: 760, margin: "0 auto" }}>
+            <div className="pill-label">Candidatura</div>
+            <h2 className="section-title">Invia la tua candidatura.</h2>
+            <p className="body-text">Compila il modulo e allega il tuo curriculum: ti ricontatteremo per un primo confronto.</p>
+            <ApplicationForm />
           </div>
         </section>
       </main>
