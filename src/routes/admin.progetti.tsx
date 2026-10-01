@@ -184,6 +184,7 @@ function AdminProgettiPage() {
             </p>
             <div className="admin-form-top" style={{ justifyContent: "center", marginTop: "1.5rem" }}>
               <Link className="admin-secondary" to="/admin/blog">Gestione notizie</Link>
+              <Link className="admin-secondary" to="/admin/candidature">Candidature</Link>
             </div>
           </div>
         </section>
