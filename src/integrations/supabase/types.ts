@@ -227,6 +227,54 @@ export type Database = {
         }
         Relationships: []
       }
+      job_applications: {
+        Row: {
+          albo_number: string | null
+          city: string | null
+          created_at: string
+          cv_path: string | null
+          email: string
+          experience: string | null
+          first_name: string
+          id: string
+          last_name: string
+          message: string | null
+          phone: string | null
+          qualification: string
+          status: string
+        }
+        Insert: {
+          albo_number?: string | null
+          city?: string | null
+          created_at?: string
+          cv_path?: string | null
+          email: string
+          experience?: string | null
+          first_name: string
+          id?: string
+          last_name: string
+          message?: string | null
+          phone?: string | null
+          qualification: string
+          status?: string
+        }
+        Update: {
+          albo_number?: string | null
+          city?: string | null
+          created_at?: string
+          cv_path?: string | null
+          email?: string
+          experience?: string | null
+          first_name?: string
+          id?: string
+          last_name?: string
+          message?: string | null
+          phone?: string | null
+          qualification?: string
+          status?: string
+        }
+        Relationships: []
+      }
       newsletter_subscribers: {
         Row: {
           created_at: string
