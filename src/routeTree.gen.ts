@@ -24,6 +24,7 @@ import { Route as EmailUnsubscribeRouteImport } from './routes/email/unsubscribe
 import { Route as CorsoReturnRouteImport } from './routes/corso.return'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as AdminProgettiRouteImport } from './routes/admin.progetti'
+import { Route as AdminCandidatureRouteImport } from './routes/admin.candidature'
 import { Route as AdminBlogRouteImport } from './routes/admin.blog'
 import { Route as LovableEmailSuppressionRouteImport } from './routes/lovable/email/suppression'
 import { Route as LovableEmailTransactionalSendRouteImport } from './routes/lovable/email/transactional/send'
@@ -108,6 +109,11 @@ const AdminProgettiRoute = AdminProgettiRouteImport.update({
   path: '/admin/progetti',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminCandidatureRoute = AdminCandidatureRouteImport.update({
+  id: '/admin/candidature',
+  path: '/admin/candidature',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminBlogRoute = AdminBlogRouteImport.update({
   id: '/admin/blog',
   path: '/admin/blog',
@@ -163,6 +169,7 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/unsubscribe': typeof UnsubscribeRoute
   '/admin/blog': typeof AdminBlogRoute
+  '/admin/candidature': typeof AdminCandidatureRoute
   '/admin/progetti': typeof AdminProgettiRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/corso/return': typeof CorsoReturnRoute
@@ -187,6 +194,7 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/unsubscribe': typeof UnsubscribeRoute
   '/admin/blog': typeof AdminBlogRoute
+  '/admin/candidature': typeof AdminCandidatureRoute
   '/admin/progetti': typeof AdminProgettiRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/corso/return': typeof CorsoReturnRoute
@@ -213,6 +221,7 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/unsubscribe': typeof UnsubscribeRoute
   '/admin/blog': typeof AdminBlogRoute
+  '/admin/candidature': typeof AdminCandidatureRoute
   '/admin/progetti': typeof AdminProgettiRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/corso/return': typeof CorsoReturnRoute
@@ -240,6 +249,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/unsubscribe'
     | '/admin/blog'
+    | '/admin/candidature'
     | '/admin/progetti'
     | '/blog/$slug'
     | '/corso/return'
@@ -264,6 +274,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/unsubscribe'
     | '/admin/blog'
+    | '/admin/candidature'
     | '/admin/progetti'
     | '/blog/$slug'
     | '/corso/return'
@@ -289,6 +300,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/unsubscribe'
     | '/admin/blog'
+    | '/admin/candidature'
     | '/admin/progetti'
     | '/blog/$slug'
     | '/corso/return'
@@ -315,6 +327,7 @@ export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   UnsubscribeRoute: typeof UnsubscribeRoute
   AdminBlogRoute: typeof AdminBlogRoute
+  AdminCandidatureRoute: typeof AdminCandidatureRoute
   AdminProgettiRoute: typeof AdminProgettiRoute
   BlogSlugRoute: typeof BlogSlugRoute
   CorsoReturnRoute: typeof CorsoReturnRoute
@@ -436,6 +449,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminProgettiRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/candidature': {
+      id: '/admin/candidature'
+      path: '/admin/candidature'
+      fullPath: '/admin/candidature'
+      preLoaderRoute: typeof AdminCandidatureRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/blog': {
       id: '/admin/blog'
       path: '/admin/blog'
@@ -519,6 +539,7 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   UnsubscribeRoute: UnsubscribeRoute,
   AdminBlogRoute: AdminBlogRoute,
+  AdminCandidatureRoute: AdminCandidatureRoute,
   AdminProgettiRoute: AdminProgettiRoute,
   BlogSlugRoute: BlogSlugRoute,
   CorsoReturnRoute: CorsoReturnRoute,
