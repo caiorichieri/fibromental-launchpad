@@ -74,7 +74,7 @@ export function Footer() {
         <Link to="/" className="footer-logo" aria-label="FibroMental home"><img src={fibroLogo} alt="Logo FibroMental" /></Link>
         <p>© 2026 MetaCare S.r.l. · <a href="https://www.metacare.it" target="_blank" rel="noopener noreferrer">metacare.it</a></p>
         <Link to="/admin/blog" className="footer-credit">Area riservata</Link>
-        <a className="footer-credit" href="https://www.friulion.it" target="_blank" rel="noopener noreferrer">Sviluppato da Friuli On</a>
+        <a className="footer-credit" href="https://www.friulion.it" target="_blank" rel="noopener noreferrer">Sviluppato da Friuli On · P.Iva 03157410303</a>
       </div>
     </footer>
   );
