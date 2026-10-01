@@ -18,10 +18,10 @@ export const Route = createFileRoute("/")({
   shouldReload: true,
   head: () => ({
     meta: [
-      { title: "FibroMental — percorso psicologico per fibromialgia" },
-      { name: "description", content: "FibroMental è il percorso MetaCare per lavorare su dolore cronico, sistema nervoso e fibromialgia con psicoterapia evidence-based." },
-      { property: "og:title", content: "FibroMental — Percorso psicologico per la fibromialgia" },
-      { property: "og:description", content: "Il percorso MetaCare per lavorare su dolore cronico, sistema nervoso e fibromialgia con psicoterapia evidence-based." },
+      { title: "Fibromialgia: sintomi, cura e supporto psicologico | FibroMental" },
+      { name: "description", content: "Fibromialgia: capire sintomi, dolore cronico e sistema nervoso. FibroMental offre un percorso psicologico evidence-based per chi vive con la fibromialgia." },
+      { property: "og:title", content: "Fibromialgia: sintomi, cura e supporto psicologico | FibroMental" },
+      { property: "og:description", content: "Un percorso psicologico evidence-based per chi vive con la fibromialgia: sintomi, dolore cronico e sistema nervoso." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://fibromental.app/" },
     ],
