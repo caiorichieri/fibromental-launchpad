@@ -265,7 +265,7 @@ function HomePage() {
           <div className="blog-header fade-in">
             <div className="pill-label">Dal blog</div>
             <h2 className="section-title">Capire la fibromialgia.<br />Dalla ricerca, in parole semplici.</h2>
-            <p className="body-text" style={{ fontSize: ".95rem" }}>Articoli scritti dal team MetaCare, fondati sulla letteratura scientifica internazionale.</p>
+            <p className="body-text" style={{ fontSize: ".95rem" }}>Articoli scritti dal team <a href="https://www.metacare.it" target="_blank" rel="noopener noreferrer">MetaCare</a>, fondati sulla letteratura scientifica internazionale.</p>
           </div>
           <div className="blog-grid">{articles.map((article: Article, index: number) => <ArticleCard key={article.slug} article={article} className={`delay-${Math.min(index % 4, 4)}`} />)}</div>
         </section>
@@ -292,13 +292,13 @@ function HomePage() {
               <p className="body-text" style={{ marginTop: "1rem" }}>FibroMental è aperto a psicologi e psicoterapeuti che vogliono portare strumenti evidence-based nella propria pratica clinica.</p>
               <ul className="lavora-list">
                 <li>Formazione specifica sul protocollo FibroMental — struttura delle sedute, tecniche, adattamenti clinici</li>
-                <li>Accesso alla piattaforma MetaCare e alle stanze virtuali terapeutiche</li>
+                <li>Accesso alla piattaforma <a href="https://www.metacare.it" target="_blank" rel="noopener noreferrer">MetaCare</a> e alle stanze virtuali terapeutiche</li>
                 <li>Supporto clinico e supervisione continua</li>
                 <li>Possibilità di partecipare ai progetti pilota con le associazioni partner</li>
               </ul>
               <Link to="/lavora-con-noi" className="lavora-cta">Scopri come collaborare →</Link>
             </div>
-            <div className="fade-in delay-1"><div className="lavora-quote"><p>“Il vantaggio degli ambienti immersivi è che permettono di fare con i pazienti cose che la sola parola non riesce a raggiungere.”</p><cite>Team clinico MetaCare</cite></div></div>
+            <div className="fade-in delay-1"><div className="lavora-quote"><p>“Il vantaggio degli ambienti immersivi è che permettono di fare con i pazienti cose che la sola parola non riesce a raggiungere.”</p><cite>Team clinico <a href="https://www.metacare.it" target="_blank" rel="noopener noreferrer">MetaCare</a></cite></div></div>
           </div>
         </section>
       </main>

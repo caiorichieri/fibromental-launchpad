@@ -45,7 +45,7 @@ function WorkWithUsPage() {
               <ul className="lavora-list light">
                 <li>Formazione sul protocollo FibroMental e sulle sue aree di intervento</li>
                 <li>Materiali clinici, tracce di lavoro e strumenti per il percorso</li>
-                <li>Accesso agli ambienti terapeutici digitali e alla piattaforma MetaCare</li>
+                <li>Accesso agli ambienti terapeutici digitali e alla piattaforma <a href="https://www.metacare.it" target="_blank" rel="noopener noreferrer">MetaCare</a></li>
                 <li>Supervisione, confronto clinico e possibilità di collaborazione su progetti pilota</li>
               </ul>
             </div>

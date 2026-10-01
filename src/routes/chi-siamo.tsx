@@ -27,7 +27,7 @@ function AboutPage() {
           <div className="page-hero-inner fade-in">
             <div className="pill-label">Chi siamo / MetaCare</div>
             <h1 className="display text-slate-700">Una rete clinica per ciò che spesso resta <em>invisibile.</em></h1>
-            <p className="hero-sub" style={{ marginLeft: "auto", marginRight: "auto" }}>FibroMental nasce dentro MetaCare S.r.l. per portare strumenti psicologici rigorosi, umani e integrati nel lavoro con fibromialgia e dolore cronico.</p>
+            <p className="hero-sub" style={{ marginLeft: "auto", marginRight: "auto" }}>FibroMental nasce dentro <a href="https://www.metacare.it" target="_blank" rel="noopener noreferrer">MetaCare S.r.l.</a> per portare strumenti psicologici rigorosi, umani e integrati nel lavoro con fibromialgia e dolore cronico.</p>
           </div>
         </section>
         <section className="page-section white">
@@ -35,7 +35,7 @@ function AboutPage() {
             <div className="fade-in">
               <div className="pill-label">MetaCare</div>
               <h2 className="section-title">Clinica, ricerca e tecnologia con una direzione precisa.</h2>
-              <p className="body-text">MetaCare lavora nell’area della salute mentale con percorsi psicologici e psicoterapeutici pensati per essere accessibili, strutturati e misurabili.</p>
+              <p className="body-text"><a href="https://www.metacare.it" target="_blank" rel="noopener noreferrer">MetaCare</a> lavora nell’area della salute mentale con percorsi psicologici e psicoterapeutici pensati per essere accessibili, strutturati e misurabili.</p>
               <p className="body-text">FibroMental è il brand dedicato alla fibromialgia: un protocollo che integra relazione terapeutica, tecniche evidence-based e, quando utile, ambienti immersivi in realtà virtuale.</p>
             </div>
             <div className="fade-in delay-1"><YarnResearch /></div>

@@ -61,7 +61,7 @@ export function MetaCareBanner() {
         <img src={metacareLogo} alt="Logo MetaCare S.r.l." />
       </a>
       <p>
-        <strong>FibroMental</strong> è un brand di <strong>MetaCare S.r.l.</strong> — struttura sanitaria autorizzata all’erogazione di prestazioni di psicologia e psicoterapia (Prot. n° {METACARE_AUTH_NUMBER} del {METACARE_AUTH_DATE})
+        <strong>FibroMental</strong> è un brand di <strong><a href="https://www.metacare.it" target="_blank" rel="noopener noreferrer">MetaCare S.r.l.</a></strong> — struttura sanitaria autorizzata all’erogazione di prestazioni di psicologia e psicoterapia (Prot. n° {METACARE_AUTH_NUMBER} del {METACARE_AUTH_DATE})
       </p>
     </div>
   );
