@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { CONTACT_EMAIL, SiteLayout } from "../components/fibromental/Layout";
 
-const WHATSAPP_NUMBER = "393451124503";
+const WHATSAPP_NUMBER = "393313904736";
 const WHATSAPP_MESSAGE = encodeURIComponent("Ciao, vorrei ricevere informazioni su FibroMental.");
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`;
 
